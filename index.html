@@ -4,16 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
     <title>☕ Café piñonal - Tienda con Historia</title>
     <style>
         /* PALETA DE COLORES */
         :root {
-            --color-pastel: #E8F5E9; 
-            --color-oscuro: #2E7D32; 
-            --color-acento: #388E3C; 
-            --color-medio: #66BB6A; 
-            --color-texto-claro: #FFFFFF; 
-            --color-texto-oscuro: #424242; 
+            --color-pastel: #E8F5E9; /* Verde Pastel Claro */
+            --color-oscuro: #2E7D32; /* Verde Oscuro Elegante */
+            --color-acento: #388E3C; /* Verde Más Oscuro */
+            --color-medio: #66BB6A; /* Verde Medio */
+            --color-texto-claro: #FFFFFF; /* Blanco */
+            --color-texto-oscuro: #424242; /* Gris Oscuro */
         }
 
         /* ESTILOS BASE */
@@ -36,14 +39,29 @@
             padding: 20px 0; 
             text-align: center; 
             position: relative; 
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+            /* --- MEJORA ESTÉTICA: Sombra del Header --- */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.25); 
         }
         header h1 { margin: 0; font-size: 2.5em; font-weight: 700; }
         header p { margin: 5px 0 0; font-weight: 500;}
+        
         nav ul { list-style: none; padding: 0; margin-top: 15px; display: flex; justify-content: center; }
         nav ul li { margin: 0 20px; }
-        nav ul li a { color: var(--color-texto-claro); text-decoration: none; font-weight: 500; transition: color 0.3s, border-bottom 0.3s; padding: 5px 10px;}
-        nav ul li a:hover { color: var(--color-medio); border-bottom: 2px solid var(--color-medio); } 
+        
+        /* --- MEJORA ESTÉTICA: Animación de Menú --- */
+        nav ul li a { 
+            color: var(--color-texto-claro); 
+            text-decoration: none; 
+            font-weight: 500; 
+            transition: color 0.3s, background-color 0.3s, border-bottom 0.3s; 
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        nav ul li a:hover { 
+            color: var(--color-texto-claro); 
+            background-color: rgba(255, 255, 255, 0.15); /* Fondo blanco semi-transparente */
+            border-bottom: 2px solid var(--color-medio); 
+        } 
         
         /* ESTILO DEL HERO/PORTADA */
         .hero { 
@@ -102,6 +120,15 @@
             border-radius: 12px; 
         }
         
+        /* --- MEJORA ESTÉTICA: Separador Visual --- */
+        .section-divider {
+            width: 100px;
+            height: 4px;
+            background-color: var(--color-medio);
+            margin: 15px auto 40px auto; 
+            border-radius: 2px;
+        }
+
         /* ESTILOS DE PRODUCTO */
         .producto-card { 
             background-color: var(--color-texto-claro); 
@@ -160,12 +187,12 @@
             margin-top: 0;
         }
 
-        /* --- NUEVOS ESTILOS PARA ÍCONOS FLOTANTES --- */
+        /* ESTILOS PARA ÍCONOS FLOTANTES DE REDES SOCIALES */
         .social-links {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            z-index: 900; /* Debajo del carrito modal, pero encima de todo lo demás */
+            z-index: 900; 
             display: flex;
             flex-direction: column;
             gap: 15px;
@@ -178,21 +205,41 @@
             text-align: center;
             line-height: 50px;
             border-radius: 50%;
-            font-size: 2.2em; /* Tamaño del emoji/sticker */
+            font-size: 1.8em; 
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             transition: transform 0.3s, box-shadow 0.3s;
-            background-color: var(--color-medio); /* Fondo Verde Medio para destacar */
+            color: white; 
         }
 
         .social-icon:hover {
-            transform: scale(1.1); /* Efecto zoom al pasar el mouse */
+            transform: scale(1.1); 
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
         }
 
-        /* Estilos específicos (opcional, si quisieras colores de marca) */
-        .social-icon.whatsapp { background-color: #25D366; }
-        .social-icon.instagram { background-color: #C13584; }
-        .social-icon.facebook { background-color: #4267B2; }
+        /* Colores de marca y fondo */
+        .social-icon.whatsapp { background-color: #25D366; } 
+        .social-icon.instagram { 
+            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+        } 
+        .social-icon.facebook { background-color: #1877F2; } 
+
+        /* CSS para el botón de pago condicional */
+        .hidden-initial {
+            display: none;
+        }
+
+        /* Estilos del carrito */
+        #cart-count { background-color: #D32F2F; color: white; border-radius: 50%; padding: 4px 8px; font-size: 0.8em; position: absolute; top: -8px; right: -8px; }
+        .cart-modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.6); }
+        .modal-content { background-color: #fefefe; margin: 5% auto; padding: 25px; border: none; width: 90%; max-width: 450px; border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.3); }
+        .close-btn { color: #888; float: right; font-size: 32px; font-weight: 500; cursor: pointer; }
+        #cart-items li { list-style: none; padding: 12px 0; border-bottom: 1px solid #E0E0E0; display: flex; justify-content: space-between; align-items: center; font-size: 1.1em; font-weight: 500; }
+        .item-controls { display: flex; align-items: center; }
+        .qty-btn { background-color: var(--color-pastel); border: 1px solid #CFD8DC; padding: 5px 10px; cursor: pointer; font-size: 1em; margin: 0 5px; border-radius: 5px; }
+        .qty-display { width: 20px; text-align: center; font-weight: 700; }
+        #cart-total { font-size: 1.4em; font-weight: 700; margin-top: 20px; text-align: right; color: var(--color-oscuro); } 
+        .btn-pago { background-color: var(--color-oscuro) !important; color: white !important; font-weight: 700 !important; border-radius: 10px !important; } 
+        .btn-pago:hover { background-color: var(--color-acento) !important; } 
         
     </style>
 </head>
@@ -247,7 +294,7 @@
 
             <div class="history-block">
                 <div class="history-image-container">
-                    <img src="https://via.placeholder.com/250x180/4CAF50/ffffff?text=Finca" alt="Foto de la finca">
+                    <img src="finca-filo-bonito.jpg" alt="Vista de la finca Filo Bonito">
                 </div>
                 <div class="history-text-container">
                     <h3>Origen: Finca y Vereda</h3>
@@ -265,7 +312,7 @@
 
             <div class="history-block">
                 <div class="history-image-container">
-                    <img src="https://via.placeholder.com/250x180/FF9800/ffffff?text=Recoleccion" alt="Foto de la recolección">
+                    <img src="recoleccion-manual.jpg" alt="Foto de la recolección manual del café">
                 </div>
                 <div class="history-text-container">
                     <h3>Recolección y Cuidado</h3>
@@ -285,6 +332,8 @@
         <section id="productos" class="productos">
             <h2 style="text-align: center; color: var(--color-oscuro); font-weight: 700;">Nuestro Café Especial</h2>
             <p style="text-align: center;">Granos de la más alta calidad, tostados a la perfección para un sabor inigualable.</p>
+            
+            <div class="section-divider"></div>
 
             <div class="producto-card">
                 <img src="empaquepresentacion.png" alt="Café Premium Café piñonal"> 
@@ -321,21 +370,23 @@
                 </ul>
             <p id="cart-total">Total: $0</p>
             
-            <button class="btn btn-pago" onclick="goToDirectLink()" style="width: 100%; font-size: 1.1em;">
-                Pagar con Link Directo
-            </button>
+            <div id="payment-button-container" class="hidden-initial">
+                <button class="btn btn-pago" onclick="goToDirectLink()" style="width: 100%; font-size: 1.1em;">
+                    Pagar con Link Directo
+                </button>
+            </div>
         </div>
     </div>
 
     <div class="social-links">
         <a href="https://wa.me/573001234567" target="_blank" class="social-icon whatsapp" title="Escríbenos por WhatsApp">
-            💬 
+            <i class="fab fa-whatsapp"></i> 
         </a>
         <a href="https://www.instagram.com/tu_pagina" target="_blank" class="social-icon instagram" title="Síguenos en Instagram">
-            📸
+            <i class="fab fa-instagram"></i>
         </a>
         <a href="https://www.facebook.com/TuPaginaDeFacebook" target="_blank" class="social-icon facebook" title="Visítanos en Facebook">
-            👍
+            <i class="fab fa-facebook-f"></i>
         </a>
     </div>
 
@@ -373,6 +424,7 @@
             const cartItemsContainer = document.getElementById('cart-items');
             const cartCount = document.getElementById('cart-count');
             const cartTotalElement = document.getElementById('cart-total');
+            const paymentButtonContainer = document.getElementById('payment-button-container'); 
             
             currentTotal = 0; 
             let totalItems = 0;
@@ -400,7 +452,16 @@
 
             const finalFormattedTotal = currentTotal.toLocaleString('es-CO');
             cartCount.textContent = totalItems;
-            cartTotalElement.textContent = `Total: $${finalFormattedTotal}`;
+            
+            // --- LÓGICA CLAVE: MOSTRAR/OCULTAR BOTÓN DE PAGO ---
+            if (currentTotal > 0) {
+                paymentButtonContainer.style.display = 'block';
+                cartTotalElement.textContent = `Total: $${finalFormattedTotal}`;
+            } else {
+                paymentButtonContainer.style.display = 'none';
+                cartTotalElement.textContent = `Carrito vacío`; 
+            }
+            // --------------------------------------------------
         }
         
         function goToDirectLink() {
@@ -415,6 +476,7 @@
             toggleCartModal(); 
             window.open(DIRECT_PAYMENT_LINK, '_blank');
             
+            // Limpiamos el carrito después de ir al link de pago
             cart = []; 
             updateCartDisplay();
             showHistorySection(); 
@@ -446,7 +508,7 @@
                 modal.style.display = "none";
             } else {
                 modal.style.display = "block";
-                updateCartDisplay(); 
+                updateCartDisplay(); // Aseguramos que el display esté correcto al abrir
             }
         }
         
@@ -460,6 +522,9 @@
         // Inicializar la página mostrando la historia
         document.addEventListener('DOMContentLoaded', () => {
             showHistorySection();
+            // Aseguramos que el botón de pago esté oculto al iniciar
+            document.getElementById('payment-button-container').style.display = 'none';
+            document.getElementById('cart-total').textContent = `Carrito vacío`;
         });
     </script>
 </body>
