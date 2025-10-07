@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>☕ Aroma & Sabor - Tu Café Especial</title>
+    <title>☕ Aroma & Sabor - Pago Directo</title>
     <style>
-        /* ESTILOS BASE Y DE NAVEGACIÓN (Se mantienen) */
+        /* ESTILOS (Se mantienen del código anterior) */
         body { font-family: 'Arial', sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; color: #333; }
         header { background-color: #6f4e37; color: white; padding: 20px 0; text-align: center; position: relative; }
         header h1 { margin: 0; font-size: 2.5em; }
@@ -14,22 +14,11 @@
         nav ul li a { color: white; text-decoration: none; font-weight: bold; transition: color 0.3s; }
         nav ul li a:hover { color: #ffcc00; }
         .hero { /* ... estilos hero ... */ }
-        .hero::before { /* ... */ }
-        .hero-content { /* ... */ }
-
-        /* BOTONES Y CONTENEDOR */
-        .btn { 
-            background-color: #d3a14e; color: white; padding: 10px 20px; 
-            text-decoration: none; border-radius: 5px; font-weight: bold; 
-            transition: background-color 0.3s; display: inline-block; margin-top: 10px;
-            cursor: pointer; 
-            border: none;
-        }
+        .btn { background-color: #d3a14e; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold; transition: background-color 0.3s; display: inline-block; margin-top: 10px; cursor: pointer; border: none; }
         .btn:hover { background-color: #b58032; }
         .container { width: 80%; margin: 40px auto; padding: 20px; background-color: white; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); border-radius: 8px; }
         .productos, .promocion { text-align: center; margin-bottom: 40px; }
         
-        /* ESTILOS DE LA TARJETA DE PRODUCTO */
         .producto-card { margin: 10px auto; width: 40%; min-width: 300px; max-width: 400px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 20px; border: 1px solid #ccc; }
         .producto-card img { max-width: 100%; height: auto; border-radius: 4px; margin-bottom: 15px; }
         .presentaciones { list-style: none; padding: 0; margin: 15px 0; text-align: left; }
@@ -37,73 +26,55 @@
         .peso { font-weight: bold; color: #6f4e37; }
         .precio { font-size: 1.1em; font-weight: bold; color: #d3a14e; }
 
-        /* ESTILOS DEL CARRITO FLOTANTE Y MODAL (Se mantienen) */
+        /* ESTILOS DEL CARRITO FLOTANTE Y MODAL */
         #cart-icon { position: absolute; top: 25px; right: 50px; font-size: 1.5em; cursor: pointer; color: white; z-index: 500; }
         #cart-count { background-color: #ff6f61; color: white; border-radius: 50%; padding: 3px 8px; font-size: 0.7em; position: absolute; top: -5px; right: -10px; }
-        .cart-modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4); }
-        .modal-content { background-color: #fefefe; margin: 10% auto; padding: 20px; border: 1px solid #888; width: 80%; max-width: 500px; border-radius: 8px; }
-        .close-btn { color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer; }
-        #cart-items li { list-style: none; padding: 8px 0; border-bottom: 1px dashed #ccc; display: flex; justify-content: space-between; }
-        #cart-total { font-size: 1.2em; font-weight: bold; margin-top: 15px; text-align: right; }
+        .cart-modal { display: none; /* Dejamos el modal visible pero no se usará directamente */ }
 
         /* ESTILOS DE LA INTERFAZ DE PAGO */
         #pago {
-            display: none; /* Oculta la sección de pago por defecto */
+            display: none; /* Oculta la sección de pago por defecto, el JS la mostrará */
             text-align: left;
             padding: 30px 50px;
-            background-color: #e8e6e3; /* Fondo que simula papel */
+            background-color: #e8e6e3; 
             border-radius: 10px;
             margin-top: 20px;
         }
-        .bancolombia-info {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            border-left: 5px solid #ffcc00; /* Color distintivo */
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
-        }
-        .bancolombia-info p {
-            margin: 5px 0;
-            font-size: 1.1em;
-        }
-        .bancolombia-info strong {
-            color: #6f4e37;
-            display: inline-block;
-            width: 150px; /* Alineación */
-        }
-        .instrucciones ol {
-            padding-left: 20px;
-        }
-        .total-pago {
-            font-size: 1.5em;
-            color: #ff6f61;
-            font-weight: bold;
-            text-align: right;
-            margin-top: 20px;
-            padding-top: 10px;
-            border-top: 1px dashed #ccc;
-        }
+        .bancolombia-info { background-color: #fff; padding: 20px; border-radius: 5px; border-left: 5px solid #ffcc00; box-shadow: 0 2px 5px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        .bancolombia-info p { margin: 5px 0; font-size: 1.1em; }
+        .bancolombia-info strong { color: #6f4e37; display: inline-block; width: 150px; }
+        .instrucciones ol { padding-left: 20px; }
+        .total-pago { font-size: 1.5em; color: #ff6f61; font-weight: bold; text-align: right; margin-top: 20px; padding-top: 10px; border-top: 1px dashed #ccc; }
     </style>
 </head>
 <body>
 
     <header>
         <h1>Aroma & Sabor ☕</h1>
+        <p>Tu dosis diaria de felicidad</p>
         <nav>
             <ul>
                 <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#productos">Productos</a></li>
+                <li><a href="#" onclick="showProductSection(); return false;">Productos</a></li>
                 <li><a href="#promocion">Promoción</a></li>
                 <li><a href="#" onclick="showPaymentSection(); return false;">Pagar</a></li> 
             </ul>
         </nav>
+        
         <div id="cart-icon" onclick="toggleCartModal()">
             🛒 <span id="cart-count">0</span>
         </div>
     </header>
 
-    <div class="container">
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <h2>El Mejor Café, Directo a tu Taza.</h2>
+            <p>Descubre nuestra selección artesanal de granos especiales.</p>
+            <a href="#productos" class="btn" onclick="showProductSection();">¡Explora Nuestro Café!</a>
+        </div>
+    </section>
+    
+    <div class="container" id="product-section-container">
         <section id="productos" class="productos">
             <h2>Nuestro Café Especial</h2>
             <p>Granos de la más alta calidad, tostados a la perfección para un sabor inigualable.</p>
@@ -118,20 +89,20 @@
                         <span class="peso">250 gramos</span>
                         <span class="precio">$24.000</span>
                         <button class="btn btn-pequeno" 
-                            onclick="addToCart('Café Premium (250g)', 24000)">Añadir</button>
+                            onclick="addToCartAndGoToPay('Café Premium (250g)', 24000)">Añadir y Pagar</button>
                     </li>
                     <li>
                         <span class="peso">500 gramos</span>
                         <span class="precio">$48.000</span>
                         <button class="btn btn-pequeno" 
-                            onclick="addToCart('Café Premium (500g)', 48000)">Añadir</button>
+                            onclick="addToCartAndGoToPay('Café Premium (500g)', 48000)">Añadir y Pagar</button>
                     </li>
                 </ul>
             </div>
         </section>
     </div>
     
-    <div class="container">
+    <div class="container" id="payment-section-container">
         <section id="pago">
             <h2>Pasarela de Pago: Transferencia Bancolombia 🏦</h2>
             <p class="instrucciones">Para completar tu compra, por favor realiza una **transferencia bancaria exacta** a la cuenta detallada a continuación. **El pago total incluye el envío.**</p>
@@ -159,18 +130,20 @@
                     <li>**Envía el comprobante** junto con tus datos de envío (nombre, dirección, teléfono) a nuestro WhatsApp o correo electrónico: <a href="mailto:ventas@aromasabor.com">ventas@aromasabor.com</a></li>
                     <li>Una vez verificado el pago, ¡procesaremos tu pedido!</li>
                 </ol>
-                <button class="btn" onclick="alert('¡Gracias por tu compra! Estamos esperando tu comprobante. '); window.location.href='#inicio';" style="background-color: #007bff; margin-top: 20px;">Ya Realicé la Transferencia</button>
+                <button class="btn" onclick="alert('¡Gracias por tu compra! Estamos esperando tu comprobante.'); resetPageSections();" style="background-color: #007bff; margin-top: 20px;">Ya Realicé la Transferencia</button>
             </div>
         </section>
     </div>
     
-    <div class="container" style="background-color: #fff8e1; border: 2px solid #d3a14e;">
+    <div class="container" id="promo-section-container" style="background-color: #fff8e1; border: 2px solid #d3a14e;">
         <section id="promocion" class="promocion">
+            <h2>🎉 ¡Promoción Especial del Mes! 🎉</h2>
             </section>
     </div>
 
     <footer id="contacto">
         <p>&copy; 2025 Aroma & Sabor. Todos los derechos reservados.</p>
+        <p>Síguenos en <a href="#" style="color: #ffcc00;">Redes Sociales</a> | Contáctanos: info@aromasabor.com</p>
     </footer>
 
     <div id="cart-modal" class="cart-modal">
@@ -179,59 +152,105 @@
             <h3>🛍️ Tu Carrito de Compras</h3>
             <ul id="cart-items"></ul>
             <p id="cart-total">Total: $0</p>
-            <button class="btn" onclick="showPaymentSection(); toggleCartModal();" style="width: 100%; background-color: #ff6f61;">Pagar con Bancolombia</button>
+            <button class="btn" onclick="showPaymentSection(); toggleCartModal();" style="width: 100%; background-color: #ff6f61;">Ir a Pagar</button>
         </div>
     </div>
 
     <script>
         let cart = []; 
-        let currentTotal = 0; // Variable global para guardar el total del carrito
+        let currentTotal = 0; 
 
-        // ... (Funciones addToCart y updateCartDisplay se mantienen con ajustes) ...
+        // ----------------------------------------------------
+        // FUNCIÓN CLAVE: AÑADIR PRODUCTO Y REDIRIGIR AL PAGO
+        // ----------------------------------------------------
+        function addToCartAndGoToPay(name, price) {
+            
+            // 1. Limpiar el carrito antes de añadir un nuevo producto
+            //    Esto asegura que solo se compre el ítem que se acaba de clickear.
+            cart = []; 
 
-        function addToCart(name, price) {
-            const existingItem = cart.find(item => item.name === name);
-            if (existingItem) {
-                existingItem.quantity += 1;
-            } else {
-                cart.push({ name: name, price: price, quantity: 1 });
-            }
+            // 2. Añadir el nuevo producto al carrito
+            cart.push({ name: name, price: price, quantity: 1 });
+            
+            // 3. Actualizar la interfaz (contador de icono)
             updateCartDisplay();
-            alert(`"${name}" ha sido añadido al carrito!`);
+            
+            // 4. Muestra un mensaje y lleva al usuario a la sección de pago
+            alert(`"${name}" añadido. ¡Dirigiendo a la pasarela de pago!`);
+            showPaymentSection();
         }
 
+        // ----------------------------------------------------
+        // GESTIÓN DE SECCIONES (Mostrar/Ocultar)
+        // ----------------------------------------------------
+
+        function hideAllSections() {
+            document.getElementById('productos').style.display = 'none';
+            document.getElementById('pago').style.display = 'none';
+            document.getElementById('promocion').style.display = 'none';
+        }
+
+        function showPaymentSection() {
+            if (currentTotal === 0 && cart.length === 0) {
+                alert("Tu carrito está vacío. ¡Añade café para pagar!");
+                // Opcional: Muestra la sección de productos si está vacía
+                showProductSection(); 
+                return;
+            }
+            
+            // Oculta todas las secciones y muestra solo el pago
+            hideAllSections();
+            document.getElementById('pago').style.display = 'block';
+            
+            // Lleva la vista a la sección de pago
+            document.getElementById('pago').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function showProductSection() {
+            hideAllSections();
+            document.getElementById('productos').style.display = 'block';
+            document.getElementById('promocion').style.display = 'block'; // Muestra la promo junto a productos
+            document.getElementById('productos').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        function resetPageSections() {
+            hideAllSections();
+            // Restablece el estado de las secciones a cómo estaban inicialmente
+            document.getElementById('productos').style.display = 'block';
+            document.getElementById('promocion').style.display = 'block';
+            // Limpia el carrito
+            cart = [];
+            updateCartDisplay();
+            window.location.href='#inicio'; // Vuelve al inicio
+        }
+
+        // ----------------------------------------------------
+        // OTRAS FUNCIONES (Mantienen su lógica de actualización)
+        // ----------------------------------------------------
+        
         function updateCartDisplay() {
-            const cartItemsContainer = document.getElementById('cart-items');
             const cartCount = document.getElementById('cart-count');
             const cartTotalElement = document.getElementById('cart-total');
-            currentTotal = 0; // Reinicia el total
+            const paymentTotalElement = document.getElementById('payment-total');
+            const finalTotal2Element = document.getElementById('final-total-2');
+            
+            currentTotal = 0; 
             let totalItems = 0;
 
-            cartItemsContainer.innerHTML = ''; 
-
             cart.forEach(item => {
-                const itemTotal = item.price * item.quantity;
-                currentTotal += itemTotal; // Actualiza la variable global
+                currentTotal += item.price * item.quantity;
                 totalItems += item.quantity;
-
-                const formattedPrice = itemTotal.toLocaleString('es-CO'); 
-
-                const listItem = document.createElement('li');
-                listItem.innerHTML = `
-                    <span>${item.name} (x${item.quantity})</span>
-                    <span>$${formattedPrice}</span>
-                `;
-                cartItemsContainer.appendChild(listItem);
             });
 
+            const formattedTotal = currentTotal.toLocaleString('es-CO');
+
+            // Actualiza el contador del ícono
             cartCount.textContent = totalItems;
 
-            const formattedTotal = currentTotal.toLocaleString('es-CO');
+            // Actualiza los totales en el modal y la sección de pago
             cartTotalElement.textContent = `Total: $${formattedTotal}`;
-
-            // Actualiza el total en la sección de pago, incluso si está oculta
-            document.getElementById('payment-total').textContent = `$${formattedTotal}`;
-            document.getElementById('final-total-2').textContent = `$${formattedTotal}`;
+            paymentTotalElement.textContent = `$${formattedTotal}`;
+            finalTotal2Element.textContent = `$${formattedTotal}`;
         }
 
         function toggleCartModal() {
@@ -243,7 +262,7 @@
                 updateCartDisplay(); 
             }
         }
-
+        
         window.onclick = function(event) {
             const modal = document.getElementById('cart-modal');
             if (event.target === modal) {
@@ -251,23 +270,10 @@
             }
         }
         
-        // 4. FUNCIÓN PARA MOSTRAR LA INTERFAZ DE PAGO
-        function showPaymentSection() {
-            if (currentTotal === 0) {
-                alert("Tu carrito está vacío. ¡Añade café para pagar!");
-                return;
-            }
-            
-            // Oculta otras secciones (opcional, pero mejora la UX)
-            document.getElementById('productos').style.display = 'none';
-            document.getElementById('promocion').style.display = 'none';
-            
-            // Muestra la sección de pago
-            document.getElementById('pago').style.display = 'block';
-            
-            // Lleva la vista a la sección de pago
-            document.getElementById('pago').scrollIntoView({ behavior: 'smooth' });
-        }
+        // Inicializa la página para mostrar solo la bienvenida y productos/promoción
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('pago').style.display = 'none';
+        });
     </script>
 </body>
 </html>
