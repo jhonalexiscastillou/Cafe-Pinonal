@@ -27,7 +27,8 @@
             color: var(--color-texto-oscuro);
             
             /* --- FONDO DEL BODY (Marca de Agua) --- */
-            background: var(--color-pastel) url('foto de empaque en montañas.jpg') no-repeat center center fixed; 
+            /* Es importante mantener esta imagen sutil y de baja visibilidad */
+            background: var(--color-pastel) url('foto de empaque en montañas.png') no-repeat center center fixed; 
             background-size: cover; 
             background-blend-mode: multiply; 
             opacity: 0.95; 
@@ -63,7 +64,7 @@
         /* --- ESTILO: IMAGEN DE FONDO PARA EL HERO (PORTADA) --- */
         .hero { 
             background-color: #388E3C; 
-            height: 600px; /* Aumentamos la altura para mejor vista */
+            height: 500px; 
             display: flex; 
             justify-content: center; 
             align-items: center; 
@@ -71,39 +72,22 @@
             color: var(--color-texto-claro); 
             position: relative; 
             
-            /* Usamos tu imagen de empaque en montañas */
-            background-image: url('foto de empaque en montañas.jpg'); 
+            /* ⚠️ REEMPLAZA 'cafe-portada.png' POR TU IMAGEN DE ALTA RESOLUCIÓN */
+            background-image: url('cafe-portada.png'); 
             background-size: cover; 
-            background-position: center bottom; 
+            background-position: center 30%; 
             background-repeat: no-repeat;
         }
 
-        /* Contenedor de Texto del Hero */
+        /* Contenedor Semitransparente para el texto del Hero */
         .hero-content {
-            /* 🛑 CAMBIO CLAVE: ELIMINAMOS EL CUADRO VERDE */
-            background-color: transparent; 
+            background-color: rgba(46, 125, 50, 0.8); 
             padding: 40px 50px;
             border-radius: 12px;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9); /* Sombra oscura para texto claro */
-            /* Agregamos un borde y desenfoque sutil para legibilidad */
-            border: 1px solid rgba(255, 255, 255, 0.4); 
-            backdrop-filter: blur(2px); 
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
             max-width: 80%;
-            display: flex; 
-            flex-direction: column;
-            align-items: center;
         }
-        
-        /* 🛑 ESTILO DEL LOGO PNG */
-        .hero-content .hero-logo {
-            max-width: 90%; 
-            height: auto;
-            margin-bottom: 20px;
-            display: block; 
-            /* Sombra para destacar la imagen PNG del fondo */
-            filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.7)); 
-        }
-        
+        .hero-content h2 { font-size: 2.8em; margin-bottom: 10px; font-weight: 700; }
         .hero-content p { font-size: 1.2em; margin-top: 0; font-weight: 500;}
         
         .btn { 
@@ -135,7 +119,7 @@
             max-width: 1100px;
             margin: 40px auto; 
             padding: 30px; 
-            background-color: rgba(255, 255, 255, 0.95); /* Fondo más sólido para legibilidad del contenido */
+            background-color: rgba(255, 255, 255, 0.85); 
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.08); 
             border-radius: 12px; 
         }
@@ -283,8 +267,7 @@
     
     <section id="hero-banner" class="hero">
         <div class="hero-content">
-            <img src="fotos abuelos.png" alt="Café Piñonal Sabor de la Tierra" class="hero-logo">
-            
+            <h2 style="font-weight: 700;">Café Piñonal: Sabor de la Tierra.</h2>
             <p>Descubre el origen y la pasión detrás de cada grano, de nuestra finca a tu taza.</p>
             <a href="#productos" class="btn" onclick="showProductSection();">🛍️ Ver Productos</a>
             <a href="#historia" class="btn btn-history" onclick="showHistorySection();">📜 Conoce la Historia</a>
@@ -293,11 +276,11 @@
 
     <div class="container" id="history-section-container" style="display: none;">
         <section id="historia" class="history-section">
-            <h2 style="text-align: center; width: 100%;"> Identidad, Origen e Inspiración</h2>
+            <h2 style="text-align: center; width: 100%;">☕ Identidad, Origen e Inspiración</h2>
             
             <div class="history-block">
                 <div class="history-image-container">
-                    <img src="foto de empaque en montañas.jpg" alt="Foto del empaque en las montañas"> 
+                    <img src="foto de empaque en montañas.png" alt="Foto del empaque en las montañas"> 
                 </div>
                 <div class="history-text-container">
                     <h3>Nuestra Historia e Inspiración</h3>
@@ -403,7 +386,7 @@
         <a href="https://wa.me/573001234567" target="_blank" class="social-icon whatsapp" title="Escríbenos por WhatsApp">
             <i class="fab fa-whatsapp"></i> 
         </a>
-        <a href="https://www.alexiscastillo" target="_blank" class="social-icon instagram" title="Síguenos en Instagram">
+        <a href="https://www.alexis" target="_blank" class="social-icon instagram" title="Síguenos en Instagram">
             <i class="fab fa-instagram"></i>
         </a>
         <a href="https://www.facebook.com/TuPaginaDeFacebook" target="_blank" class="social-icon facebook" title="Visítanos en Facebook">
