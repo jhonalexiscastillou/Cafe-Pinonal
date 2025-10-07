@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>☕ Aroma & Sabor - Café Piñonal</title>
+    <title>☕ Café piñonal - Tienda con Historia</title>
     <style>
-        /* PALETA DE COLORES BASADA EN LA IMAGEN DE "CAFÉ PIÑONAL"
-           Fondo General: #FDF9F3 (Crema muy claro del empaque)
-           Principal Oscuro (Encabezados/Etiquetas/Ruana): #2F4F4F (Verde oscuro/Gris Pizarra - del logo y montañas)
-           Acento Cálido (Granos/Flores Rojas): #8B4513 (Marrón Silla de Montar - granos de café)
-           Acento Floral (Flores Rosas): #CC6666 (Terracota Rosado - de las flores)
+        /* PALETA DE COLORES (Basada en tu código)
+           Principal Oscuro: #6f4e37 (Marrón Café)
+           Acento Cálido: #d3a14e (Dorado/Caramelo)
+           Fondo General: #f4f4f4
         */
 
         /* ESTILOS BASE */
@@ -17,13 +16,13 @@
             font-family: 'Arial', sans-serif; 
             margin: 0; 
             padding: 0; 
-            background-color: #FDF9F3; /* Crema muy claro del empaque */
-            color: #3F3F3F; /* Texto principal oscuro */
+            background-color: #f4f4f4; 
+            color: #333; 
         }
         
         header { 
-            background-color: #2F4F4F; /* Verde Oscuro/Gris Pizarra */
-            color: #FDF9F3; /* Texto Crema */
+            background-color: #6f4e37; /* Marrón Café */
+            color: white; 
             padding: 20px 0; 
             text-align: center; 
             position: relative; 
@@ -31,33 +30,33 @@
         header h1 { margin: 0; font-size: 2.5em; }
         nav ul { list-style: none; padding: 0; margin-top: 10px; display: flex; justify-content: center; }
         nav ul li { margin: 0 15px; }
-        nav ul li a { color: #FDF9F3; text-decoration: none; font-weight: bold; transition: color 0.3s; }
-        nav ul li a:hover { color: #8B4513; }
+        nav ul li a { color: white; text-decoration: none; font-weight: bold; transition: color 0.3s; }
+        nav ul li a:hover { color: #d3a14e; } /* Acento Dorado */
         
-        /* ESTILO DEL HERO/PORTADA con la imagen de la miel */
+        /* ESTILO DEL HERO/PORTADA (Banner Transparente) */
         .hero { 
-            /* X: REEMPLAZA ESTO por la URL/ruta de tu foto de MIEL/CAFÉ de fondo */
-            background: url('[URL_DE_TU_FOTO_AQUÍ_X]') no-repeat center center/cover; 
-            background-attachment: fixed; /* Efecto Parallax sutil */
-            height: 450px; /* Un poco más alto */
+            /* X: ¡IMPORTANTE! REEMPLAZA ESTA URL CON LA RUTA DE TU IMAGEN DE MONTAÑAS/EMPAQUE */
+            background: url('foto de empaque en montañas.jpg') no-repeat center center/cover; 
+            background-attachment: fixed; /* Efecto Parallax Sutil */
+            height: 450px; 
             display: flex; 
             justify-content: center; 
             align-items: center; 
             text-align: center; 
-            color: #FDF9F3; 
+            color: white; 
             position: relative; 
         }
 
-        /* CONTENEDOR TRANSPARENTE para mejorar la lectura sobre la imagen */
+        /* Contenedor Semitransparente para el texto */
         .hero-content {
-            background-color: rgba(47, 79, 79, 0.75); /* Fondo semitransparente del color principal */
+            background-color: rgba(111, 78, 55, 0.8); /* Fondo Semitransparente (80% opacidad) del color principal */
             padding: 30px 40px;
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
         }
         
         .btn { 
-            background-color: #8B4513; /* Marrón Silla de Montar (Granos de café) */
+            background-color: #d3a14e; /* Dorado/Caramelo */
             color: white; 
             padding: 10px 20px; 
             text-decoration: none; 
@@ -69,45 +68,42 @@
             cursor: pointer; 
             border: none; 
         }
-        .btn:hover { background-color: #A0522D; }
+        .btn:hover { background-color: #b58032; }
         
         .container { 
             width: 80%; 
             margin: 40px auto; 
             padding: 20px; 
-            background-color: #FFFFFF; 
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.08); 
+            background-color: white; 
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
             border-radius: 8px; 
         }
         
         /* ESTILOS DE PRODUCTO */
-        .producto-card { 
-            margin: 10px auto; width: 90%; min-width: 280px; max-width: 350px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08); padding: 20px; border: 1px solid #E0E0E0; text-align: center; background-color: #FFFFFF;
-        }
-        .producto-card img { max-width: 150px; height: auto; border-radius: 4px; margin: 0 auto 15px auto; display: block; border: 1px solid #D3D3D3; }
+        .producto-card { margin: 10px auto; width: 90%; min-width: 280px; max-width: 350px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 20px; border: 1px solid #ccc; text-align: center; }
+        .producto-card img { max-width: 150px; height: auto; border-radius: 4px; margin: 0 auto 15px auto; display: block; border: 1px solid #e0e0e0; }
         .presentaciones { list-style: none; padding: 0; margin: 15px 0; text-align: left; }
-        .presentaciones li { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid #ECECEC; }
-        .peso { font-weight: bold; color: #2F4F4F; }
-        .precio { font-size: 1.1em; font-weight: bold; color: #8B4513; }
+        .presentaciones li { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid #eee; }
+        .peso { font-weight: bold; color: #6f4e37; }
+        .precio { font-size: 1.1em; font-weight: bold; color: #d3a14e; } /* Precio con color acento */
 
-        /* ESTILOS PARA LA SECCIÓN DE HISTORIA */
+        /* ESTILOS PARA LA NUEVA SECCIÓN DE HISTORIA */
         .history-section { display: flex; flex-direction: column; gap: 30px; padding: 40px 0; text-align: left; }
-        .history-block { 
-            border-left: 5px solid #CC6666; 
-            padding-left: 20px; 
-            background-color: #FCF9F5; 
-            padding: 20px; 
-            border-radius: 8px; 
-            display: flex; 
-            align-items: flex-start; 
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        .history-block {
+            border-left: 5px solid #d3a14e; /* Barra con color acento */
+            padding-left: 20px;
+            background-color: #fffaf4;
+            padding: 20px;
+            border-radius: 8px;
+            display: flex;
+            align-items: flex-start;
         }
-        .history-block h3 { 
-            color: #2F4F4F; 
-            margin-top: 0; 
-            font-size: 1.5em; 
-            border-bottom: 2px dashed #CC6666; 
-            padding-bottom: 5px; 
+        .history-block h3 {
+            color: #6f4e37;
+            margin-top: 0;
+            font-size: 1.5em;
+            border-bottom: 2px dashed #d3a14e; /* Línea de color acento */
+            padding-bottom: 5px;
         }
         .history-block p { font-size: 1.1em; line-height: 1.6; margin-bottom: 0; }
         .history-image-container { flex-shrink: 0; margin-right: 20px; max-width: 250px; text-align: center; }
@@ -118,28 +114,24 @@
             .history-image-container { margin-right: 0; margin-bottom: 15px; }
         }
 
-        /* ESTILOS DEL CARRITO Y FOOTER */
-        #cart-icon { position: absolute; top: 25px; right: 50px; font-size: 1.5em; cursor: pointer; color: #FDF9F3; z-index: 500; }
-        #cart-count { background-color: #CC6666; color: white; border-radius: 50%; padding: 3px 8px; font-size: 0.7em; position: absolute; top: -5px; right: -10px; }
+        /* ESTILOS DEL CARRITO (Ligeros ajustes de color) */
+        #cart-icon { position: absolute; top: 25px; right: 50px; font-size: 1.5em; cursor: pointer; color: white; z-index: 500; }
+        #cart-count { background-color: #cc0000; /* Rojo más visible */ color: white; border-radius: 50%; padding: 3px 8px; font-size: 0.7em; position: absolute; top: -5px; right: -10px; }
         .cart-modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4); }
-        .modal-content { background-color: #FFFFFF; margin: 10% auto; padding: 20px; border: 1px solid #D3D3D3; width: 80%; max-width: 500px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+        .modal-content { background-color: #fefefe; margin: 10% auto; padding: 20px; border: 1px solid #888; width: 80%; max-width: 500px; border-radius: 8px; }
         .close-btn { color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer; }
-        #cart-items li { list-style: none; padding: 10px 0; border-bottom: 1px dashed #E0E0E0; display: flex; justify-content: space-between; align-items: center; font-size: 1.1em; }
-        .item-controls { display: flex; align-items: center; }
-        .qty-btn { background-color: #F0F0F0; border: 1px solid #D3D3D3; padding: 3px 8px; cursor: pointer; font-size: 1.1em; margin: 0 5px; border-radius: 3px; }
-        .qty-display { width: 20px; text-align: center; font-weight: bold; }
-        #cart-total { font-size: 1.2em; font-weight: bold; margin-top: 15px; text-align: right; color: #2F4F4F; }
-        .btn-pago { background-color: #2F4F4F !important; color: white !important; } 
-        .btn-pago:hover { background-color: #8B4513 !important; }
+        #cart-total { font-size: 1.2em; font-weight: bold; margin-top: 15px; text-align: right; }
+        .btn-pago { background-color: #6f4e37 !important; } /* Botón de pago con color principal */
+        .btn-pago:hover { background-color: #d3a14e !important; } /* Hover con color acento */
         
-        footer { background-color: #2F4F4F; color: #FDF9F3; padding: 15px 0; text-align: center; font-size: 0.9em; }
-
+        footer { background-color: #6f4e37; color: white; padding: 15px 0; text-align: center; }
+        
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Aroma & Sabor ☕</h1>
+        <h1>Café piñonal ☕</h1>
         <p>Tu dosis diaria de felicidad</p>
         <nav>
             <ul>
@@ -164,47 +156,55 @@
 
     <div class="container" id="history-section-container" style="display: none;">
         <section id="historia" class="history-section">
-            <h2 style="text-align: center; color: #2F4F4F; width: 100%;">☕ Identidad, Origen e Inspiración</h2>
+            <h2 style="text-align: center; color: #6f4e37; width: 100%;">☕ Identidad, Origen e Inspiración</h2>
             
             <div class="history-block">
                 <div class="history-image-container">
-                    <img src="[URL_DE_TU_FOTO_AQUÍ_X]" alt="Familia Campesina">
+                    <img src="foto de empaque en montañas.jpg" alt="Foto de la miel/origen"> 
                 </div>
                 <div class="history-text-container">
                     <h3>Nuestra Historia e Inspiración</h3>
                     <p>
-                        Esta marca es el fruto del amor y la unión de una **familia campesina, trabajadora y echada para delante**. Nuestros abuelos nos dejaron la mejor herencia: la firmeza de las raíces campesinas, la **honestidad** y el profundo **amor por las cosas que se hacen en el campo**. A pesar de las adversidades, su ejemplo de unidad nos inspira a ofrecer el mejor café, manteniendo vivo su legado.
+                        Nuestra historia nace en la vereda El Piñonal, entre montañas, cafetales y el esfuerzo de una familia campesina que aprendió a amar la tierra. Desde nuestros abuelos heredamos los valores que hoy nos representan: la unión familiar, la honestidad, el trabajo constante y el respeto por el campo.
+
+                        Durante años, sembramos y cosechamos café con las manos, cuidando cada planta como parte de nuestra vida. Hoy, ese legado se transforma en una nueva etapa: compartir con el mundo el fruto de nuestra finca, Filo Bonito, en una presentación elegante que conserva el sabor auténtico del campo colombiano.
+
+                        Cada taza cuenta una historia de perseverancia, de amor por lo que se hace y del orgullo de ser campesinos que, a pesar de las dificultades, siguen firmes con sus raíces y el corazón puesto en la tierra.
+                        <br><br>
+                        Aroma & Sabor es más que una marca: es la esencia de nuestra tierra, el reflejo de una vida dedicada al campo y el deseo de que, en cada taza, sientas el mismo amor con el que lo cultivamos.
                     </p>
                 </div>
             </div>
 
             <div class="history-block">
                 <div class="history-image-container">
-                    <img src="[URL_DE_TU_FOTO_AQUÍ_X]" alt="Foto de la finca">
+                    <img src="https://via.placeholder.com/250x180/4CAF50/ffffff?text=Finca" alt="Foto de la finca">
                 </div>
                 <div class="history-text-container">
                     <h3>Origen: Finca y Vereda</h3>
                     <p>
-                        **Donde es recolectado:** Cosechado en tierras bendecidas con un clima ideal.
+                        Donde es recolectado: Antioquia suroeste
                         <br>
-                        **Nombre de la Finca:** **[NOMBRE DE LA FINCA]** <br>
-                        **Vereda:** **El Piñonal**
+                        Nombre de la Finca: **Filo Bonito**
+                        <br>
+                        Vereda: La historia de nuestro café nace entre montañas, bajo el esfuerzo y el corazón de una familia campesina de la vereda **El Piñonal**. Nuestros abuelos sembraron más que café: sembraron valores, amor por la tierra y el ejemplo de que la unión familiar puede resistir cualquier adversidad.
                         <br><br>
-                        Nuestro café nace en la vereda El Piñonal, donde la tradición y el cuidado de la tierra han sido la base de nuestro hogar por generaciones.
+                        Entre montañas verdes a 1800 msnm, aire puro y caminos de tierra nace la Finca Filo Bonito, en la vereda El Piñonal. Un lugar donde el sol abraza los cafetales y el canto de los pájaros acompaña las jornadas de trabajo. Aquí, la tierra fértil y el clima generoso se unen para dar vida a granos únicos, cultivados con dedicación y respeto por la naturaleza.
                     </p>
                 </div>
             </div>
 
             <div class="history-block">
                 <div class="history-image-container">
-                    <img src="[URL_DE_TU_FOTO_AQUÍ_X]" alt="Presentación del Café">
+                    <img src="https://via.placeholder.com/250x180/FF9800/ffffff?text=Recoleccion" alt="Foto de la recolección">
                 </div>
                 <div class="history-text-container">
-                    <h3>Recolección y Presentación</h3>
+                    <h3>Recolección y Cuidado</h3>
                     <p>
-                        Después de toda una vida sembrando y cosechando café con dedicación, hemos decidido vender el fruto de nuestra tierra. Cada grano es el resultado de un trabajo honesto.
-                        <br><br>
-                        Hoy, este café llega a sus manos en una **elegante presentación**, ofreciendo el inigualable sabor que solo el amor por el campo puede crear.
+                        La recolección del café es un ritual de paciencia y cariño. Cada grano maduro se elige a mano, uno a uno, por quienes conocen el lenguaje de la tierra.
+                        Después, con esmero y cuidado, el fruto se despulpa, se seca y se transforma en una experiencia que despierta los sentidos. Todo este proceso es un homenaje a la labor campesina, a los abuelos que enseñaron el valor del trabajo bien hecho y al orgullo de ver el fruto de nuestra tierra convertido en una presentación elegante y en un sabor inigualable.
+                        <br>
+                        Nuestro café se recolecta de forma manual, eligiendo solo las cerezas maduras. Pasan por un proceso de despulpado y lavado tradicional, y se secan al sol para conservar su esencia. Cada lote es seleccionado cuidadosamente antes del tueste artesanal, garantizando que cada taza refleje el trabajo, el amor y la dedicación que nacen en nuestra finca.
                     </p>
                 </div>
             </div>
@@ -214,12 +214,12 @@
 
     <div class="container" id="product-section-container" style="display: none;">
         <section id="productos" class="productos">
-            <h2 style="color: #2F4F4F;">Nuestro Café Especial</h2>
+            <h2 style="color: #6f4e37;">Nuestro Café Especial</h2>
             <p>Granos de la más alta calidad, tostados a la perfección para un sabor inigualable.</p>
 
             <div class="producto-card">
-                <img src="[URL_DE_TU_FOTO_AQUÍ_X]" alt="Café Premium Aroma & Sabor"> 
-                <h3>Café Premium "Aroma & Sabor"</h3>
+                <img src="empaquepresentacion.png" alt="Café Premium Café piñonal"> 
+                <h3>Café Premium "Café piñonal"</h3>
                 <p>Descubre las notas intensas de chocolate y caramelo, con un toque cítrico y un final persistente.</p>
 
                 <ul class="presentaciones">
@@ -241,7 +241,7 @@
     </div>
     
     <footer id="contacto">
-        <p>&copy; 2025 Aroma & Sabor. Todos los derechos reservados.</p>
+        <p>&copy; 2025 Café piñonal. Todos los derechos reservados.</p>
     </footer>
 
     <div id="cart-modal" class="cart-modal">
