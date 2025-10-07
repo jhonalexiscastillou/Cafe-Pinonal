@@ -7,16 +7,16 @@
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     
-    <title>☕ Café piñonal - Tienda con Historia</title>
+    <title> Café piñonal - Tienda con Historia</title>
     <style>
         /* PALETA DE COLORES */
         :root {
-            --color-pastel: #E8F5E9; /* Verde Pastel Claro */
-            --color-oscuro: #2E7D32; /* Verde Oscuro Elegante */
-            --color-acento: #388E3C; /* Verde Más Oscuro */
-            --color-medio: #66BB6A; /* Verde Medio */
-            --color-texto-claro: #FFFFFF; /* Blanco */
-            --color-texto-oscuro: #424242; /* Gris Oscuro */
+            --color-pastel: #E8F5E9; 
+            --color-oscuro: #2E7D32; 
+            --color-acento: #388E3C; 
+            --color-medio: #66BB6A; 
+            --color-texto-claro: #FFFFFF; 
+            --color-texto-oscuro: #424242; 
         }
 
         /* ESTILOS BASE */
@@ -26,7 +26,8 @@
             padding: 0; 
             color: var(--color-texto-oscuro);
             
-            /* --- FONDO DE MARCA DE AGUA (TRANSPARENTE) --- */
+            /* --- FONDO DEL BODY (Marca de Agua) --- */
+            /* Es importante mantener esta imagen sutil y de baja visibilidad */
             background: var(--color-pastel) url('foto de empaque en montañas.jpg') no-repeat center center fixed; 
             background-size: cover; 
             background-blend-mode: multiply; 
@@ -39,7 +40,6 @@
             padding: 20px 0; 
             text-align: center; 
             position: relative; 
-            /* --- MEJORA ESTÉTICA: Sombra del Header --- */
             box-shadow: 0 4px 10px rgba(0,0,0,0.25); 
         }
         header h1 { margin: 0; font-size: 2.5em; font-weight: 700; }
@@ -47,8 +47,6 @@
         
         nav ul { list-style: none; padding: 0; margin-top: 15px; display: flex; justify-content: center; }
         nav ul li { margin: 0 20px; }
-        
-        /* --- MEJORA ESTÉTICA: Animación de Menú --- */
         nav ul li a { 
             color: var(--color-texto-claro); 
             text-decoration: none; 
@@ -59,13 +57,13 @@
         }
         nav ul li a:hover { 
             color: var(--color-texto-claro); 
-            background-color: rgba(255, 255, 255, 0.15); /* Fondo blanco semi-transparente */
+            background-color: rgba(255, 255, 255, 0.15); 
             border-bottom: 2px solid var(--color-medio); 
         } 
         
-        /* ESTILO DEL HERO/PORTADA */
+        /* --- NUEVO ESTILO: IMAGEN DE FONDO PARA EL HERO (PORTADA) --- */
         .hero { 
-            background-color: transparent; 
+            background-color: #388E3C; /* Color de fallback */
             height: 500px; 
             display: flex; 
             justify-content: center; 
@@ -73,11 +71,18 @@
             text-align: center; 
             color: var(--color-texto-claro); 
             position: relative; 
+            
+            /* Propiedades de la imagen */
+            background-image: url('cafe-portada.jpg'); /* ⬅️ REEMPLAZA ESTA RUTA */
+            background-size: cover; 
+            background-position: center 30%; /* Mostrar un poco más la parte superior */
+            background-repeat: no-repeat;
         }
 
         /* Contenedor Semitransparente para el texto del Hero */
         .hero-content {
-            background-color: rgba(46, 125, 50, 0.9); 
+            /* Hacemos el fondo un poco más transparente para que se vea la imagen de fondo */
+            background-color: rgba(46, 125, 50, 0.8); /* Opacidad reducida a 0.8 */
             padding: 40px 50px;
             border-radius: 12px;
             box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
@@ -120,7 +125,7 @@
             border-radius: 12px; 
         }
         
-        /* --- MEJORA ESTÉTICA: Separador Visual --- */
+        /* Separador Visual */
         .section-divider {
             width: 100px;
             height: 4px;
@@ -216,7 +221,7 @@
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
         }
 
-        /* Colores de marca y fondo */
+        /* Colores de marca y fondo de redes sociales */
         .social-icon.whatsapp { background-color: #25D366; } 
         .social-icon.instagram { 
             background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
@@ -246,7 +251,7 @@
 <body>
 
     <header>
-        <h1>Café piñonal ☕</h1>
+        <h1>Café piñonal </h1>
         <p>Tu dosis diaria de felicidad</p>
         <nav>
             <ul>
@@ -272,11 +277,11 @@
 
     <div class="container" id="history-section-container" style="display: none;">
         <section id="historia" class="history-section">
-            <h2 style="text-align: center; width: 100%;">☕ Identidad, Origen e Inspiración</h2>
+            <h2 style="text-align: center; width: 100%;"> Identidad, Origen e Inspiración</h2>
             
             <div class="history-block">
                 <div class="history-image-container">
-                    <img src="foto de empaque en montañas.jpg" alt="Foto de la miel/origen"> 
+                    <img src="foto con miel" alt="Foto de la miel/origen"> 
                 </div>
                 <div class="history-text-container">
                     <h3>Nuestra Historia e Inspiración</h3>
@@ -453,7 +458,6 @@
             const finalFormattedTotal = currentTotal.toLocaleString('es-CO');
             cartCount.textContent = totalItems;
             
-            // --- LÓGICA CLAVE: MOSTRAR/OCULTAR BOTÓN DE PAGO ---
             if (currentTotal > 0) {
                 paymentButtonContainer.style.display = 'block';
                 cartTotalElement.textContent = `Total: $${finalFormattedTotal}`;
@@ -461,7 +465,6 @@
                 paymentButtonContainer.style.display = 'none';
                 cartTotalElement.textContent = `Carrito vacío`; 
             }
-            // --------------------------------------------------
         }
         
         function goToDirectLink() {
@@ -476,7 +479,6 @@
             toggleCartModal(); 
             window.open(DIRECT_PAYMENT_LINK, '_blank');
             
-            // Limpiamos el carrito después de ir al link de pago
             cart = []; 
             updateCartDisplay();
             showHistorySection(); 
@@ -508,7 +510,7 @@
                 modal.style.display = "none";
             } else {
                 modal.style.display = "block";
-                updateCartDisplay(); // Aseguramos que el display esté correcto al abrir
+                updateCartDisplay(); 
             }
         }
         
@@ -522,7 +524,6 @@
         // Inicializar la página mostrando la historia
         document.addEventListener('DOMContentLoaded', () => {
             showHistorySection();
-            // Aseguramos que el botón de pago esté oculto al iniciar
             document.getElementById('payment-button-container').style.display = 'none';
             document.getElementById('cart-total').textContent = `Carrito vacío`;
         });
