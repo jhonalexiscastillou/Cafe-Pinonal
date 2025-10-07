@@ -14,10 +14,9 @@
         nav ul li a { color: white; text-decoration: none; font-weight: bold; transition: color 0.3s; }
         nav ul li a:hover { color: #ffcc00; }
         
-        /* ESTILO DEL HERO/PORTADA */
+        /* El hero ahora es solo el banner que se puede ocultar */
         .hero { 
-            /* X: REEMPLAZA 'cafe_fondo.jpg' con la URL/ruta de tu foto de fondo */
-            background: url('[foto de empaque en montañas]') no-repeat center center/cover; 
+            background: url('cafe_fondo.jpg') no-repeat center center/cover; 
             height: 400px; 
             display: flex; 
             justify-content: center; 
@@ -32,7 +31,7 @@
         
         .container { width: 80%; margin: 40px auto; padding: 20px; background-color: white; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); border-radius: 8px; }
         
-        /* ESTILOS DE PRODUCTO Y IMAGEN PEQUEÑA */
+        /* ESTILOS DE PRODUCTO */
         .producto-card { margin: 10px auto; width: 90%; min-width: 280px; max-width: 350px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 20px; border: 1px solid #ccc; text-align: center; }
         .producto-card img { max-width: 150px; height: auto; border-radius: 4px; margin: 0 auto 15px auto; display: block; border: 1px solid #e0e0e0; }
         .presentaciones { list-style: none; padding: 0; margin: 15px 0; text-align: left; }
@@ -41,16 +40,59 @@
         .precio { font-size: 1.1em; font-weight: bold; color: #d3a14e; }
 
         /* ESTILOS PARA LA NUEVA SECCIÓN DE HISTORIA */
-        .history-section { display: flex; flex-direction: column; gap: 30px; padding: 40px 0; text-align: left; }
-        .history-block { border-left: 5px solid #d3a14e; padding-left: 20px; background-color: #fffaf4; padding: 20px; border-radius: 8px; display: flex; align-items: flex-start; }
-        .history-block h3 { color: #6f4e37; margin-top: 0; font-size: 1.5em; border-bottom: 2px dashed #eee; padding-bottom: 5px; }
-        .history-block p { font-size: 1.1em; line-height: 1.6; margin-bottom: 0; }
-        .history-image-container { flex-shrink: 0; margin-right: 20px; max-width: 250px; text-align: center; }
-        .history-image-container img { width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); }
-        .history-text-container { flex-grow: 1; }
+        .history-section {
+            display: flex;
+            flex-direction: column;
+            gap: 30px; 
+            padding: 40px 0;
+            text-align: left;
+        }
+        .history-block {
+            border-left: 5px solid #d3a14e; 
+            padding-left: 20px;
+            background-color: #fffaf4;
+            padding: 20px;
+            border-radius: 8px;
+            display: flex;
+            align-items: flex-start;
+        }
+        .history-block h3 {
+            color: #6f4e37;
+            margin-top: 0;
+            font-size: 1.5em;
+            border-bottom: 2px dashed #eee;
+            padding-bottom: 5px;
+        }
+        .history-block p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+        .history-image-container {
+            flex-shrink: 0; 
+            margin-right: 20px;
+            max-width: 250px; 
+            text-align: center;
+        }
+        .history-image-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .history-text-container {
+            flex-grow: 1;
+        }
         @media (max-width: 768px) {
-            .history-block { flex-direction: column; align-items: center; text-align: center; }
-            .history-image-container { margin-right: 0; margin-bottom: 15px; }
+            .history-block {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .history-image-container {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
         }
 
         /* ESTILOS DEL CARRITO (Se mantienen) */
@@ -100,43 +142,46 @@
             
             <div class="history-block">
                 <div class="history-image-container">
-                    <img src="[fotos abuelos]" alt="Familia Campesina">
+                    <img src="https://via.placeholder.com/250x180/795548/ffffff?text=Historia" alt="Historia de la empresa">
                 </div>
                 <div class="history-text-container">
                     <h3>Nuestra Historia e Inspiración</h3>
                     <p>
-                        Esta marca es el fruto del amor y la unión de una **familia campesina, trabajadora y echada para delante**. Nuestros abuelos nos dejaron la mejor herencia: la firmeza de las raíces campesinas, la **honestidad** y el profundo **amor por las cosas que se hacen en el campo**. A pesar de las adversidades, su ejemplo de unidad nos inspira a ofrecer el mejor café, manteniendo vivo su legado.
+                        **[ESPACIO PARA TU TEXTO DE HISTORIA Y VALORES]**
+                        <br>
+                        *Aquí puedes contar por qué y cómo nació tu marca de café, la pasión que los mueve y el concepto detrás de "Aroma & Sabor".*
                     </p>
                 </div>
             </div>
 
             <div class="history-block">
                 <div class="history-image-container">
-                    <img src="[foto del perro]" alt="Foto de la finca">
+                    <img src="https://via.placeholder.com/250x180/4CAF50/ffffff?text=Finca" alt="Foto de la finca">
                 </div>
                 <div class="history-text-container">
                     <h3>Origen: Finca y Vereda</h3>
                     <p>
-                        **Donde es recolectado:** Cosechado en tierras bendecidas con un clima ideal.
+                        **Donde es recolectado:** [ESPACIO PARA LUGAR GENERAL (EJ: Eje Cafetero, Sur de Huila)]
                         <br>
-                        **Nombre de la Finca:** **[filo bonito]** <br>
-                        **Vereda:** **El Piñonal**
+                        **Nombre de la Finca:** [ESPACIO PARA NOMBRE DE LA FINCA]
+                        <br>
+                        **Vereda:** [ESPACIO PARA NOMBRE DE LA VEREDA O MUNICIPIO]
                         <br><br>
-                        Nuestro café nace en la vereda El Piñonal, donde la tradición y el cuidado de la tierra han sido la base de nuestro hogar por generaciones.
+                        *Describe el entorno único de la finca, la altura y las condiciones climáticas que hacen especial a tu café.*
                     </p>
                 </div>
             </div>
 
             <div class="history-block">
                 <div class="history-image-container">
-                    <img src="[empaque cafe]" alt="Presentación del Café">
+                    <img src="https://via.placeholder.com/250x180/FF9800/ffffff?text=Recoleccion" alt="Foto de la recolección">
                 </div>
                 <div class="history-text-container">
-                    <h3>Recolección y Presentación</h3>
+                    <h3>Recolección y Cuidado</h3>
                     <p>
-                        Después de toda una vida sembrando y cosechando café con dedicación, hemos decidido vender el fruto de nuestra tierra. Cada grano es el resultado de un trabajo honesto.
-                        <br><br>
-                        Hoy, este café llega a sus manos en una **elegante presentación**, ofreciendo el inigualable sabor que solo el amor por el campo puede crear.
+                        **[ESPACIO PARA TU TEXTO DE RECOLECCIÓN Y CUIDADO]**
+                        <br>
+                        *Explica brevemente el proceso: si es recolección manual (cereza madura), el proceso de lavado, y cómo garantizan la calidad del grano hasta el tueste.*
                     </p>
                 </div>
             </div>
@@ -150,7 +195,7 @@
             <p>Granos de la más alta calidad, tostados a la perfección para un sabor inigualable.</p>
 
             <div class="producto-card">
-                <img src="[empaquepresentacion]" alt="Café Premium Aroma & Sabor"> 
+                <img src="empaquepresentacion.png" alt="Café Premium Aroma & Sabor"> 
                 <h3>Café Premium "Aroma & Sabor"</h3>
                 <p>Descubre las notas intensas de chocolate y caramelo, con un toque cítrico y un final persistente.</p>
 
@@ -208,7 +253,7 @@
                 }
             }
             if (cart.length === 0) {
-                showHistorySection(); 
+                showHistorySection(); // Vuelve a la historia si el carrito está vacío
             }
             updateCartDisplay();
         }
@@ -233,6 +278,7 @@
             cartItemsContainer.innerHTML = ''; 
 
             cart.forEach(item => {
+                // ... (Lógica de visualización del carrito)
                 const itemTotal = item.price * item.quantity;
                 currentTotal += itemTotal;
                 totalItems += item.quantity;
@@ -271,7 +317,7 @@
             
             cart = []; 
             updateCartDisplay();
-            showHistorySection(); 
+            showHistorySection(); // Vuelve a la historia después de pagar
         }
 
         // --- GESTIÓN de Interfaz (Mostrar/Ocultar) ---
