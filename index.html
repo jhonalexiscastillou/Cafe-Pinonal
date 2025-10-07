@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>☕ Aroma & Sabor - Carrito Avanzado</title>
+    <title>☕ Aroma & Sabor - Pago con Link Directo</title>
     <style>
         /* ESTILOS BASE (Se mantienen) */
         body { font-family: 'Arial', sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; color: #333; }
@@ -32,41 +32,14 @@
         .modal-content { background-color: #fefefe; margin: 10% auto; padding: 20px; border: 1px solid #888; width: 80%; max-width: 500px; border-radius: 8px; }
         .close-btn { color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer; }
         
-        /* Estilos de los ítems en el carrito (IMPORTANTE) */
-        #cart-items li { 
-            list-style: none; 
-            padding: 10px 0; 
-            border-bottom: 1px dashed #ccc; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; /* Centrar verticalmente */
-            font-size: 1.1em;
-        }
-        .item-controls {
-            display: flex;
-            align-items: center;
-        }
-        .qty-btn {
-            background-color: #eee;
-            border: 1px solid #ccc;
-            padding: 3px 8px;
-            cursor: pointer;
-            font-size: 1.1em;
-            margin: 0 5px;
-            border-radius: 3px;
-        }
-        .qty-display {
-            width: 20px;
-            text-align: center;
-            font-weight: bold;
-        }
+        #cart-items li { list-style: none; padding: 10px 0; border-bottom: 1px dashed #ccc; display: flex; justify-content: space-between; align-items: center; font-size: 1.1em; }
+        .item-controls { display: flex; align-items: center; }
+        .qty-btn { background-color: #eee; border: 1px solid #ccc; padding: 3px 8px; cursor: pointer; font-size: 1.1em; margin: 0 5px; border-radius: 3px; }
+        .qty-display { width: 20px; text-align: center; font-weight: bold; }
         #cart-total { font-size: 1.2em; font-weight: bold; margin-top: 15px; text-align: right; }
         
-        /* ESTILOS DE LA INTERFAZ DE PAGO */
-        #pago { display: none; text-align: left; padding: 30px 50px; background-color: #e8e6e3; border-radius: 10px; margin-top: 20px; }
-        .bancolombia-info { background-color: #fff; padding: 20px; border-radius: 5px; border-left: 5px solid #ffcc00; box-shadow: 0 2px 5px rgba(0,0,0,0.1); margin-bottom: 20px; }
-        .bancolombia-info strong { color: #6f4e37; display: inline-block; width: 150px; }
-        .total-pago { font-size: 1.5em; color: #ff6f61; font-weight: bold; text-align: right; margin-top: 20px; padding-top: 10px; border-top: 1px dashed #ccc; }
+        /* Ocultamos la sección de pago innecesaria */
+        #pago { display: none !important; }
         
     </style>
 </head>
@@ -80,7 +53,7 @@
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#" onclick="showProductSection(); return false;">Productos</a></li>
                 <li><a href="#promocion">Promoción</a></li>
-                <li><a href="#" onclick="showPaymentSection(); return false;">Pagar</a></li> 
+                <li><a href="#" onclick="toggleCartModal(); return false;">Comprar</a></li> 
             </ul>
         </nav>
         
@@ -125,43 +98,17 @@
         </section>
     </div>
     
-    <div class="container" id="payment-section-container">
-        <section id="pago">
-            <h2>Pasarela de Pago: Transferencia Bancolombia 🏦</h2>
-            <p class="instrucciones">Para completar tu compra, por favor realiza una **transferencia bancaria exacta** a la cuenta detallada a continuación. **El pago total incluye el envío.**</p>
-            
-            <div class="total-pago">
-                Total a pagar: <span id="payment-total">$0</span>
-            </div>
-
-            <hr>
-
-            <div class="bancolombia-info">
-                <h3>Datos de la Cuenta de Destino</h3>
-                <p><strong>Banco:</strong> Bancolombia</p>
-                <p><strong>Tipo de Cuenta:</strong> Ahorros</p>
-                <p><strong>Número de Cuenta:</strong> 000-123456-78 (Ejemplo)</p>
-                <p><strong>Beneficiario:</strong> Aroma & Sabor S.A.S</p>
-                <p><strong>NIT/C.C.:</strong> 900.123.456-7</p>
-            </div>
-
-            <div class="instrucciones">
-                <h3>Pasos Finales</h3>
-                <ol>
-                    <li>Realiza la transferencia por el monto exacto (<span id="final-total-2">$0</span>).</li>
-                    <li>Guarda el comprobante de pago (pantallazo o PDF).</li>
-                    <li>**Envía el comprobante** junto con tus datos de envío (nombre, dirección, teléfono) a nuestro WhatsApp o correo electrónico: <a href="mailto:ventas@aromasabor.com">ventas@aromasabor.com</a></li>
-                    <li>Una vez verificado el pago, ¡procesaremos tu pedido!</li>
-                </ol>
-                <button class="btn" onclick="alert('¡Gracias por tu compra! Estamos esperando tu comprobante.'); resetPageSections();" style="background-color: #007bff; margin-top: 20px;">Ya Realicé la Transferencia</button>
-            </div>
-        </section>
-    </div>
-    
     <div class="container" id="promo-section-container" style="background-color: #fff8e1; border: 2px solid #d3a14e;">
         <section id="promocion" class="promocion">
             <h2>🎉 ¡Promoción Especial del Mes! 🎉</h2>
-            </section>
+            <h3>Suscríbete y Ahorra un 15%</h3>
+            <p>Nunca te quedes sin tu café favorito. ¡Suscríbete hoy a nuestra entrega mensual y obtén un descuento exclusivo en tu primer pedido!</p>
+            
+            <form action="#" method="POST" style="margin-top: 20px;">
+                <input type="email" placeholder="Ingresa tu correo electrónico" required style="padding: 10px; width: 60%; margin-right: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                <button type="submit" class="btn" style="background-color: #ff6f61;">¡Quiero el Descuento!</button>
+            </form>
+        </section>
     </div>
 
     <footer id="contacto">
@@ -175,17 +122,25 @@
             <ul id="cart-items">
                 </ul>
             <p id="cart-total">Total: $0</p>
-            <button class="btn" onclick="showPaymentSection(); toggleCartModal();" style="width: 100%; background-color: #ff6f61;">Proceder a Pagar con Bancolombia</button>
+            
+            <button class="btn" onclick="goToDirectLink()" style="width: 100%; background-color: #007bff; font-size: 1.1em;">
+                Pagar con Link Directo
+            </button>
         </div>
     </div>
 
     <script>
+        // 🚨 PASO CLAVE: PEGA TU LINK DIRECTO AQUÍ
+        // EJEMPLOS: 
+        // const DIRECT_PAYMENT_LINK = "https://checkout.wompi.co/p/PSE_Bancolombia_xyz123";
+        // const DIRECT_PAYMENT_LINK = "https://api.whatsapp.com/send?phone=573001234567&text=Quiero%20pagar%20mi%20pedido.";
+        const DIRECT_PAYMENT_LINK = "PEGAR_TU_LINK_AQUI"; 
+        
         let cart = []; 
         let currentTotal = 0; 
-        
+
         // --- Funciones de Modificación de Cantidad ---
 
-        // Función llamada al pulsar + o -
         function changeQuantity(name, change) {
             const itemIndex = cart.findIndex(item => item.name === name);
 
@@ -193,21 +148,16 @@
                 cart[itemIndex].quantity += change;
 
                 if (cart[itemIndex].quantity <= 0) {
-                    // Si la cantidad es cero o menos, eliminar el producto
                     cart.splice(itemIndex, 1);
                 }
             }
             
-            // Si el carrito queda vacío, automáticamente lleva a la página de productos
             if (cart.length === 0) {
                 showProductSection();
             }
 
-            // Refresca la interfaz
             updateCartDisplay();
         }
-
-        // --- Flujo de Compra ---
         
         function addToCart(name, price) {
             const existingItem = cart.find(item => item.name === name);
@@ -228,7 +178,7 @@
             currentTotal = 0; 
             let totalItems = 0;
 
-            cartItemsContainer.innerHTML = ''; // Limpia el modal
+            cartItemsContainer.innerHTML = ''; 
 
             cart.forEach(item => {
                 const itemTotal = item.price * item.quantity;
@@ -238,7 +188,6 @@
                 const formattedItemPrice = item.price.toLocaleString('es-CO');
                 const formattedTotal = itemTotal.toLocaleString('es-CO'); 
 
-                // Crea el elemento de lista con botones de control
                 const listItem = document.createElement('li');
                 listItem.innerHTML = `
                     <div>
@@ -255,50 +204,48 @@
                 cartItemsContainer.appendChild(listItem);
             });
 
-            // Actualiza los contadores de la interfaz
             const finalFormattedTotal = currentTotal.toLocaleString('es-CO');
             cartCount.textContent = totalItems;
             cartTotalElement.textContent = `Total: $${finalFormattedTotal}`;
-
-            // Actualiza los totales en la sección de pago (oculta o visible)
-            document.getElementById('payment-total').textContent = `$${finalFormattedTotal}`;
-            document.getElementById('final-total-2').textContent = `$${finalFormattedTotal}`;
         }
         
-        // --- GESTIÓN DE SECCIONES (Mostrar/Ocultar) ---
+        // --- FUNCIÓN CLAVE: Redirigir al link directo ---
 
-        function hideAllSections() {
-            document.getElementById('productos').style.display = 'none';
-            document.getElementById('pago').style.display = 'none';
-            document.getElementById('promocion').style.display = 'none';
-        }
-
-        function showPaymentSection() {
+        function goToDirectLink() {
             if (currentTotal === 0) {
-                alert("Tu carrito está vacío. ¡Añade café para pagar!");
-                showProductSection(); 
+                alert("Tu carrito está vacío. ¡Añade café para ordenar!");
                 return;
             }
             
-            hideAllSections();
-            document.getElementById('pago').style.display = 'block';
-            document.getElementById('pago').scrollIntoView({ behavior: 'smooth' });
+            if (DIRECT_PAYMENT_LINK === "PEGAR_TU_LINK_AQUI") {
+                 alert("⚠️ ERROR: Por favor, actualiza el código JavaScript con tu link directo antes de usar esta función.");
+                 return;
+            }
+            
+            // 1. Cierra el modal del carrito
+            toggleCartModal(); 
+            
+            // 2. Abre el link de pago en una nueva pestaña (recomendado)
+            window.open(DIRECT_PAYMENT_LINK, '_blank');
+            
+            // 3. Limpia el carrito después de la redirección
+            cart = []; 
+            updateCartDisplay();
+            showProductSection(); 
+        }
+
+        // --- GESTIÓN de Interfaz (Mostrar/Ocultar) ---
+
+        function hideAllSections() {
+            document.getElementById('productos').style.display = 'none';
+            document.getElementById('promocion').style.display = 'none';
         }
 
         function showProductSection() {
             hideAllSections();
             document.getElementById('productos').style.display = 'block';
             document.getElementById('promocion').style.display = 'block'; 
-            document.getElementById('productos').scrollIntoView({ behavior: 'smooth' });
-        }
-        
-        function resetPageSections() {
-            hideAllSections();
-            document.getElementById('productos').style.display = 'block';
-            document.getElementById('promocion').style.display = 'block';
-            cart = [];
-            updateCartDisplay();
-            window.location.href='#inicio';
+            window.location.href='#productos';
         }
         
         function toggleCartModal() {
@@ -318,9 +265,8 @@
             }
         }
         
-        // Inicializa la página para mostrar solo la bienvenida y productos/promoción
         document.addEventListener('DOMContentLoaded', () => {
-            document.getElementById('pago').style.display = 'none';
+            showProductSection();
         });
     </script>
 </body>
