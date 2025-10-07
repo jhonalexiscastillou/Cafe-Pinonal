@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>☕ Aroma & Sabor - Pago con Link Directo</title>
+    <title>☕ Aroma & Sabor - Tienda</title>
     <style>
         /* ESTILOS BASE */
         body { font-family: 'Arial', sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; color: #333; }
@@ -19,7 +19,24 @@
         .btn:hover { background-color: #b58032; }
         .container { width: 80%; margin: 40px auto; padding: 20px; background-color: white; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); border-radius: 8px; }
         
-        .producto-card { margin: 10px auto; width: 40%; min-width: 300px; max-width: 400px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 20px; border: 1px solid #ccc; }
+        .producto-card { 
+            margin: 10px auto; 
+            width: 40%; /* Ajuste para que ocupe menos espacio */
+            min-width: 280px; /* Ancho mínimo para dispositivos pequeños */
+            max-width: 350px; /* Ancho máximo */
+            border-radius: 8px; 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+            padding: 20px; 
+            border: 1px solid #ccc;
+            text-align: center; /* Centrar contenido de la tarjeta */
+        }
+        .producto-card img { 
+            max-width: 150px; /* Imagen más pequeña */
+            height: auto; 
+            border-radius: 4px; 
+            margin: 0 auto 15px auto; /* Centrar imagen */
+            display: block; /* Para que margin auto funcione */
+        }
         .presentaciones { list-style: none; padding: 0; margin: 15px 0; text-align: left; }
         .presentaciones li { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid #eee; }
         .peso { font-weight: bold; color: #6f4e37; }
@@ -38,6 +55,7 @@
         .qty-display { width: 20px; text-align: center; font-weight: bold; }
         #cart-total { font-size: 1.2em; font-weight: bold; margin-top: 15px; text-align: right; }
         
+        /* Aseguramos que la sección de pago no se muestre */
         #pago { display: none !important; }
         
     </style>
@@ -51,7 +69,6 @@
             <ul>
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#" onclick="showProductSection(); return false;">Productos</a></li>
-                <li><a href="#promocion">Promoción</a></li>
                 <li><a href="#" onclick="toggleCartModal(); return false;">Comprar</a></li> 
             </ul>
         </nav>
@@ -75,7 +92,7 @@
             <p>Granos de la más alta calidad, tostados a la perfección para un sabor inigualable.</p>
 
             <div class="producto-card">
-                <img src="empaquepresentacion.png" alt="Café Premium Aroma & Sabor"> 
+                <img src="https://via.placeholder.com/150/6f4e37/ffffff?text=Tu+Cafe" alt="Café Premium Aroma & Sabor"> 
                 <h3>Café Premium "Aroma & Sabor"</h3>
                 <p>Descubre las notas intensas de chocolate y caramelo, con un toque cítrico y un final persistente.</p>
 
@@ -97,19 +114,6 @@
         </section>
     </div>
     
-    <div class="container" id="promo-section-container" style="background-color: #fff8e1; border: 2px solid #d3a14e;">
-        <section id="promocion" class="promocion">
-            <h2>🎉 ¡Promoción Especial del Mes! 🎉</h2>
-            <h3>Suscríbete y Ahorra un 15%</h3>
-            <p>Nunca te quedes sin tu café favorito. ¡Suscríbete hoy a nuestra entrega mensual y obtén un descuento exclusivo en tu primer pedido!</p>
-            
-            <form action="#" method="POST" style="margin-top: 20px;">
-                <input type="email" placeholder="Ingresa tu correo electrónico" required style="padding: 10px; width: 60%; margin-right: 10px; border: 1px solid #ccc; border-radius: 5px;">
-                <button type="submit" class="btn" style="background-color: #ff6f61;">¡Quiero el Descuento!</button>
-            </form>
-        </section>
-    </div>
-
     <footer id="contacto">
         <p>&copy; 2025 Aroma & Sabor. Todos los derechos reservados.</p>
     </footer>
@@ -205,27 +209,20 @@
             cartTotalElement.textContent = `Total: $${finalFormattedTotal}`;
         }
         
-        // --- FUNCIÓN CLAVE: Redirigir al link directo ---
-
         function goToDirectLink() {
             if (currentTotal === 0) {
                 alert("Tu carrito está vacío. ¡Añade café para ordenar!");
                 return;
             }
             
-            // Verificación de URL (aunque ya la insertamos, es buena práctica)
             if (!DIRECT_PAYMENT_LINK.startsWith('http')) {
                  alert("⚠️ ERROR DE CONFIGURACIÓN: El link de pago no es una URL válida.");
                  return;
             }
             
-            // 1. Cierra el modal del carrito
             toggleCartModal(); 
-            
-            // 2. Abre el link de pago en una nueva pestaña (tu link de Wompi/Nequi)
             window.open(DIRECT_PAYMENT_LINK, '_blank');
             
-            // 3. Limpia el carrito después de la redirección
             cart = []; 
             updateCartDisplay();
             showProductSection(); 
@@ -235,13 +232,13 @@
 
         function hideAllSections() {
             document.getElementById('productos').style.display = 'none';
-            document.getElementById('promocion').style.display = 'none';
+            // document.getElementById('promocion').style.display = 'none'; // Ya no es necesaria
         }
 
         function showProductSection() {
             hideAllSections();
             document.getElementById('productos').style.display = 'block';
-            document.getElementById('promocion').style.display = 'block'; 
+            // document.getElementById('promocion').style.display = 'block'; // Ya no es necesaria
             window.location.href='#productos';
         }
         
