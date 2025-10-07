@@ -7,14 +7,14 @@
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     
-    <title> Café piñonal - Tienda con Historia</title>
+    <title>☕ Café piñonal - Tienda con Historia</title>
     <style>
         /* PALETA DE COLORES */
         :root {
             --color-pastel: #E8F5E9; 
-            --color-oscuro: #2E7D32; 
-            --color-acento: #388E3C; 
-            --color-medio: #66BB6A; 
+            --color-oscuro: #2E7D32; /* Verde Oscuro (Header/Footer) */
+            --color-acento: #388E3C; /* Verde Acanto (Botones) */
+            --color-medio: #66BB6A; /* Verde Medio */
             --color-texto-claro: #FFFFFF; 
             --color-texto-oscuro: #424242; 
         }
@@ -25,13 +25,7 @@
             margin: 0; 
             padding: 0; 
             color: var(--color-texto-oscuro);
-            
-            /* --- FONDO DEL BODY (Marca de Agua) --- */
-            /* Es importante mantener esta imagen sutil y de baja visibilidad */
-            background: var(--color-pastel) url('foto de empaque en montañas.png') no-repeat center center fixed; 
-            background-size: cover; 
-            background-blend-mode: multiply; 
-            opacity: 0.95; 
+            background-color: var(--color-pastel); /* Fondo base limpio */
         }
         
         header { 
@@ -63,8 +57,9 @@
         
         /* --- ESTILO: IMAGEN DE FONDO PARA EL HERO (PORTADA) --- */
         .hero { 
+            /* La imagen limpia de las montañas y el producto */
             background-color: #388E3C; 
-            height: 500px; 
+            height: 600px; 
             display: flex; 
             justify-content: center; 
             align-items: center; 
@@ -72,20 +67,24 @@
             color: var(--color-texto-claro); 
             position: relative; 
             
-            /* ⚠️ REEMPLAZA 'cafe-portada.png' POR TU IMAGEN DE ALTA RESOLUCIÓN */
-            background-image: url('cafe-portada.png'); 
+            background-image: url('foto de empaque en montañas.jpg'); 
             background-size: cover; 
-            background-position: center 30%; 
+            background-position: center bottom; 
             background-repeat: no-repeat;
         }
 
-        /* Contenedor Semitransparente para el texto del Hero */
+        /* Contenedor de Texto del Hero */
         .hero-content {
-            background-color: rgba(46, 125, 50, 0.8); 
+            /* 🛑 CAMBIO CLAVE: Quitamos el fondo verde sólido o semi-transparente */
+            background-color: transparent; 
             padding: 40px 50px;
             border-radius: 12px;
-            box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
+            /* Le damos un fondo claro a las letras para asegurar la legibilidad */
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
             max-width: 80%;
+            /* Le damos un marco muy sutil para que el área de texto se destaque */
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(2px); /* Un pequeño desenfoque para que se vea el fondo */
         }
         .hero-content h2 { font-size: 2.8em; margin-bottom: 10px; font-weight: 700; }
         .hero-content p { font-size: 1.2em; margin-top: 0; font-weight: 500;}
@@ -108,18 +107,21 @@
         .btn-history {
             background-color: transparent !important;
             border: 2px solid white !important;
+            /* Ajustamos el color del botón para que se vea bien sobre la imagen */
+            text-shadow: none; 
         }
         .btn-history:hover {
             background-color: rgba(255, 255, 255, 0.1) !important;
             border-color: var(--color-medio) !important;
         }
         
+        /* Contenedores principales para las secciones (productos e historia) */
         .container { 
             width: 85%; 
             max-width: 1100px;
             margin: 40px auto; 
             padding: 30px; 
-            background-color: rgba(255, 255, 255, 0.85); 
+            background-color: var(--color-texto-claro); 
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.08); 
             border-radius: 12px; 
         }
@@ -155,13 +157,14 @@
         .history-section h2 { color: var(--color-oscuro); font-weight: 700; margin-bottom: 40px; }
         .history-block {
             border-left: 5px solid var(--color-medio); 
-            background-color: rgba(241, 248, 233, 0.8); 
+            background-color: var(--color-pastel); 
             padding-left: 20px;
             padding: 25px;
             border-radius: 10px;
             display: flex;
             align-items: flex-start;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            margin-bottom: 25px;
         }
         .history-block h3 {
             color: var(--color-oscuro); 
@@ -250,7 +253,7 @@
 <body>
 
     <header>
-        <h1>Café piñonal </h1>
+        <h1>Café piñonal ☕</h1>
         <p>Tu dosis diaria de felicidad</p>
         <nav>
             <ul>
@@ -276,11 +279,11 @@
 
     <div class="container" id="history-section-container" style="display: none;">
         <section id="historia" class="history-section">
-            <h2 style="text-align: center; width: 100%;"> Identidad, Origen e Inspiración</h2>
+            <h2 style="text-align: center; width: 100%;">☕ Identidad, Origen e Inspiración</h2>
             
             <div class="history-block">
                 <div class="history-image-container">
-                    <img src="foto de empaque en montañas.png" alt="Foto del empaque en las montañas"> 
+                    <img src="foto de empaque en montañas.jpg" alt="Foto del empaque en las montañas"> 
                 </div>
                 <div class="history-text-container">
                     <h3>Nuestra Historia e Inspiración</h3>
