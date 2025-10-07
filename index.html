@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>☕ Aroma & Sabor - Tu Café Especial</title>
+    <style>
+        /* MANTENEMOS LOS ESTILOS BÁSICOS ANTERIORES */
+        body { font-family: 'Arial', sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; color: #333; }
+        header { background-color: #6f4e37; color: white; padding: 20px 0; text-align: center; }
+        header h1 { margin: 0; font-size: 2.5em; }
+        nav ul { list-style: none; padding: 0; margin-top: 10px; display: flex; justify-content: center; }
+        nav ul li { margin: 0 15px; }
+        nav ul li a { color: white; text-decoration: none; font-weight: bold; transition: color 0.3s; }
+        nav ul li a:hover { color: #ffcc00; }
+        .hero { 
+            background: url('cafe_fondo.jpg') no-repeat center center/cover; 
+            height: 400px; display: flex; justify-content: center; align-items: center; 
+            text-align: center; color: white; position: relative; 
+        }
+        .hero::before { 
+            content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0; 
+            background-color: rgba(0, 0, 0, 0.4); z-index: 1; 
+        }
+        .hero-content { z-index: 2; }
+        .hero h2 { font-size: 3em; margin-bottom: 10px; text-shadow: 2px 2px 4px #000; }
+        .hero p { font-size: 1.2em; margin-bottom: 30px; }
+        .btn { 
+            background-color: #d3a14e; color: white; padding: 10px 20px; 
+            text-decoration: none; border-radius: 5px; font-weight: bold; 
+            transition: background-color 0.3s; display: inline-block; margin-top: 10px;
+        }
+        .btn:hover { background-color: #b58032; }
+        .container { width: 80%; margin: 40px auto; padding: 20px; background-color: white; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); border-radius: 8px; }
+        .productos, .promocion { text-align: center; margin-bottom: 40px; }
+        
+        /* ESTILOS ESPECÍFICOS PARA LAS TARJETAS DE PRODUCTO ACTUALIZADAS */
+        .producto-card {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin: 10px;
+            display: inline-block;
+            width: 30%;
+            min-width: 280px; 
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            vertical-align: top;
+        }
+        .producto-card img {
+            /* ESTA ES LA RUTA DE IMAGEN A LA QUE AFECTA EL CAMBIO */
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+        .presentaciones {
+            list-style: none;
+            padding: 0;
+            margin: 15px 0;
+            text-align: left;
+        }
+        .presentaciones li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .presentaciones li:last-child {
+            border-bottom: none;
+        }
+        .peso { font-weight: bold; color: #6f4e37; }
+        .precio { font-size: 1.1em; font-weight: bold; color: #d3a14e; }
+        /* FIN ESTILOS ESPECÍFICOS */
+
+        footer { background-color: #333; color: white; text-align: center; padding: 20px 0; margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Aroma & Sabor ☕</h1>
+        <p>Tu dosis diaria de felicidad</p>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#productos">Productos</a></li>
+                <li><a href="#promocion">Promoción</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <h2>El Mejor Café, Directo a tu Taza.</h2>
+            <p>Descubre nuestra selección artesanal de granos especiales.</p>
+            <a href="#productos" class="btn">¡Explora Nuestros Cafés!</a>
+        </div>
+    </section>
+    
+    <div class="container">
+        <section id="productos" class="productos">
+            <h2>Nuestros Productos Estelares</h2>
+            <p>Granos tostados a la perfección para un sabor inigualable. Elige el tamaño que se ajuste a tus antojos.</p>
+
+            <div class="producto-card">
+                <img src="xxxx.png" alt="Café de Origen Único"> <h3>Origen Único "Colombia"</h3>
+                <p>Notas intensas de chocolate, caramelo y un toque cítrico. Tostado medio.</p>
+
+                <ul class="presentaciones">
+                    <li>
+                        <span class="peso">250 gramos</span>
+                        <span class="precio">$8.50</span>
+                        <a href="#" class="btn btn-pequeno">Añadir</a>
+                    </li>
+                    <li>
+                        <span class="peso">500 gramos</span>
+                        <span class="precio">$15.99</span>
+                        <a href="#" class="btn btn-pequeno">Añadir</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="producto-card">
+                <img src="empaquepresentacion.png" alt="Mezcla de la Casa"> <h3>Mezcla Premium "Mañana Perfecta"</h3>
+                <p>Un blend robusto y equilibrado, con cuerpo sedoso. Perfecto para el día a día.</p>
+
+                <ul class="presentaciones">
+                    <li>
+                        <span class="peso">250 gramos</span>
+                        <span class="precio">$7.00</span>
+                        <a href="#" class="btn btn-pequeno">Añadir</a>
+                    </li>
+                    <li>
+                        <span class="peso">500 gramos</span>
+                        <span class="precio">$12.50</span>
+                        <a href="#" class="btn btn-pequeno">Añadir</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="producto-card">
+                <img src="xxxx.png" alt="Café Descafeinado"> <h3>Descafeinado Gourmet</h3>
+                <p>Todo el sabor sin la cafeína. Proceso natural que conserva las notas a nuez.</p>
+
+                <ul class="presentaciones">
+                    <li>
+                        <span class="peso">250 gramos</span>
+                        <span class="precio">$8.00</span>
+                        <a href="#" class="btn btn-pequeno">Añadir</a>
+                    </li>
+                    <li>
+                        <span class="peso">500 gramos</span>
+                        <span class="precio">$14.00</span>
+                        <a href="#" class="btn btn-pequeno">Añadir</a>
+                    </li>
+                </ul>
+            </div>
+
+        </section>
+    </div>
+    
+    <div class="container" style="background-color: #fff8e1; border: 2px solid #d3a14e;">
+        <section id="promocion" class="promocion">
+            <h2>🎉 ¡Promoción Especial del Mes! 🎉</h2>
+            <h3>Suscríbete y Ahorra un 15%</h3>
+            <p>Nunca te quedes sin tu café favorito. ¡Suscríbete hoy a nuestra entrega mensual y obtén un descuento exclusivo en tu primer pedido!</p>
+            
+            <form action="#" method="POST" style="margin-top: 20px;">
+                <input type="email" placeholder="Ingresa tu correo electrónico" required style="padding: 10px; width: 60%; margin-right: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                <button type="submit" class="btn" style="background-color: #ff6f61;">¡Quiero el Descuento!</button>
+            </form>
+
+            <p style="margin-top: 15px; font-style: italic;">Oferta válida solo para nuevos suscriptores.</p>
+        </section>
+    </div>
+
+    <footer id="contacto">
+        <p>&copy; 2025 Aroma & Sabor. Todos los derechos reservados.</p>
+        <p>Síguenos en <a href="#" style="color: #ffcc00;">Redes Sociales</a> | Contáctanos: info@aromasabor.com</p>
+    </footer>
+
+</body>
+</html>
