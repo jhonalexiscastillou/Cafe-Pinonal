@@ -14,7 +14,7 @@
         nav ul li a { color: white; text-decoration: none; font-weight: bold; transition: color 0.3s; }
         nav ul li a:hover { color: #ffcc00; }
         
-        /* El hero ahora es solo el banner que se puede ocultar */
+        /* ESTILO DEL HERO/PORTADA */
         .hero { 
             background: url('cafe_fondo.jpg') no-repeat center center/cover; 
             height: 400px; 
@@ -142,46 +142,44 @@
             
             <div class="history-block">
                 <div class="history-image-container">
-                    <img src="https://via.placeholder.com/250x180/795548/ffffff?text=Historia" alt="Historia de la empresa">
+                    <img src="https://via.placeholder.com/250x180/795548/ffffff?text=Familia+Campesina" alt="Familia Campesina">
                 </div>
                 <div class="history-text-container">
                     <h3>Nuestra Historia e Inspiración</h3>
                     <p>
-                        **[ESPACIO PARA TU TEXTO DE HISTORIA Y VALORES]**
-                        <br>
-                        *Aquí puedes contar por qué y cómo nació tu marca de café, la pasión que los mueve y el concepto detrás de "Aroma & Sabor".*
+                        Esta marca es el fruto del amor y la unión de una **familia campesina, trabajadora y echada para delante**. Nuestros abuelos nos dejaron la mejor herencia: la firmeza de las raíces campesinas, la **honestidad** y el profundo **amor por las cosas que se hacen en el campo**. A pesar de las adversidades, su ejemplo de unidad nos inspira a ofrecer el mejor café, manteniendo vivo su legado.
                     </p>
                 </div>
             </div>
 
             <div class="history-block">
                 <div class="history-image-container">
-                    <img src="https://via.placeholder.com/250x180/4CAF50/ffffff?text=Finca" alt="Foto de la finca">
+                    <img src="https://via.placeholder.com/250x180/4CAF50/ffffff?text=Finca+El+Pi%C3%B1onal" alt="Foto de la finca">
                 </div>
                 <div class="history-text-container">
                     <h3>Origen: Finca y Vereda</h3>
                     <p>
-                        **Donde es recolectado:** [ESPACIO PARA LUGAR GENERAL (EJ: Eje Cafetero, Sur de Huila)]
+                        **Donde es recolectado:** Cosechado en tierras bendecidas con un clima ideal.
                         <br>
                         **Nombre de la Finca:** [ESPACIO PARA NOMBRE DE LA FINCA]
                         <br>
-                        **Vereda:** [ESPACIO PARA NOMBRE DE LA VEREDA O MUNICIPIO]
+                        **Vereda:** **El Piñonal**
                         <br><br>
-                        *Describe el entorno único de la finca, la altura y las condiciones climáticas que hacen especial a tu café.*
+                        Nuestro café nace en la vereda El Piñonal, donde la tradición y el cuidado de la tierra han sido la base de nuestro hogar por generaciones.
                     </p>
                 </div>
             </div>
 
             <div class="history-block">
                 <div class="history-image-container">
-                    <img src="https://via.placeholder.com/250x180/FF9800/ffffff?text=Recoleccion" alt="Foto de la recolección">
+                    <img src="https://via.placeholder.com/250x180/FF9800/ffffff?text=Presentacion+Elegante" alt="Presentación del Café">
                 </div>
                 <div class="history-text-container">
-                    <h3>Recolección y Cuidado</h3>
+                    <h3>Recolección y Presentación</h3>
                     <p>
-                        **[ESPACIO PARA TU TEXTO DE RECOLECCIÓN Y CUIDADO]**
-                        <br>
-                        *Explica brevemente el proceso: si es recolección manual (cereza madura), el proceso de lavado, y cómo garantizan la calidad del grano hasta el tueste.*
+                        Después de toda una vida sembrando y cosechando café con dedicación, hemos decidido vender el fruto de nuestra tierra. Cada grano es el resultado de un trabajo honesto.
+                        <br><br>
+                        Hoy, este café llega a sus manos en una **elegante presentación**, ofreciendo el inigualable sabor que solo el amor por el campo puede crear.
                     </p>
                 </div>
             </div>
@@ -253,7 +251,7 @@
                 }
             }
             if (cart.length === 0) {
-                showHistorySection(); // Vuelve a la historia si el carrito está vacío
+                showHistorySection(); 
             }
             updateCartDisplay();
         }
@@ -278,7 +276,6 @@
             cartItemsContainer.innerHTML = ''; 
 
             cart.forEach(item => {
-                // ... (Lógica de visualización del carrito)
                 const itemTotal = item.price * item.quantity;
                 currentTotal += itemTotal;
                 totalItems += item.quantity;
@@ -317,7 +314,7 @@
             
             cart = []; 
             updateCartDisplay();
-            showHistorySection(); // Vuelve a la historia después de pagar
+            showHistorySection(); 
         }
 
         // --- GESTIÓN de Interfaz (Mostrar/Ocultar) ---
