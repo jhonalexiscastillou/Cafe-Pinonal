@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>☕ Aroma & Sabor - Pago Directo</title>
+    <title>☕ Aroma & Sabor - Carrito Avanzado</title>
     <style>
-        /* ESTILOS (Se mantienen del código anterior) */
+        /* ESTILOS BASE (Se mantienen) */
         body { font-family: 'Arial', sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; color: #333; }
         header { background-color: #6f4e37; color: white; padding: 20px 0; text-align: center; position: relative; }
         header h1 { margin: 0; font-size: 2.5em; }
@@ -13,14 +13,13 @@
         nav ul li { margin: 0 15px; }
         nav ul li a { color: white; text-decoration: none; font-weight: bold; transition: color 0.3s; }
         nav ul li a:hover { color: #ffcc00; }
-        .hero { /* ... estilos hero ... */ }
+        .hero { background: url('cafe_fondo.jpg') no-repeat center center/cover; height: 400px; display: flex; justify-content: center; align-items: center; text-align: center; color: white; position: relative; }
+        
         .btn { background-color: #d3a14e; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold; transition: background-color 0.3s; display: inline-block; margin-top: 10px; cursor: pointer; border: none; }
         .btn:hover { background-color: #b58032; }
         .container { width: 80%; margin: 40px auto; padding: 20px; background-color: white; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); border-radius: 8px; }
-        .productos, .promocion { text-align: center; margin-bottom: 40px; }
         
         .producto-card { margin: 10px auto; width: 40%; min-width: 300px; max-width: 400px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 20px; border: 1px solid #ccc; }
-        .producto-card img { max-width: 100%; height: auto; border-radius: 4px; margin-bottom: 15px; }
         .presentaciones { list-style: none; padding: 0; margin: 15px 0; text-align: left; }
         .presentaciones li { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid #eee; }
         .peso { font-weight: bold; color: #6f4e37; }
@@ -29,22 +28,46 @@
         /* ESTILOS DEL CARRITO FLOTANTE Y MODAL */
         #cart-icon { position: absolute; top: 25px; right: 50px; font-size: 1.5em; cursor: pointer; color: white; z-index: 500; }
         #cart-count { background-color: #ff6f61; color: white; border-radius: 50%; padding: 3px 8px; font-size: 0.7em; position: absolute; top: -5px; right: -10px; }
-        .cart-modal { display: none; /* Dejamos el modal visible pero no se usará directamente */ }
-
-        /* ESTILOS DE LA INTERFAZ DE PAGO */
-        #pago {
-            display: none; /* Oculta la sección de pago por defecto, el JS la mostrará */
-            text-align: left;
-            padding: 30px 50px;
-            background-color: #e8e6e3; 
-            border-radius: 10px;
-            margin-top: 20px;
+        .cart-modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4); }
+        .modal-content { background-color: #fefefe; margin: 10% auto; padding: 20px; border: 1px solid #888; width: 80%; max-width: 500px; border-radius: 8px; }
+        .close-btn { color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer; }
+        
+        /* Estilos de los ítems en el carrito (IMPORTANTE) */
+        #cart-items li { 
+            list-style: none; 
+            padding: 10px 0; 
+            border-bottom: 1px dashed #ccc; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; /* Centrar verticalmente */
+            font-size: 1.1em;
         }
+        .item-controls {
+            display: flex;
+            align-items: center;
+        }
+        .qty-btn {
+            background-color: #eee;
+            border: 1px solid #ccc;
+            padding: 3px 8px;
+            cursor: pointer;
+            font-size: 1.1em;
+            margin: 0 5px;
+            border-radius: 3px;
+        }
+        .qty-display {
+            width: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+        #cart-total { font-size: 1.2em; font-weight: bold; margin-top: 15px; text-align: right; }
+        
+        /* ESTILOS DE LA INTERFAZ DE PAGO */
+        #pago { display: none; text-align: left; padding: 30px 50px; background-color: #e8e6e3; border-radius: 10px; margin-top: 20px; }
         .bancolombia-info { background-color: #fff; padding: 20px; border-radius: 5px; border-left: 5px solid #ffcc00; box-shadow: 0 2px 5px rgba(0,0,0,0.1); margin-bottom: 20px; }
-        .bancolombia-info p { margin: 5px 0; font-size: 1.1em; }
         .bancolombia-info strong { color: #6f4e37; display: inline-block; width: 150px; }
-        .instrucciones ol { padding-left: 20px; }
         .total-pago { font-size: 1.5em; color: #ff6f61; font-weight: bold; text-align: right; margin-top: 20px; padding-top: 10px; border-top: 1px dashed #ccc; }
+        
     </style>
 </head>
 <body>
@@ -89,13 +112,13 @@
                         <span class="peso">250 gramos</span>
                         <span class="precio">$24.000</span>
                         <button class="btn btn-pequeno" 
-                            onclick="addToCartAndGoToPay('Café Premium (250g)', 24000)">Añadir y Pagar</button>
+                            onclick="addToCart('Café Premium (250g)', 24000); toggleCartModal();">Añadir</button>
                     </li>
                     <li>
                         <span class="peso">500 gramos</span>
                         <span class="precio">$48.000</span>
                         <button class="btn btn-pequeno" 
-                            onclick="addToCartAndGoToPay('Café Premium (500g)', 48000)">Añadir y Pagar</button>
+                            onclick="addToCart('Café Premium (500g)', 48000); toggleCartModal();">Añadir</button>
                     </li>
                 </ul>
             </div>
@@ -143,46 +166,106 @@
 
     <footer id="contacto">
         <p>&copy; 2025 Aroma & Sabor. Todos los derechos reservados.</p>
-        <p>Síguenos en <a href="#" style="color: #ffcc00;">Redes Sociales</a> | Contáctanos: info@aromasabor.com</p>
     </footer>
 
     <div id="cart-modal" class="cart-modal">
         <div class="modal-content">
             <span class="close-btn" onclick="toggleCartModal()">&times;</span>
             <h3>🛍️ Tu Carrito de Compras</h3>
-            <ul id="cart-items"></ul>
+            <ul id="cart-items">
+                </ul>
             <p id="cart-total">Total: $0</p>
-            <button class="btn" onclick="showPaymentSection(); toggleCartModal();" style="width: 100%; background-color: #ff6f61;">Ir a Pagar</button>
+            <button class="btn" onclick="showPaymentSection(); toggleCartModal();" style="width: 100%; background-color: #ff6f61;">Proceder a Pagar con Bancolombia</button>
         </div>
     </div>
 
     <script>
         let cart = []; 
         let currentTotal = 0; 
+        
+        // --- Funciones de Modificación de Cantidad ---
 
-        // ----------------------------------------------------
-        // FUNCIÓN CLAVE: AÑADIR PRODUCTO Y REDIRIGIR AL PAGO
-        // ----------------------------------------------------
-        function addToCartAndGoToPay(name, price) {
-            
-            // 1. Limpiar el carrito antes de añadir un nuevo producto
-            //    Esto asegura que solo se compre el ítem que se acaba de clickear.
-            cart = []; 
+        // Función llamada al pulsar + o -
+        function changeQuantity(name, change) {
+            const itemIndex = cart.findIndex(item => item.name === name);
 
-            // 2. Añadir el nuevo producto al carrito
-            cart.push({ name: name, price: price, quantity: 1 });
+            if (itemIndex !== -1) {
+                cart[itemIndex].quantity += change;
+
+                if (cart[itemIndex].quantity <= 0) {
+                    // Si la cantidad es cero o menos, eliminar el producto
+                    cart.splice(itemIndex, 1);
+                }
+            }
             
-            // 3. Actualizar la interfaz (contador de icono)
+            // Si el carrito queda vacío, automáticamente lleva a la página de productos
+            if (cart.length === 0) {
+                showProductSection();
+            }
+
+            // Refresca la interfaz
             updateCartDisplay();
-            
-            // 4. Muestra un mensaje y lleva al usuario a la sección de pago
-            alert(`"${name}" añadido. ¡Dirigiendo a la pasarela de pago!`);
-            showPaymentSection();
         }
 
-        // ----------------------------------------------------
-        // GESTIÓN DE SECCIONES (Mostrar/Ocultar)
-        // ----------------------------------------------------
+        // --- Flujo de Compra ---
+        
+        function addToCart(name, price) {
+            const existingItem = cart.find(item => item.name === name);
+
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ name: name, price: price, quantity: 1 });
+            }
+            updateCartDisplay();
+        }
+
+        function updateCartDisplay() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartCount = document.getElementById('cart-count');
+            const cartTotalElement = document.getElementById('cart-total');
+            
+            currentTotal = 0; 
+            let totalItems = 0;
+
+            cartItemsContainer.innerHTML = ''; // Limpia el modal
+
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                currentTotal += itemTotal;
+                totalItems += item.quantity;
+                
+                const formattedItemPrice = item.price.toLocaleString('es-CO');
+                const formattedTotal = itemTotal.toLocaleString('es-CO'); 
+
+                // Crea el elemento de lista con botones de control
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `
+                    <div>
+                        ${item.name} <br>
+                        <small>$${formattedItemPrice} c/u</small>
+                    </div>
+                    <div class="item-controls">
+                        <button class="qty-btn" onclick="changeQuantity('${item.name}', -1)">-</button>
+                        <span class="qty-display">${item.quantity}</span>
+                        <button class="qty-btn" onclick="changeQuantity('${item.name}', 1)">+</button>
+                        <span style="margin-left: 15px; font-weight: bold;">$${formattedTotal}</span>
+                    </div>
+                `;
+                cartItemsContainer.appendChild(listItem);
+            });
+
+            // Actualiza los contadores de la interfaz
+            const finalFormattedTotal = currentTotal.toLocaleString('es-CO');
+            cartCount.textContent = totalItems;
+            cartTotalElement.textContent = `Total: $${finalFormattedTotal}`;
+
+            // Actualiza los totales en la sección de pago (oculta o visible)
+            document.getElementById('payment-total').textContent = `$${finalFormattedTotal}`;
+            document.getElementById('final-total-2').textContent = `$${finalFormattedTotal}`;
+        }
+        
+        // --- GESTIÓN DE SECCIONES (Mostrar/Ocultar) ---
 
         function hideAllSections() {
             document.getElementById('productos').style.display = 'none';
@@ -191,68 +274,33 @@
         }
 
         function showPaymentSection() {
-            if (currentTotal === 0 && cart.length === 0) {
+            if (currentTotal === 0) {
                 alert("Tu carrito está vacío. ¡Añade café para pagar!");
-                // Opcional: Muestra la sección de productos si está vacía
                 showProductSection(); 
                 return;
             }
             
-            // Oculta todas las secciones y muestra solo el pago
             hideAllSections();
             document.getElementById('pago').style.display = 'block';
-            
-            // Lleva la vista a la sección de pago
             document.getElementById('pago').scrollIntoView({ behavior: 'smooth' });
         }
 
         function showProductSection() {
             hideAllSections();
             document.getElementById('productos').style.display = 'block';
-            document.getElementById('promocion').style.display = 'block'; // Muestra la promo junto a productos
+            document.getElementById('promocion').style.display = 'block'; 
             document.getElementById('productos').scrollIntoView({ behavior: 'smooth' });
         }
         
         function resetPageSections() {
             hideAllSections();
-            // Restablece el estado de las secciones a cómo estaban inicialmente
             document.getElementById('productos').style.display = 'block';
             document.getElementById('promocion').style.display = 'block';
-            // Limpia el carrito
             cart = [];
             updateCartDisplay();
-            window.location.href='#inicio'; // Vuelve al inicio
+            window.location.href='#inicio';
         }
-
-        // ----------------------------------------------------
-        // OTRAS FUNCIONES (Mantienen su lógica de actualización)
-        // ----------------------------------------------------
         
-        function updateCartDisplay() {
-            const cartCount = document.getElementById('cart-count');
-            const cartTotalElement = document.getElementById('cart-total');
-            const paymentTotalElement = document.getElementById('payment-total');
-            const finalTotal2Element = document.getElementById('final-total-2');
-            
-            currentTotal = 0; 
-            let totalItems = 0;
-
-            cart.forEach(item => {
-                currentTotal += item.price * item.quantity;
-                totalItems += item.quantity;
-            });
-
-            const formattedTotal = currentTotal.toLocaleString('es-CO');
-
-            // Actualiza el contador del ícono
-            cartCount.textContent = totalItems;
-
-            // Actualiza los totales en el modal y la sección de pago
-            cartTotalElement.textContent = `Total: $${formattedTotal}`;
-            paymentTotalElement.textContent = `$${formattedTotal}`;
-            finalTotal2Element.textContent = `$${formattedTotal}`;
-        }
-
         function toggleCartModal() {
             const modal = document.getElementById('cart-modal');
             if (modal.style.display === "block") {
@@ -277,4 +325,3 @@
     </script>
 </body>
 </html>
-<button onclick="addToCartAndGoToPay('Café Premium (250g)', 24000)">Añadir y Pagar</button>
