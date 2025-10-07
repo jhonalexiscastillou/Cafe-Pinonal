@@ -27,10 +27,11 @@
             color: var(--color-texto-oscuro);
             
             /* --- FONDO DEL BODY (Marca de Agua) --- */
+            /* La imagen de fondo se verá en su estado original sin blend-mode ni opacidad global */
             background: var(--color-pastel) url('foto de empaque en montañas.jpg') no-repeat center center fixed; 
             background-size: cover; 
-            background-blend-mode: multiply; 
-            opacity: 0.95; 
+            /* Se eliminan: background-blend-mode: multiply; opacity: 0.95; */
+            /* La transparencia la manejamos en los elementos que se superponen */
         }
         
         header { 
@@ -60,20 +61,21 @@
             border-bottom: 2px solid var(--color-medio); 
         } 
         
-        /* --- ESTILO: BANNER SUPERIOR DE LA FOTO PERSONAL (NUEVO) --- */
+        /* --- ESTILO: BANNER SUPERIOR DE LA FOTO PERSONAL --- */
         #top-banner {
             width: 100%;
             text-align: center;
             padding: 20px 0;
-            background-color: var(--color-pastel); 
+            /* Usamos rgba para dar una ligera transparencia y ver el fondo */
+            background-color: rgba(232, 245, 233, 0.9); /* var(--color-pastel) con 90% de opacidad */
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
         #top-banner img {
-            max-width: 150px; /* Tamaño moderado para que no sea muy invasiva */
+            max-width: 150px; 
             height: auto;
-            border-radius: 50%; /* La hace redonda */
-            border: 4px solid var(--color-acento); /* Borde sutil */
+            border-radius: 50%; 
+            border: 4px solid var(--color-acento); 
             object-fit: cover;
             transition: transform 0.3s;
         }
@@ -93,7 +95,7 @@
             color: var(--color-texto-claro); 
             position: relative; 
             
-            background-image: url('foto de empaque en montañas.jpg'); 
+            background-image: url('cafe-portada.png'); /* Asegúrate que esta imagen sea diferente a la del body si es intencional */
             background-size: cover; 
             background-position: center 30%; 
             background-repeat: no-repeat;
@@ -101,7 +103,7 @@
 
         /* Contenedor Semitransparente para el texto del Hero */
         .hero-content {
-            background-color: rgba(46, 125, 50, 0.8); 
+            background-color: rgba(46, 125, 50, 0.8); /* Opacidad ajustada */
             padding: 40px 50px;
             border-radius: 12px;
             box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
@@ -139,7 +141,8 @@
             max-width: 1100px;
             margin: 40px auto; 
             padding: 30px; 
-            background-color: rgba(255, 255, 255, 0.95); /* Fondo más sólido para legibilidad del contenido */
+            /* Usamos rgba para que el fondo del body se siga viendo a través */
+            background-color: rgba(255, 255, 255, 0.85); /* 85% de opacidad */
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.08); 
             border-radius: 12px; 
         }
@@ -176,7 +179,7 @@
         .history-section h2 { color: var(--color-oscuro); font-weight: 700; margin-bottom: 40px; }
         .history-block {
             border-left: 5px solid var(--color-medio); 
-            background-color: rgba(241, 248, 233, 0.8); 
+            background-color: rgba(241, 248, 233, 0.8); /* Opacidad ajustada */
             padding-left: 20px;
             padding: 25px;
             border-radius: 10px;
@@ -288,7 +291,7 @@
     </header>
     
     <section id="top-banner">
-        <img src="tu-foto-personal.jpg" alt="Foto personal del productor o propietario">
+        <img src="fotos abuelos.jpg" alt="Foto personal del productor o propietario">
     </section>
 
     <section id="hero-banner" class="hero">
