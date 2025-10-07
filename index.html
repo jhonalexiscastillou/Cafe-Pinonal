@@ -12,9 +12,9 @@
         /* PALETA DE COLORES */
         :root {
             --color-pastel: #E8F5E9; 
-            --color-oscuro: #2E7D32; 
-            --color-acento: #388E3C; 
-            --color-medio: #66BB6A; 
+            --color-oscuro: #2E7D32; /* Verde Oscuro (Header/Footer) */
+            --color-acento: #388E3C; /* Verde Acanto (Botones) */
+            --color-medio: #66BB6A; /* Verde Medio */
             --color-texto-claro: #FFFFFF; 
             --color-texto-oscuro: #424242; 
         }
@@ -26,14 +26,8 @@
             padding: 0; 
             color: var(--color-texto-oscuro);
             
-            /* --- FONDO DEL BODY (Marca de Agua) --- */
-            /* 🛑 CORREGIDO: Eliminar color de fondo, blend-mode y opacidad para el fondo principal */
-            background-image: url('foto de empaque en montañas.png'); 
-            background-repeat: no-repeat;
-            background-position: center center; 
-            background-size: cover; 
-            background-attachment: fixed; /* Asegura que la imagen de fondo no se mueva al hacer scroll */
-            /* NO hay background-color aquí, NO hay background-blend-mode, NO hay opacity */
+            /* 🛑 CAMBIO CLAVE 1: Eliminamos la imagen de fondo del body. Usamos un color pastel limpio. */
+            background-color: var(--color-pastel); 
         }
         
         header { 
@@ -65,8 +59,10 @@
         
         /* --- ESTILO: IMAGEN DE FONDO PARA EL HERO (PORTADA) --- */
         .hero { 
-            background-color: #388E3C; /* Color de fallback si la imagen no carga */
-            height: 500px; 
+            /* 🛑 CAMBIO CLAVE 2: Usamos la imagen de 'foto de empaque en montañas.jpg' como fondo del HERO. */
+            /* Eliminamos el background-color verde sólido que estaba antes. */
+            background-color: #388E3C; /* Color de fallback */
+            height: 600px; /* Aumentamos la altura para que luzca mejor */
             display: flex; 
             justify-content: center; 
             align-items: center; 
@@ -74,15 +70,17 @@
             color: var(--color-texto-claro); 
             position: relative; 
             
-            background-image: url('cafe-portada.png'); 
+            /* 🛑 Usamos la imagen que subiste para el Hero */
+            background-image: url('foto de empaque en montañas.jpg'); 
             background-size: cover; 
-            background-position: center 30%; 
+            background-position: center bottom; /* Ajustamos para enfocar el producto */
             background-repeat: no-repeat;
         }
 
-        /* Contenedor Semitransparente para el texto del Hero */
+        /* Contenedor Semitransparente para el texto del Hero (Se mantiene) */
         .hero-content {
-            background-color: rgba(46, 125, 50, 0.8); /* Mantiene este fondo semi-transparente para la legibilidad del texto */
+            /* 🛑 Hacemos el fondo del contenido más oscuro y menos transparente para asegurar que el texto se lea sobre la imagen detallada. */
+            background-color: rgba(0, 0, 0, 0.55); 
             padding: 40px 50px;
             border-radius: 12px;
             box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
@@ -121,8 +119,8 @@
             max-width: 1100px;
             margin: 40px auto; 
             padding: 30px; 
-            /* 🟢 Fondo semi-transparente para que la imagen del body se vea a través */
-            background-color: rgba(255, 255, 255, 0.85); 
+            /* Fondo blanco sólido para que el texto de las secciones interiores sea muy legible */
+            background-color: var(--color-texto-claro); 
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.08); 
             border-radius: 12px; 
         }
@@ -158,15 +156,14 @@
         .history-section h2 { color: var(--color-oscuro); font-weight: 700; margin-bottom: 40px; }
         .history-block {
             border-left: 5px solid var(--color-medio); 
-            /* 🟢 Mantenemos el fondo del bloque de historia claro para que el texto se lea bien */
-            background-color: rgba(241, 248, 233, 0.8); 
+            background-color: var(--color-pastel); /* Fondo pastel para contraste */
             padding-left: 20px;
             padding: 25px;
             border-radius: 10px;
             display: flex;
             align-items: flex-start;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-            margin-bottom: 25px; /* Espacio entre bloques de historia */
+            margin-bottom: 25px;
         }
         .history-block h3 {
             color: var(--color-oscuro); 
@@ -285,7 +282,7 @@
             
             <div class="history-block">
                 <div class="history-image-container">
-                    <img src="foto de empaque en montañas.png" alt="Foto del empaque en las montañas"> 
+                    <img src="foto de empaque en montañas.jpg" alt="Foto del empaque en las montañas"> 
                 </div>
                 <div class="history-text-container">
                     <h3>Nuestra Historia e Inspiración</h3>
