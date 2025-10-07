@@ -7,7 +7,7 @@
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     
-    <title> Café piñonal - Tienda con Historia</title>
+    <title>☕ Café piñonal - Tienda con Historia</title>
     <style>
         /* PALETA DE COLORES */
         :root {
@@ -28,7 +28,7 @@
             
             /* --- FONDO DEL BODY (Marca de Agua) --- */
             /* Es importante mantener esta imagen sutil y de baja visibilidad */
-            background: var(--color-pastel) url('foto de empaque en montañas.jpg') no-repeat center center fixed; 
+            background: var(--color-pastel) url('foto de empaque en montañas.png') no-repeat center center fixed; 
             background-size: cover; 
             background-blend-mode: multiply; 
             opacity: 0.95; 
@@ -61,9 +61,9 @@
             border-bottom: 2px solid var(--color-medio); 
         } 
         
-        /* --- NUEVO ESTILO: IMAGEN DE FONDO PARA EL HERO (PORTADA) --- */
+        /* --- ESTILO: IMAGEN DE FONDO PARA EL HERO (PORTADA) --- */
         .hero { 
-            background-color: #388E3C; /* Color de fallback */
+            background-color: #388E3C; 
             height: 500px; 
             display: flex; 
             justify-content: center; 
@@ -72,17 +72,16 @@
             color: var(--color-texto-claro); 
             position: relative; 
             
-            /* Propiedades de la imagen */
-            background-image: url('cafe-portada.jpg'); /* ⬅️ REEMPLAZA ESTA RUTA */
+            /* ⚠️ REEMPLAZA 'cafe-portada.png' POR TU IMAGEN DE ALTA RESOLUCIÓN */
+            background-image: url('cafe-portada.png'); 
             background-size: cover; 
-            background-position: center 30%; /* Mostrar un poco más la parte superior */
+            background-position: center 30%; 
             background-repeat: no-repeat;
         }
 
         /* Contenedor Semitransparente para el texto del Hero */
         .hero-content {
-            /* Hacemos el fondo un poco más transparente para que se vea la imagen de fondo */
-            background-color: rgba(46, 125, 50, 0.8); /* Opacidad reducida a 0.8 */
+            background-color: rgba(46, 125, 50, 0.8); 
             padding: 40px 50px;
             border-radius: 12px;
             box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
@@ -251,7 +250,7 @@
 <body>
 
     <header>
-        <h1>Café piñonal </h1>
+        <h1>Café piñonal ☕</h1>
         <p>Tu dosis diaria de felicidad</p>
         <nav>
             <ul>
@@ -277,11 +276,11 @@
 
     <div class="container" id="history-section-container" style="display: none;">
         <section id="historia" class="history-section">
-            <h2 style="text-align: center; width: 100%;"> Identidad, Origen e Inspiración</h2>
+            <h2 style="text-align: center; width: 100%;">☕ Identidad, Origen e Inspiración</h2>
             
             <div class="history-block">
                 <div class="history-image-container">
-                    <img src="foto con miel" alt="Foto de la miel/origen"> 
+                    <img src="foto de empaque en montañas.png" alt="Foto del empaque en las montañas"> 
                 </div>
                 <div class="history-text-container">
                     <h3>Nuestra Historia e Inspiración</h3>
@@ -299,7 +298,7 @@
 
             <div class="history-block">
                 <div class="history-image-container">
-                    <img src="finca-filo-bonito.jpg" alt="Vista de la finca Filo Bonito">
+                    <img src="finca-filo-bonito.png" alt="Vista de la finca Filo Bonito">
                 </div>
                 <div class="history-text-container">
                     <h3>Origen: Finca y Vereda</h3>
@@ -317,7 +316,7 @@
 
             <div class="history-block">
                 <div class="history-image-container">
-                    <img src="recoleccion-manual.jpg" alt="Foto de la recolección manual del café">
+                    <img src="recoleccion-manual.png" alt="Foto de la recolección manual del café">
                 </div>
                 <div class="history-text-container">
                     <h3>Recolección y Cuidado</h3>
