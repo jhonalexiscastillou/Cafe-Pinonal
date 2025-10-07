@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>☕ Aroma & Sabor - Tienda con Historia</title>
+    <title>☕ Aroma & Sabor - Café Piñonal</title>
     <style>
-        /* PALETA DE COLORES RUANA Y FLORES:
-           Principal (Fuerte): #3E3E3E (Gris Carbón - como un paño oscuro de ruana)
-           Acento (Botones/Links): #D2691E (Chocolate/Tierra - cálido de la flor/tierra)
-           Secundario (Texto Principal): #F0F0F0 (Blanco Roto)
-           Fondo General: #EFEFEF (Gris Claro)
+        /* PALETA DE COLORES BASADA EN LA IMAGEN DE "CAFÉ PIÑONAL"
+           Fondo General: #FDF9F3 (Crema muy claro del empaque)
+           Principal Oscuro (Encabezados/Etiquetas/Ruana): #2F4F4F (Verde oscuro/Gris Pizarra - del logo y montañas)
+           Acento Cálido (Granos/Flores Rojas): #8B4513 (Marrón Silla de Montar - granos de café)
+           Acento Floral (Flores Rosas): #CC6666 (Terracota Rosado - de las flores)
+           Texto Claro: #FDF9F3 (Crema) para contrastar con fondos oscuros
+           Texto Oscuro: #3F3F3F (Gris muy oscuro) para fondos claros
         */
 
         /* ESTILOS BASE */
@@ -17,13 +19,13 @@
             font-family: 'Arial', sans-serif; 
             margin: 0; 
             padding: 0; 
-            background-color: #EFEFEF; /* Fondo Gris Claro, sutil */
-            color: #3E3E3E; /* Texto principal oscuro */
+            background-color: #FDF9F3; /* Crema muy claro del empaque */
+            color: #3F3F3F; /* Texto principal oscuro */
         }
         
         header { 
-            background-color: #3E3E3E; /* Azul/Gris Carbón (Ruana Oscura) */
-            color: #F0F0F0; /* Texto Blanco Roto */
+            background-color: #2F4F4F; /* Verde Oscuro/Gris Pizarra (del logo y montañas) */
+            color: #FDF9F3; /* Texto Crema */
             padding: 20px 0; 
             text-align: center; 
             position: relative; 
@@ -31,24 +33,24 @@
         header h1 { margin: 0; font-size: 2.5em; }
         nav ul { list-style: none; padding: 0; margin-top: 10px; display: flex; justify-content: center; }
         nav ul li { margin: 0 15px; }
-        nav ul li a { color: #F0F0F0; text-decoration: none; font-weight: bold; transition: color 0.3s; }
-        nav ul li a:hover { color: #D2691E; } /* Hover Color Acento */
+        nav ul li a { color: #FDF9F3; text-decoration: none; font-weight: bold; transition: color 0.3s; }
+        nav ul li a:hover { color: #8B4513; } /* Hover Color Acento (Marrón Café) */
         
         /* ESTILO DEL HERO/PORTADA */
         .hero { 
-            /* X: REEMPLAZA ESTO por la URL/ruta de tu foto de fondo */
+            /* X: REEMPLAZA ESTO por la URL/ruta de tu foto de fondo, preferiblemente la de la montaña del producto */
             background: url('[URL_DE_TU_FOTO_AQUÍ_X]') no-repeat center center/cover; 
             height: 400px; 
             display: flex; 
             justify-content: center; 
             align-items: center; 
             text-align: center; 
-            color: #F0F0F0; /* Texto claro sobre la imagen oscura */
+            color: #FDF9F3; /* Texto claro sobre la imagen oscura */
             position: relative; 
         }
         
         .btn { 
-            background-color: #D2691E; /* Chocolate/Tierra Cálida (Acento de flores) */
+            background-color: #8B4513; /* Marrón Silla de Montar (Granos de café) */
             color: white; 
             padding: 10px 20px; 
             text-decoration: none; 
@@ -60,316 +62,42 @@
             cursor: pointer; 
             border: none; 
         }
-        .btn:hover { background-color: #B55812; }
+        .btn:hover { background-color: #A0522D; } /* Tono más oscuro al hacer hover */
         
         .container { 
             width: 80%; 
             margin: 40px auto; 
             padding: 20px; 
-            background-color: #FFFFFF; /* Contenedores interiores blancos para mayor contraste */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+            background-color: #FFFFFF; /* Contenedores interiores blancos puros para contraste nítido */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.08); /* Sombra sutil */
             border-radius: 8px; 
         }
         
-        /* ESTILOS DE PRODUCTO Y CARRITO */
-        .producto-card { margin: 10px auto; width: 90%; min-width: 280px; max-width: 350px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 20px; border: 1px solid #ccc; text-align: center; }
-        .producto-card img { max-width: 150px; height: auto; border-radius: 4px; margin: 0 auto 15px auto; display: block; border: 1px solid #e0e0e0; }
-        .presentaciones { list-style: none; padding: 0; margin: 15px 0; text-align: left; }
-        .presentaciones li { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid #eee; }
-        .peso { font-weight: bold; color: #3E3E3E; } /* Peso con color principal */
-        .precio { font-size: 1.1em; font-weight: bold; color: #D2691E; } /* Precio con color acento */
-
-        /* ESTILOS PARA LA NUEVA SECCIÓN DE HISTORIA */
-        .history-section { display: flex; flex-direction: column; gap: 30px; padding: 40px 0; text-align: left; }
-        .history-block { 
-            border-left: 5px solid #D2691E; /* Barra lateral con color acento */
-            padding-left: 20px; 
-            background-color: #F8F8F8; /* Fondo muy claro para bloques de historia */
+        /* ESTILOS DE PRODUCTO */
+        .producto-card { 
+            margin: 10px auto; 
+            width: 90%; 
+            min-width: 280px; 
+            max-width: 350px; 
+            border-radius: 8px; 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08); 
             padding: 20px; 
-            border-radius: 8px; 
-            display: flex; 
-            align-items: flex-start; 
+            border: 1px solid #E0E0E0; 
+            text-align: center; 
+            background-color: #FFFFFF;
         }
-        .history-block h3 { 
-            color: #3E3E3E; /* Títulos oscuros */
-            margin-top: 0; 
-            font-size: 1.5em; 
-            border-bottom: 2px dashed #D2691E; /* Separador con color acento */
-            padding-bottom: 5px; 
+        .producto-card img { 
+            max-width: 150px; 
+            height: auto; 
+            border-radius: 4px; 
+            margin: 0 auto 15px auto; 
+            display: block; 
+            border: 1px solid #D3D3D3; 
         }
-        .history-block p { font-size: 1.1em; line-height: 1.6; margin-bottom: 0; }
-        .history-image-container { flex-shrink: 0; margin-right: 20px; max-width: 250px; text-align: center; }
-        .history-image-container img { width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); }
-        .history-text-container { flex-grow: 1; }
-        @media (max-width: 768px) {
-            .history-block { flex-direction: column; align-items: center; text-align: center; }
-            .history-image-container { margin-right: 0; margin-bottom: 15px; }
-        }
+        .presentaciones { list-style: none; padding: 0; margin: 15px 0; text-align: left; }
+        .presentaciones li { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid #ECECEC; }
+        .peso { font-weight: bold; color: #2F4F4F; } /* Peso con color principal oscuro */
+        .precio { font-size: 1.1em; font-weight: bold; color: #8B4513; } /* Precio con color acento (Marrón Café) */
 
-        /* ESTILOS DEL CARRITO (Se mantienen) */
-        #cart-icon { position: absolute; top: 25px; right: 50px; font-size: 1.5em; cursor: pointer; color: #F0F0F0; z-index: 500; }
-        #cart-count { background-color: #ff6f61; color: white; border-radius: 50%; padding: 3px 8px; font-size: 0.7em; position: absolute; top: -5px; right: -10px; }
-        .cart-modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4); }
-        .modal-content { background-color: #fefefe; margin: 10% auto; padding: 20px; border: 1px solid #888; width: 80%; max-width: 500px; border-radius: 8px; }
-        .close-btn { color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer; }
-        #cart-items li { list-style: none; padding: 10px 0; border-bottom: 1px dashed #ccc; display: flex; justify-content: space-between; align-items: center; font-size: 1.1em; }
-        .item-controls { display: flex; align-items: center; }
-        .qty-btn { background-color: #eee; border: 1px solid #ccc; padding: 3px 8px; cursor: pointer; font-size: 1.1em; margin: 0 5px; border-radius: 3px; }
-        .qty-display { width: 20px; text-align: center; font-weight: bold; }
-        #cart-total { font-size: 1.2em; font-weight: bold; margin-top: 15px; text-align: right; }
-        .btn-pago { background-color: #3E3E3E !important; } /* Botón de pago con color oscuro */
-        .btn-pago:hover { background-color: #D2691E !important; }
-        
-    </style>
-</head>
-<body>
-
-    <header>
-        <h1>Aroma & Sabor ☕</h1>
-        <p>Tu dosis diaria de felicidad</p>
-        <nav>
-            <ul>
-                <li><a href="#" onclick="showHistorySection(); return false;">Inicio / Historia</a></li>
-                <li><a href="#" onclick="showProductSection(); return false;">Productos</a></li>
-                <li><a href="#" onclick="toggleCartModal(); return false;">Comprar</a></li> 
-            </ul>
-        </nav>
-        
-        <div id="cart-icon" onclick="toggleCartModal()">
-            🛒 <span id="cart-count">0</span>
-        </div>
-    </header>
-    
-    <section id="hero-banner" class="hero">
-        <div class="hero-content">
-            <h2>El Mejor Café, Directo a tu Taza.</h2>
-            <p>Descubre el origen y la pasión detrás de cada grano.</p>
-            <a href="#historia" class="btn" onclick="showHistorySection();">Conoce la Historia</a>
-        </div>
-    </section>
-
-    <div class="container" id="history-section-container" style="display: none;">
-        <section id="historia" class="history-section">
-            <h2 style="text-align: center; color: #3E3E3E; width: 100%;">☕ Identidad, Origen e Inspiración</h2>
-            
-            <div class="history-block">
-                <div class="history-image-container">
-                    <img src="[URL_DE_TU_FOTO_AQUÍ_X]" alt="Familia Campesina">
-                </div>
-                <div class="history-text-container">
-                    <h3>Nuestra Historia e Inspiración</h3>
-                    <p>
-                        Esta marca es el fruto del amor y la unión de una **familia campesina, trabajadora y echada para delante**. Nuestros abuelos nos dejaron la mejor herencia: la firmeza de las raíces campesinas, la **honestidad** y el profundo **amor por las cosas que se hacen en el campo**. A pesar de las adversidades, su ejemplo de unidad nos inspira a ofrecer el mejor café, manteniendo vivo su legado.
-                    </p>
-                </div>
-            </div>
-
-            <div class="history-block">
-                <div class="history-image-container">
-                    <img src="[URL_DE_TU_FOTO_AQUÍ_X]" alt="Foto de la finca">
-                </div>
-                <div class="history-text-container">
-                    <h3>Origen: Finca y Vereda</h3>
-                    <p>
-                        **Donde es recolectado:** Cosechado en tierras bendecidas con un clima ideal.
-                        <br>
-                        **Nombre de la Finca:** **[NOMBRE DE LA FINCA]** <br>
-                        **Vereda:** **El Piñonal**
-                        <br><br>
-                        Nuestro café nace en la vereda El Piñonal, donde la tradición y el cuidado de la tierra han sido la base de nuestro hogar por generaciones.
-                    </p>
-                </div>
-            </div>
-
-            <div class="history-block">
-                <div class="history-image-container">
-                    <img src="[URL_DE_TU_FOTO_AQUÍ_X]" alt="Presentación del Café">
-                </div>
-                <div class="history-text-container">
-                    <h3>Recolección y Presentación</h3>
-                    <p>
-                        Después de toda una vida sembrando y cosechando café con dedicación, hemos decidido vender el fruto de nuestra tierra. Cada grano es el resultado de un trabajo honesto.
-                        <br><br>
-                        Hoy, este café llega a sus manos en una **elegante presentación**, ofreciendo el inigualable sabor que solo el amor por el campo puede crear.
-                    </p>
-                </div>
-            </div>
-
-        </section>
-    </div>
-
-    <div class="container" id="product-section-container" style="display: none;">
-        <section id="productos" class="productos">
-            <h2 style="color: #3E3E3E;">Nuestro Café Especial</h2>
-            <p>Granos de la más alta calidad, tostados a la perfección para un sabor inigualable.</p>
-
-            <div class="producto-card">
-                <img src="[URL_DE_TU_FOTO_AQUÍ_X]" alt="Café Premium Aroma & Sabor"> 
-                <h3>Café Premium "Aroma & Sabor"</h3>
-                <p>Descubre las notas intensas de chocolate y caramelo, con un toque cítrico y un final persistente.</p>
-
-                <ul class="presentaciones">
-                    <li>
-                        <span class="peso">250 gramos</span>
-                        <span class="precio">$24.000</span>
-                        <button class="btn btn-pequeno" 
-                            onclick="addToCart('Café Premium (250g)', 24000); toggleCartModal();">Añadir</button>
-                    </li>
-                    <li>
-                        <span class="peso">500 gramos</span>
-                        <span class="precio">$48.000</span>
-                        <button class="btn btn-pequeno" 
-                            onclick="addToCart('Café Premium (500g)', 48000); toggleCartModal();">Añadir</button>
-                    </li>
-                </ul>
-            </div>
-        </section>
-    </div>
-    
-    <footer id="contacto" style="background-color: #3E3E3E; color: #F0F0F0; padding: 15px 0; text-align: center;">
-        <p>&copy; 2025 Aroma & Sabor. Todos los derechos reservados.</p>
-    </footer>
-
-    <div id="cart-modal" class="cart-modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="toggleCartModal()">&times;</span>
-            <h3>🛍️ Tu Carrito de Compras</h3>
-            <ul id="cart-items">
-                </ul>
-            <p id="cart-total">Total: $0</p>
-            
-            <button class="btn btn-pago" onclick="goToDirectLink()" style="width: 100%; font-size: 1.1em;">
-                Pagar con Link Directo
-            </button>
-        </div>
-    </div>
-
-    <script>
-        // TU LINK DE PAGO DE WOMPI/NEQUI
-        const DIRECT_PAYMENT_LINK = "https://checkout.nequi.wompi.co/l/uH6JaT"; 
-        
-        let cart = []; 
-        let currentTotal = 0; 
-
-        // --- Funciones del Carrito (sin cambios en la lógica) ---
-
-        function changeQuantity(name, change) {
-            const itemIndex = cart.findIndex(item => item.name === name);
-            if (itemIndex !== -1) {
-                cart[itemIndex].quantity += change;
-                if (cart[itemIndex].quantity <= 0) {
-                    cart.splice(itemIndex, 1);
-                }
-            }
-            if (cart.length === 0) {
-                showHistorySection(); 
-            }
-            updateCartDisplay();
-        }
-        
-        function addToCart(name, price) {
-            const existingItem = cart.find(item => item.name === name);
-            if (existingItem) {
-                existingItem.quantity += 1;
-            } else {
-                cart.push({ name: name, price: price, quantity: 1 });
-            }
-            updateCartDisplay();
-        }
-
-        function updateCartDisplay() {
-            const cartItemsContainer = document.getElementById('cart-items');
-            const cartCount = document.getElementById('cart-count');
-            const cartTotalElement = document.getElementById('cart-total');
-            
-            currentTotal = 0; 
-            let totalItems = 0;
-            cartItemsContainer.innerHTML = ''; 
-
-            cart.forEach(item => {
-                const itemTotal = item.price * item.quantity;
-                currentTotal += itemTotal;
-                totalItems += item.quantity;
-                const formattedItemPrice = item.price.toLocaleString('es-CO');
-                const formattedTotal = itemTotal.toLocaleString('es-CO'); 
-
-                const listItem = document.createElement('li');
-                listItem.innerHTML = `
-                    <div>${item.name} <br><small>$${formattedItemPrice} c/u</small></div>
-                    <div class="item-controls">
-                        <button class="qty-btn" onclick="changeQuantity('${item.name}', -1)">-</button>
-                        <span class="qty-display">${item.quantity}</span>
-                        <button class="qty-btn" onclick="changeQuantity('${item.name}', 1)">+</button>
-                        <span style="margin-left: 15px; font-weight: bold;">$${formattedTotal}</span>
-                    </div>
-                `;
-                cartItemsContainer.appendChild(listItem);
-            });
-
-            const finalFormattedTotal = currentTotal.toLocaleString('es-CO');
-            cartCount.textContent = totalItems;
-            cartTotalElement.textContent = `Total: $${finalFormattedTotal}`;
-        }
-        
-        function goToDirectLink() {
-            if (currentTotal === 0) {
-                alert("Tu carrito está vacío. ¡Añade café para ordenar!");
-                return;
-            }
-            if (!DIRECT_PAYMENT_LINK.startsWith('http')) {
-                 alert("⚠️ ERROR DE CONFIGURACIÓN: El link de pago no es una URL válida.");
-                 return;
-            }
-            toggleCartModal(); 
-            window.open(DIRECT_PAYMENT_LINK, '_blank');
-            
-            cart = []; 
-            updateCartDisplay();
-            showHistorySection(); 
-        }
-
-        // --- GESTIÓN de Interfaz (Mostrar/Ocultar) ---
-
-        function hideAllSections() {
-            document.getElementById('product-section-container').style.display = 'none';
-            document.getElementById('history-section-container').style.display = 'none';
-            document.getElementById('hero-banner').style.display = 'none'; 
-        }
-
-        function showHistorySection() {
-            hideAllSections();
-            document.getElementById('hero-banner').style.display = 'flex'; // Muestra el banner
-            document.getElementById('history-section-container').style.display = 'block'; // Muestra la historia
-            document.getElementById('hero-banner').scrollIntoView({ behavior: 'smooth' });
-        }
-        
-        function showProductSection() {
-            hideAllSections();
-            document.getElementById('product-section-container').style.display = 'block'; // Muestra los productos
-            document.getElementById('product-section-container').scrollIntoView({ behavior: 'smooth' });
-        }
-        
-        function toggleCartModal() {
-            const modal = document.getElementById('cart-modal');
-            if (modal.style.display === "block") {
-                modal.style.display = "none";
-            } else {
-                modal.style.display = "block";
-                updateCartDisplay(); 
-            }
-        }
-        
-        window.onclick = function(event) {
-            const modal = document.getElementById('cart-modal');
-            if (event.target === modal) {
-                modal.style.display = "none";
-            }
-        }
-        
-        // Inicializar la página mostrando la historia
-        document.addEventListener('DOMContentLoaded', () => {
-            showHistorySection();
-        });
-    </script>
-</body>
-</html>
+        /* ESTILOS PARA LA SECCIÓN DE HISTORIA */
+        .history-section { display: flex; flex-direction: column; gap: 30px; padding: 40px
