@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>☕ Aroma & Sabor - Tienda Directa</title>
+    <title>☕ Aroma & Sabor - Tienda con Historia</title>
     <style>
         /* ESTILOS BASE */
         body { font-family: 'Arial', sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; color: #333; }
@@ -13,51 +13,99 @@
         nav ul li { margin: 0 15px; }
         nav ul li a { color: white; text-decoration: none; font-weight: bold; transition: color 0.3s; }
         nav ul li a:hover { color: #ffcc00; }
-        .hero { background: url('cafe_fondo.jpg') no-repeat center center/cover; height: 400px; display: flex; justify-content: center; align-items: center; text-align: center; color: white; position: relative; }
+        
+        /* El hero ahora es solo el banner que se puede ocultar */
+        .hero { 
+            background: url('cafe_fondo.jpg') no-repeat center center/cover; 
+            height: 400px; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            text-align: center; 
+            color: white; 
+            position: relative; 
+        }
         
         .btn { background-color: #d3a14e; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold; transition: background-color 0.3s; display: inline-block; margin-top: 10px; cursor: pointer; border: none; }
         .btn:hover { background-color: #b58032; }
+        
         .container { width: 80%; margin: 40px auto; padding: 20px; background-color: white; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); border-radius: 8px; }
         
-        /* ESTILOS DE PRODUCTO Y IMAGEN ESTÉTICA */
-        .producto-card { 
-            margin: 10px auto; 
-            width: 90%; 
-            min-width: 280px; 
-            max-width: 350px; 
-            border-radius: 8px; 
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-            padding: 20px; 
-            border: 1px solid #ccc;
-            text-align: center;
-        }
-        .producto-card img { 
-            /* CLAVE: Hace la imagen más pequeña y la centra */
-            max-width: 150px; 
-            height: auto; 
-            border-radius: 4px; 
-            margin: 0 auto 15px auto; 
-            display: block; 
-            border: 1px solid #e0e0e0; /* Borde sutil */
-        }
+        /* ESTILOS DE PRODUCTO */
+        .producto-card { margin: 10px auto; width: 90%; min-width: 280px; max-width: 350px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 20px; border: 1px solid #ccc; text-align: center; }
+        .producto-card img { max-width: 150px; height: auto; border-radius: 4px; margin: 0 auto 15px auto; display: block; border: 1px solid #e0e0e0; }
         .presentaciones { list-style: none; padding: 0; margin: 15px 0; text-align: left; }
         .presentaciones li { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid #eee; }
         .peso { font-weight: bold; color: #6f4e37; }
         .precio { font-size: 1.1em; font-weight: bold; color: #d3a14e; }
 
-        /* ESTILOS DEL CARRITO FLOTANTE Y MODAL */
+        /* ESTILOS PARA LA NUEVA SECCIÓN DE HISTORIA */
+        .history-section {
+            display: flex;
+            flex-direction: column;
+            gap: 30px; 
+            padding: 40px 0;
+            text-align: left;
+        }
+        .history-block {
+            border-left: 5px solid #d3a14e; 
+            padding-left: 20px;
+            background-color: #fffaf4;
+            padding: 20px;
+            border-radius: 8px;
+            display: flex;
+            align-items: flex-start;
+        }
+        .history-block h3 {
+            color: #6f4e37;
+            margin-top: 0;
+            font-size: 1.5em;
+            border-bottom: 2px dashed #eee;
+            padding-bottom: 5px;
+        }
+        .history-block p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+        .history-image-container {
+            flex-shrink: 0; 
+            margin-right: 20px;
+            max-width: 250px; 
+            text-align: center;
+        }
+        .history-image-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .history-text-container {
+            flex-grow: 1;
+        }
+        @media (max-width: 768px) {
+            .history-block {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .history-image-container {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+        }
+
+        /* ESTILOS DEL CARRITO (Se mantienen) */
         #cart-icon { position: absolute; top: 25px; right: 50px; font-size: 1.5em; cursor: pointer; color: white; z-index: 500; }
         #cart-count { background-color: #ff6f61; color: white; border-radius: 50%; padding: 3px 8px; font-size: 0.7em; position: absolute; top: -5px; right: -10px; }
         .cart-modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4); }
         .modal-content { background-color: #fefefe; margin: 10% auto; padding: 20px; border: 1px solid #888; width: 80%; max-width: 500px; border-radius: 8px; }
         .close-btn { color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer; }
-        
         #cart-items li { list-style: none; padding: 10px 0; border-bottom: 1px dashed #ccc; display: flex; justify-content: space-between; align-items: center; font-size: 1.1em; }
         .item-controls { display: flex; align-items: center; }
         .qty-btn { background-color: #eee; border: 1px solid #ccc; padding: 3px 8px; cursor: pointer; font-size: 1.1em; margin: 0 5px; border-radius: 3px; }
         .qty-display { width: 20px; text-align: center; font-weight: bold; }
         #cart-total { font-size: 1.2em; font-weight: bold; margin-top: 15px; text-align: right; }
-        
         #pago { display: none !important; }
         
     </style>
@@ -69,7 +117,7 @@
         <p>Tu dosis diaria de felicidad</p>
         <nav>
             <ul>
-                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#" onclick="showHistorySection(); return false;">Inicio / Historia</a></li>
                 <li><a href="#" onclick="showProductSection(); return false;">Productos</a></li>
                 <li><a href="#" onclick="toggleCartModal(); return false;">Comprar</a></li> 
             </ul>
@@ -80,15 +128,68 @@
         </div>
     </header>
     
-    <section id="inicio" class="hero">
+    <section id="hero-banner" class="hero">
         <div class="hero-content">
             <h2>El Mejor Café, Directo a tu Taza.</h2>
-            <p>Descubre nuestra selección artesanal de granos especiales.</p>
-            <a href="#productos" class="btn" onclick="showProductSection();">¡Explora Nuestro Café!</a>
+            <p>Descubre el origen y la pasión detrás de cada grano.</p>
+            <a href="#historia" class="btn" onclick="showHistorySection();">Conoce la Historia</a>
         </div>
     </section>
-    
-    <div class="container" id="product-section-container">
+
+    <div class="container" id="history-section-container" style="display: none;">
+        <section id="historia" class="history-section">
+            <h2 style="text-align: center; color: #6f4e37; width: 100%;">☕ Identidad, Origen e Inspiración</h2>
+            
+            <div class="history-block">
+                <div class="history-image-container">
+                    <img src="https://via.placeholder.com/250x180/795548/ffffff?text=Historia" alt="Historia de la empresa">
+                </div>
+                <div class="history-text-container">
+                    <h3>Nuestra Historia e Inspiración</h3>
+                    <p>
+                        **[ESPACIO PARA TU TEXTO DE HISTORIA Y VALORES]**
+                        <br>
+                        *Aquí puedes contar por qué y cómo nació tu marca de café, la pasión que los mueve y el concepto detrás de "Aroma & Sabor".*
+                    </p>
+                </div>
+            </div>
+
+            <div class="history-block">
+                <div class="history-image-container">
+                    <img src="https://via.placeholder.com/250x180/4CAF50/ffffff?text=Finca" alt="Foto de la finca">
+                </div>
+                <div class="history-text-container">
+                    <h3>Origen: Finca y Vereda</h3>
+                    <p>
+                        **Donde es recolectado:** [ESPACIO PARA LUGAR GENERAL (EJ: Eje Cafetero, Sur de Huila)]
+                        <br>
+                        **Nombre de la Finca:** [ESPACIO PARA NOMBRE DE LA FINCA]
+                        <br>
+                        **Vereda:** [ESPACIO PARA NOMBRE DE LA VEREDA O MUNICIPIO]
+                        <br><br>
+                        *Describe el entorno único de la finca, la altura y las condiciones climáticas que hacen especial a tu café.*
+                    </p>
+                </div>
+            </div>
+
+            <div class="history-block">
+                <div class="history-image-container">
+                    <img src="https://via.placeholder.com/250x180/FF9800/ffffff?text=Recoleccion" alt="Foto de la recolección">
+                </div>
+                <div class="history-text-container">
+                    <h3>Recolección y Cuidado</h3>
+                    <p>
+                        **[ESPACIO PARA TU TEXTO DE RECOLECCIÓN Y CUIDADO]**
+                        <br>
+                        *Explica brevemente el proceso: si es recolección manual (cereza madura), el proceso de lavado, y cómo garantizan la calidad del grano hasta el tueste.*
+                    </p>
+                </div>
+            </div>
+
+        </section>
+    </div>
+
+    <div class="container" id="product-section-container" style="display: none;">
         <section id="productos" class="productos">
             <h2>Nuestro Café Especial</h2>
             <p>Granos de la más alta calidad, tostados a la perfección para un sabor inigualable.</p>
@@ -97,7 +198,6 @@
                 <img src="empaquepresentacion.png" alt="Café Premium Aroma & Sabor"> 
                 <h3>Café Premium "Aroma & Sabor"</h3>
                 <p>Descubre las notas intensas de chocolate y caramelo, con un toque cítrico y un final persistente.</p>
-
 
                 <ul class="presentaciones">
                     <li>
@@ -142,29 +242,24 @@
         let cart = []; 
         let currentTotal = 0; 
 
-        // --- Funciones de Modificación de Cantidad ---
+        // --- Funciones del Carrito ---
 
         function changeQuantity(name, change) {
             const itemIndex = cart.findIndex(item => item.name === name);
-
             if (itemIndex !== -1) {
                 cart[itemIndex].quantity += change;
-
                 if (cart[itemIndex].quantity <= 0) {
                     cart.splice(itemIndex, 1);
                 }
             }
-            
             if (cart.length === 0) {
-                showProductSection();
+                showHistorySection(); // Vuelve a la historia si el carrito está vacío
             }
-
             updateCartDisplay();
         }
         
         function addToCart(name, price) {
             const existingItem = cart.find(item => item.name === name);
-
             if (existingItem) {
                 existingItem.quantity += 1;
             } else {
@@ -180,23 +275,19 @@
             
             currentTotal = 0; 
             let totalItems = 0;
-
             cartItemsContainer.innerHTML = ''; 
 
             cart.forEach(item => {
+                // ... (Lógica de visualización del carrito)
                 const itemTotal = item.price * item.quantity;
                 currentTotal += itemTotal;
                 totalItems += item.quantity;
-                
                 const formattedItemPrice = item.price.toLocaleString('es-CO');
                 const formattedTotal = itemTotal.toLocaleString('es-CO'); 
 
                 const listItem = document.createElement('li');
                 listItem.innerHTML = `
-                    <div>
-                        ${item.name} <br>
-                        <small>$${formattedItemPrice} c/u</small>
-                    </div>
+                    <div>${item.name} <br><small>$${formattedItemPrice} c/u</small></div>
                     <div class="item-controls">
                         <button class="qty-btn" onclick="changeQuantity('${item.name}', -1)">-</button>
                         <span class="qty-display">${item.quantity}</span>
@@ -217,30 +308,37 @@
                 alert("Tu carrito está vacío. ¡Añade café para ordenar!");
                 return;
             }
-            
             if (!DIRECT_PAYMENT_LINK.startsWith('http')) {
                  alert("⚠️ ERROR DE CONFIGURACIÓN: El link de pago no es una URL válida.");
                  return;
             }
-            
             toggleCartModal(); 
             window.open(DIRECT_PAYMENT_LINK, '_blank');
             
             cart = []; 
             updateCartDisplay();
-            showProductSection(); 
+            showHistorySection(); // Vuelve a la historia después de pagar
         }
 
         // --- GESTIÓN de Interfaz (Mostrar/Ocultar) ---
 
         function hideAllSections() {
-            document.getElementById('productos').style.display = 'none';
+            document.getElementById('product-section-container').style.display = 'none';
+            document.getElementById('history-section-container').style.display = 'none';
+            document.getElementById('hero-banner').style.display = 'none'; 
         }
 
+        function showHistorySection() {
+            hideAllSections();
+            document.getElementById('hero-banner').style.display = 'flex'; // Muestra el banner
+            document.getElementById('history-section-container').style.display = 'block'; // Muestra la historia
+            document.getElementById('hero-banner').scrollIntoView({ behavior: 'smooth' });
+        }
+        
         function showProductSection() {
             hideAllSections();
-            document.getElementById('productos').style.display = 'block';
-            window.location.href='#productos';
+            document.getElementById('product-section-container').style.display = 'block'; // Muestra los productos
+            document.getElementById('product-section-container').scrollIntoView({ behavior: 'smooth' });
         }
         
         function toggleCartModal() {
@@ -260,8 +358,9 @@
             }
         }
         
+        // Inicializar la página mostrando la historia
         document.addEventListener('DOMContentLoaded', () => {
-            showProductSection();
+            showHistorySection();
         });
     </script>
 </body>
