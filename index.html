@@ -150,3 +150,66 @@
 
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Icono de Carrito</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        /* Contenedor principal que simula tu encabezado */
+        .header-test {
+            background-color: #6f4e37; /* Color café oscuro */
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: relative; /* Es crucial para posicionar el icono */
+        }
+
+        /* Estilos del Icono de Carrito */
+        #cart-icon {
+            position: absolute; /* Posicionamiento absoluto respecto a .header-test */
+            top: 20px;
+            right: 30px;
+            font-size: 1.8em; /* Tamaño del icono */
+            cursor: pointer;
+            color: white;
+        }
+
+        /* Estilos del Contador (el número de artículos) */
+        #cart-count {
+            background-color: #ff6f61; /* Color de contraste (rojo/salmón) */
+            color: white;
+            border-radius: 50%; /* Lo hace redondo */
+            padding: 3px 6px;
+            font-size: 0.5em; /* Más pequeño que el icono */
+            font-weight: bold;
+            position: absolute; /* Posicionamiento absoluto respecto al #cart-icon */
+            top: -5px;
+            right: -10px;
+            line-height: 1; /* Asegura que el número esté centrado */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-test">
+        <h1>Mi Tienda de Café</h1>
+
+        <div id="cart-icon">
+            🛒 
+            <span id="cart-count">3</span>
+        </div>
+        </div>
+
+    <p style="margin: 20px;">Este es un ejemplo de cómo se verá el icono en la esquina superior derecha de tu encabezado.</p>
+
+</body>
+</html>
