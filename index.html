@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>☕ Aroma & Sabor - Tienda</title>
+    <title>☕ Aroma & Sabor - Tienda Directa</title>
     <style>
         /* ESTILOS BASE */
         body { font-family: 'Arial', sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; color: #333; }
@@ -19,23 +19,26 @@
         .btn:hover { background-color: #b58032; }
         .container { width: 80%; margin: 40px auto; padding: 20px; background-color: white; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); border-radius: 8px; }
         
+        /* ESTILOS DE PRODUCTO Y IMAGEN ESTÉTICA */
         .producto-card { 
             margin: 10px auto; 
-            width: 40%; /* Ajuste para que ocupe menos espacio */
-            min-width: 280px; /* Ancho mínimo para dispositivos pequeños */
-            max-width: 350px; /* Ancho máximo */
+            width: 90%; 
+            min-width: 280px; 
+            max-width: 350px; 
             border-radius: 8px; 
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
             padding: 20px; 
             border: 1px solid #ccc;
-            text-align: center; /* Centrar contenido de la tarjeta */
+            text-align: center;
         }
         .producto-card img { 
-            max-width: 150px; /* Imagen más pequeña */
+            /* CLAVE: Hace la imagen más pequeña y la centra */
+            max-width: 150px; 
             height: auto; 
             border-radius: 4px; 
-            margin: 0 auto 15px auto; /* Centrar imagen */
-            display: block; /* Para que margin auto funcione */
+            margin: 0 auto 15px auto; 
+            display: block; 
+            border: 1px solid #e0e0e0; /* Borde sutil */
         }
         .presentaciones { list-style: none; padding: 0; margin: 15px 0; text-align: left; }
         .presentaciones li { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid #eee; }
@@ -55,7 +58,6 @@
         .qty-display { width: 20px; text-align: center; font-weight: bold; }
         #cart-total { font-size: 1.2em; font-weight: bold; margin-top: 15px; text-align: right; }
         
-        /* Aseguramos que la sección de pago no se muestre */
         #pago { display: none !important; }
         
     </style>
@@ -133,7 +135,7 @@
     </div>
 
     <script>
-        // TU LINK DE PAGO INSERTADO AQUÍ
+        // TU LINK DE PAGO DE WOMPI/NEQUI
         const DIRECT_PAYMENT_LINK = "https://checkout.nequi.wompi.co/l/uH6JaT"; 
         
         let cart = []; 
@@ -232,13 +234,11 @@
 
         function hideAllSections() {
             document.getElementById('productos').style.display = 'none';
-            // document.getElementById('promocion').style.display = 'none'; // Ya no es necesaria
         }
 
         function showProductSection() {
             hideAllSections();
             document.getElementById('productos').style.display = 'block';
-            // document.getElementById('promocion').style.display = 'block'; // Ya no es necesaria
             window.location.href='#productos';
         }
         
@@ -265,3 +265,7 @@
     </script>
 </body>
 </html>
+ <div class="producto-card">
+                <img src="empaquepresentacion.png" alt="Café Premium Aroma & Sabor"> 
+                <h3>Café Premium "Aroma & Sabor"</h3>
+                <p>Descubre las notas intensas de chocolate y caramelo, con un toque cítrico y un final persistente.</p>
