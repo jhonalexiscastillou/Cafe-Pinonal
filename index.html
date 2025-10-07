@@ -81,12 +81,24 @@
 
         /* Contenedor Semitransparente para el texto del Hero */
         .hero-content {
-            background-color: rgba(46, 125, 50, 0.8); 
+            background-color: rgba(46, 125, 50, 0.8); /* Fondo verde semitransparente */
             padding: 40px 50px;
             border-radius: 12px;
             box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
             max-width: 80%;
+            text-shadow: none; /* Quitamos la sombra de texto que podría afectar al PNG */
         }
+        
+        /* 🛑 NUEVO ESTILO: Para la imagen de Logo dentro del Hero */
+        .hero-content .hero-logo {
+            max-width: 90%; /* Hace la imagen responsiva */
+            height: auto;
+            margin-bottom: 20px;
+            display: block; 
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
         .hero-content h2 { font-size: 2.8em; margin-bottom: 10px; font-weight: 700; }
         .hero-content p { font-size: 1.2em; margin-top: 0; font-weight: 500;}
         
@@ -267,7 +279,8 @@
     
     <section id="hero-banner" class="hero">
         <div class="hero-content">
-            <h2 style="font-weight: 700;">Café Piñonal: Sabor de la Tierra.</h2>
+            <img src="logo-cafe-pional.png" alt="Café Piñonal Sabor de la Tierra" class="hero-logo">
+            
             <p>Descubre el origen y la pasión detrás de cada grano, de nuestra finca a tu taza.</p>
             <a href="#productos" class="btn" onclick="showProductSection();">🛍️ Ver Productos</a>
             <a href="#historia" class="btn btn-history" onclick="showHistorySection();">📜 Conoce la Historia</a>
