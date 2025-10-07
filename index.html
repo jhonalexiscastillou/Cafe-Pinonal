@@ -5,75 +5,116 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>☕ Aroma & Sabor - Tu Café Especial</title>
     <style>
-        /* MANTENEMOS LOS ESTILOS BÁSICOS ANTERIORES */
+        /* ESTILOS BASE */
         body { font-family: 'Arial', sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; color: #333; }
-        header { background-color: #6f4e37; color: white; padding: 20px 0; text-align: center; }
+        header { background-color: #6f4e37; color: white; padding: 20px 0; text-align: center; position: relative; }
         header h1 { margin: 0; font-size: 2.5em; }
         nav ul { list-style: none; padding: 0; margin-top: 10px; display: flex; justify-content: center; }
         nav ul li { margin: 0 15px; }
         nav ul li a { color: white; text-decoration: none; font-weight: bold; transition: color 0.3s; }
         nav ul li a:hover { color: #ffcc00; }
-        .hero { 
-            background: url('cafe_fondo.jpg') no-repeat center center/cover; 
-            height: 400px; display: flex; justify-content: center; align-items: center; 
-            text-align: center; color: white; position: relative; 
-        }
-        .hero::before { 
-            content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0; 
-            background-color: rgba(0, 0, 0, 0.4); z-index: 1; 
-        }
-        .hero-content { z-index: 2; }
-        .hero h2 { font-size: 3em; margin-bottom: 10px; text-shadow: 2px 2px 4px #000; }
-        .hero p { font-size: 1.2em; margin-bottom: 30px; }
+        
+        /* BOTONES Y CONTENEDOR */
         .btn { 
             background-color: #d3a14e; color: white; padding: 10px 20px; 
             text-decoration: none; border-radius: 5px; font-weight: bold; 
             transition: background-color 0.3s; display: inline-block; margin-top: 10px;
+            cursor: pointer; /* Indica que es clickeable */
+            border: none;
         }
         .btn:hover { background-color: #b58032; }
         .container { width: 80%; margin: 40px auto; padding: 20px; background-color: white; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); border-radius: 8px; }
         .productos, .promocion { text-align: center; margin-bottom: 40px; }
         
-        /* ESTILOS ESPECÍFICOS PARA LAS TARJETAS DE PRODUCTO ACTUALIZADAS */
+        /* ESTILOS DE LA TARJETA DE PRODUCTO */
         .producto-card {
             border: 1px solid #ccc;
             padding: 20px;
-            margin: 10px;
-            display: inline-block;
-            width: 30%;
-            min-width: 280px; 
+            margin: 10px auto; 
+            width: 40%; 
+            min-width: 300px; 
+            max-width: 400px; 
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             vertical-align: top;
         }
         .producto-card img {
-            /* ESTA ES LA RUTA DE IMAGEN A LA QUE AFECTA EL CAMBIO */
             max-width: 100%;
             height: auto;
             border-radius: 4px;
             margin-bottom: 15px;
         }
-        .presentaciones {
-            list-style: none;
-            padding: 0;
-            margin: 15px 0;
-            text-align: left;
-        }
+        .presentaciones { list-style: none; padding: 0; margin: 15px 0; text-align: left; }
         .presentaciones li {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 8px 0;
-            border-bottom: 1px solid #eee;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 8px 0; border-bottom: 1px solid #eee;
         }
-        .presentaciones li:last-child {
-            border-bottom: none;
-        }
+        .presentaciones li:last-child { border-bottom: none; }
         .peso { font-weight: bold; color: #6f4e37; }
         .precio { font-size: 1.1em; font-weight: bold; color: #d3a14e; }
-        /* FIN ESTILOS ESPECÍFICOS */
 
-        footer { background-color: #333; color: white; text-align: center; padding: 20px 0; margin-top: 20px; }
+        /* ESTILOS DEL CARRITO FLOTANTE */
+        #cart-icon {
+            position: absolute;
+            top: 25px;
+            right: 50px;
+            font-size: 1.5em;
+            cursor: pointer;
+            color: white;
+        }
+        #cart-count {
+            background-color: #ff6f61; /* Color de contraste */
+            color: white;
+            border-radius: 50%;
+            padding: 3px 8px;
+            font-size: 0.7em;
+            position: absolute;
+            top: -5px;
+            right: -10px;
+        }
+        .cart-modal {
+            display: none; /* Oculto por defecto */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4); 
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto; 
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 8px;
+        }
+        .close-btn {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close-btn:hover,
+        .close-btn:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        #cart-items li {
+            list-style: none;
+            padding: 8px 0;
+            border-bottom: 1px dashed #ccc;
+        }
+        #cart-total {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-top: 15px;
+            text-align: right;
+        }
     </style>
 </head>
 <body>
@@ -89,38 +130,42 @@
                 <li><a href="#contacto">Contacto</a></li>
             </ul>
         </nav>
+        
+        <div id="cart-icon" onclick="toggleCartModal()">
+            🛒 <span id="cart-count">0</span>
+        </div>
     </header>
 
     <section id="inicio" class="hero">
         <div class="hero-content">
             <h2>El Mejor Café, Directo a tu Taza.</h2>
             <p>Descubre nuestra selección artesanal de granos especiales.</p>
-            <a href="#productos" class="btn">¡Explora Nuestros Cafés!</a>
+            <a href="#productos" class="btn">¡Explora Nuestro Café!</a>
         </div>
     </section>
     
-   <div class="container">
-    <section id="productos" class="productos">
-        <h2>Nuestro Café Especial</h2>
-        <p>Granos de la más alta calidad, tostados a la perfección para un sabor inigualable.</p>
-
-      
-          
+    <div class="container">
+        <section id="productos" class="productos">
+            <h2>Nuestro Café Especial</h2>
+            <p>Granos de la más alta calidad, tostados a la perfección para un sabor inigualable.</p>
 
             <div class="producto-card">
-                <img src="empaquepresentacion.png" alt="Café de especialidad"> <h3></h3>
-                <p>Granos seleccionados cuidadosamente. Proceso natural que conserva las notas a chocolate.</p>
+                <img src="xxxx.png" alt="Café Premium Aroma & Sabor"> 
+                <h3>Café Premium "Aroma & Sabor"</h3>
+                <p>Descubre las notas intensas de chocolate y caramelo, con un toque cítrico y un final persistente.</p>
 
                 <ul class="presentaciones">
                     <li>
                         <span class="peso">250 gramos</span>
                         <span class="precio">$24.000</span>
-                        <a href="#" class="btn btn-pequeno">Añadir</a>
+                        <button class="btn btn-pequeno" 
+                            onclick="addToCart('Café Premium (250g)', 24000)">Añadir</button>
                     </li>
                     <li>
                         <span class="peso">500 gramos</span>
                         <span class="precio">$48.000</span>
-                        <a href="#" class="btn btn-pequeno">Añadir</a>
+                        <button class="btn btn-pequeno" 
+                            onclick="addToCart('Café Premium (500g)', 48000)">Añadir</button>
                     </li>
                 </ul>
             </div>
@@ -148,5 +193,76 @@
         <p>Síguenos en <a href="#" style="color: #ffcc00;">Redes Sociales</a> | Contáctanos: info@aromasabor.com</p>
     </footer>
 
-</body>
-</html>
+    <div id="cart-modal" class="cart-modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="toggleCartModal()">&times;</span>
+            <h3>🛍️ Tu Carrito de Compras</h3>
+            <ul id="cart-items">
+                </ul>
+            <p id="cart-total">Total: $0</p>
+            <button class="btn" style="width: 100%; background-color: #ff6f61;">Finalizar Compra</button>
+        </div>
+    </div>
+
+    <script>
+        let cart = []; // Array para almacenar los productos en el carrito
+
+        // Función para añadir productos al carrito
+        function addToCart(name, price) {
+            // Buscamos si el producto ya existe en el carrito
+            const existingItem = cart.find(item => item.name === name);
+
+            if (existingItem) {
+                // Si existe, solo incrementamos la cantidad
+                existingItem.quantity += 1;
+            } else {
+                // Si no existe, lo agregamos como nuevo
+                cart.push({
+                    name: name,
+                    price: price,
+                    quantity: 1
+                });
+            }
+
+            // Actualizamos la interfaz del carrito y el contador
+            updateCartDisplay();
+            alert(`"${name}" ha sido añadido al carrito!`);
+        }
+
+        // Función para actualizar la visualización del carrito (modal e icono)
+        function updateCartDisplay() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartCount = document.getElementById('cart-count');
+            const cartTotalElement = document.getElementById('cart-total');
+            let total = 0;
+            let totalItems = 0;
+
+            cartItemsContainer.innerHTML = ''; // Limpiar lista actual
+
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                totalItems += item.quantity;
+
+                // Crear elemento de lista para el producto
+                const listItem = document.createElement('li');
+                
+                // Formateamos el precio total del producto
+                const formattedPrice = itemTotal.toLocaleString('es-CO'); 
+
+                listItem.textContent = `${item.name} x${item.quantity} - $${formattedPrice}`;
+                cartItemsContainer.appendChild(listItem);
+            });
+
+            // Actualizar el contador del ícono
+            cartCount.textContent = totalItems;
+
+            // Actualizar el total del carrito (formateando a moneda local)
+            const formattedTotal = total.toLocaleString('es-CO');
+            cartTotalElement.textContent = `Total: $${formattedTotal}`;
+        }
+
+        // Función para mostrar/ocultar el modal del carrito
+        function toggleCartModal() {
+            const modal = document.getElementById('cart-modal');
+            if (modal.style.display === "
