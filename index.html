@@ -27,8 +27,7 @@
             color: var(--color-texto-oscuro);
             
             /* --- FONDO DEL BODY (Marca de Agua) --- */
-            /* Es importante mantener esta imagen sutil y de baja visibilidad */
-            background: var(--color-pastel) url('foto de empaque en montañas.png') no-repeat center center fixed; 
+            background: var(--color-pastel) url('foto de empaque en montañas.jpg') no-repeat center center fixed; 
             background-size: cover; 
             background-blend-mode: multiply; 
             opacity: 0.95; 
@@ -64,7 +63,7 @@
         /* --- ESTILO: IMAGEN DE FONDO PARA EL HERO (PORTADA) --- */
         .hero { 
             background-color: #388E3C; 
-            height: 500px; 
+            height: 600px; /* Aumentamos la altura para mejor vista */
             display: flex; 
             justify-content: center; 
             align-items: center; 
@@ -72,34 +71,39 @@
             color: var(--color-texto-claro); 
             position: relative; 
             
-            /* ⚠️ REEMPLAZA 'cafe-portada.png' POR TU IMAGEN DE ALTA RESOLUCIÓN */
-            background-image: url('cafe-portada.png'); 
+            /* Usamos tu imagen de empaque en montañas */
+            background-image: url('foto de empaque en montañas.jpg'); 
             background-size: cover; 
-            background-position: center 30%; 
+            background-position: center bottom; 
             background-repeat: no-repeat;
         }
 
-        /* Contenedor Semitransparente para el texto del Hero */
+        /* Contenedor de Texto del Hero */
         .hero-content {
-            background-color: rgba(46, 125, 50, 0.8); /* Fondo verde semitransparente */
+            /* 🛑 CAMBIO CLAVE: ELIMINAMOS EL CUADRO VERDE */
+            background-color: transparent; 
             padding: 40px 50px;
             border-radius: 12px;
-            box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9); /* Sombra oscura para texto claro */
+            /* Agregamos un borde y desenfoque sutil para legibilidad */
+            border: 1px solid rgba(255, 255, 255, 0.4); 
+            backdrop-filter: blur(2px); 
             max-width: 80%;
-            text-shadow: none; /* Quitamos la sombra de texto que podría afectar al PNG */
+            display: flex; 
+            flex-direction: column;
+            align-items: center;
         }
         
-        /* 🛑 NUEVO ESTILO: Para la imagen de Logo dentro del Hero */
+        /* 🛑 ESTILO DEL LOGO PNG */
         .hero-content .hero-logo {
-            max-width: 90%; /* Hace la imagen responsiva */
+            max-width: 90%; 
             height: auto;
             margin-bottom: 20px;
             display: block; 
-            margin-left: auto;
-            margin-right: auto;
+            /* Sombra para destacar la imagen PNG del fondo */
+            filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.7)); 
         }
         
-        .hero-content h2 { font-size: 2.8em; margin-bottom: 10px; font-weight: 700; }
         .hero-content p { font-size: 1.2em; margin-top: 0; font-weight: 500;}
         
         .btn { 
@@ -131,7 +135,7 @@
             max-width: 1100px;
             margin: 40px auto; 
             padding: 30px; 
-            background-color: rgba(255, 255, 255, 0.85); 
+            background-color: rgba(255, 255, 255, 0.95); /* Fondo más sólido para legibilidad del contenido */
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.08); 
             border-radius: 12px; 
         }
@@ -279,7 +283,7 @@
     
     <section id="hero-banner" class="hero">
         <div class="hero-content">
-            <img src="logo-cafe-pional.png" alt="Café Piñonal Sabor de la Tierra" class="hero-logo">
+            <img src="fotos abuelos.png" alt="Café Piñonal Sabor de la Tierra" class="hero-logo">
             
             <p>Descubre el origen y la pasión detrás de cada grano, de nuestra finca a tu taza.</p>
             <a href="#productos" class="btn" onclick="showProductSection();">🛍️ Ver Productos</a>
@@ -293,7 +297,7 @@
             
             <div class="history-block">
                 <div class="history-image-container">
-                    <img src="foto de empaque en montañas.png" alt="Foto del empaque en las montañas"> 
+                    <img src="foto de empaque en montañas.jpg" alt="Foto del empaque en las montañas"> 
                 </div>
                 <div class="history-text-container">
                     <h3>Nuestra Historia e Inspiración</h3>
