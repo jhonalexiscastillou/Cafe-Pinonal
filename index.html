@@ -3,20 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap" rel="stylesheet">
     <title>☕ Café piñonal - Tienda con Historia</title>
     <style>
         /* NUEVA PALETA DE COLORES
            Fondo General: #E8F5E9 (Verde Pastel Muy Claro)
            Principal Oscuro (Encabezados/Títulos/Subtítulos/Footer): #2E7D32 (Verde Oscuro Elegante)
-           Acento Verde Medio (Botones/Bordes): #66BB6A 
-           Acento Verde Más Oscuro (Hover): #388E3C
+           Acento Verde Medio (Bordes/Precios): #66BB6A 
+           Acento Verde Más Oscuro (Botones/Hover): #388E3C
            Texto General: #FFFFFF (Blanco Puro) para fondos oscuros
-           Texto Secundario: #424242 (Gris Oscuro) para fondos claros y mejor legibilidad en algunos casos
+           Texto Secundario: #424242 (Gris Oscuro) para fondos claros (mejor legibilidad)
         */
 
         /* ESTILOS BASE */
         body { 
-            font-family: 'Arial', sans-serif; 
+            font-family: 'Quicksand', sans-serif; /* FUENTE ACTUALIZADA */
             margin: 0; 
             padding: 0; 
             background-color: #E8F5E9; /* Verde Pastel Muy Claro */
@@ -29,111 +30,143 @@
             padding: 20px 0; 
             text-align: center; 
             position: relative; 
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra para elevarlo */
         }
-        header h1 { margin: 0; font-size: 2.5em; }
-        nav ul { list-style: none; padding: 0; margin-top: 10px; display: flex; justify-content: center; }
-        nav ul li { margin: 0 15px; }
-        nav ul li a { color: white; /* Texto Blanco */ text-decoration: none; font-weight: bold; transition: color 0.3s; }
-        nav ul li a:hover { color: #66BB6A; } /* Acento Verde Medio */
+        header h1 { margin: 0; font-size: 2.5em; font-weight: 700; }
+        header p { margin: 5px 0 0; font-weight: 500;}
+        nav ul { list-style: none; padding: 0; margin-top: 15px; display: flex; justify-content: center; }
+        nav ul li { margin: 0 20px; }
+        nav ul li a { color: white; text-decoration: none; font-weight: 500; transition: color 0.3s; padding: 5px 10px;}
+        nav ul li a:hover { color: #66BB6A; border-bottom: 2px solid #66BB6A; } 
         
         /* ESTILO DEL HERO/PORTADA (Banner Transparente) */
         .hero { 
-            /* X: ¡IMPORTANTE! REEMPLAZA ESTA URL CON LA RUTA DE TU IMAGEN DE MONTAÑAS/EMPAQUE */
             background: url('foto de empaque en montañas.jpg') no-repeat center center/cover; 
             background-attachment: fixed; 
-            height: 450px; 
+            height: 500px; /* Un poco más alto */
             display: flex; 
             justify-content: center; 
             align-items: center; 
             text-align: center; 
-            color: white; /* Texto Blanco para el banner */
+            color: white; 
             position: relative; 
         }
 
         /* Contenedor Semitransparente para el texto */
         .hero-content {
-            background-color: rgba(46, 125, 50, 0.85); /* Fondo Semitransparente (85% opacidad) del Verde Oscuro */
-            padding: 30px 40px;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            background-color: rgba(46, 125, 50, 0.85); /* Verde Oscuro Semitransparente */
+            padding: 40px 50px;
+            border-radius: 12px;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
+            max-width: 80%;
         }
+        .hero-content h2 { font-size: 2.8em; margin-bottom: 10px; font-weight: 700; }
+        .hero-content p { font-size: 1.2em; margin-top: 0; font-weight: 500;}
         
         .btn { 
-            background-color: #66BB6A; /* Acento Verde Medio */
+            background-color: #388E3C; /* Verde Más Oscuro */
             color: white; 
-            padding: 10px 20px; 
+            padding: 12px 25px; 
             text-decoration: none; 
-            border-radius: 5px; 
-            font-weight: bold; 
-            transition: background-color 0.3s; 
+            border-radius: 25px; /* Forma de píldora */
+            font-weight: 700; 
+            transition: background-color 0.3s, border-color 0.3s; 
             display: inline-block; 
-            margin-top: 10px; 
+            margin: 10px; /* Espaciado entre botones */
             cursor: pointer; 
             border: none; 
         }
-        .btn:hover { background-color: #388E3C; } /* Acento Verde Más Oscuro */
+        .btn:hover { background-color: #66BB6A; } /* Acento Verde Medio */
+        
+        /* Estilo para el botón de historia transparente */
+        .btn-history {
+            background-color: transparent !important;
+            border: 2px solid white !important;
+        }
+        .btn-history:hover {
+            background-color: rgba(255, 255, 255, 0.1) !important;
+            border-color: #66BB6A !important;
+        }
         
         .container { 
-            width: 80%; 
+            width: 85%; /* Un poco más ancho */
+            max-width: 1100px;
             margin: 40px auto; 
-            padding: 20px; 
+            padding: 30px; 
             background-color: white; 
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
-            border-radius: 8px; 
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.08); 
+            border-radius: 12px; /* Más redondeado */
         }
         
         /* ESTILOS DE PRODUCTO */
-        .producto-card { margin: 10px auto; width: 90%; min-width: 280px; max-width: 350px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 20px; border: 1px solid #CFD8DC; text-align: center; } /* Borde suave */
-        .producto-card img { max-width: 150px; height: auto; border-radius: 4px; margin: 0 auto 15px auto; display: block; border: 1px solid #B0BEC5; }
+        .producto-card { 
+            margin: 20px auto; 
+            max-width: 350px; 
+            border-radius: 10px; 
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); 
+            padding: 25px; 
+            border: 1px solid #E0E0E0; 
+            text-align: center; 
+            transition: transform 0.3s;
+        }
+        .producto-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); }
+        .producto-card img { max-width: 180px; height: auto; border-radius: 6px; margin: 0 auto 20px auto; display: block; border: 3px solid #E8F5E9; }
         .presentaciones { list-style: none; padding: 0; margin: 15px 0; text-align: left; }
-        .presentaciones li { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid #E0E0E0; }
-        .peso { font-weight: bold; color: #2E7D32; } /* Verde Oscuro */
-        .precio { font-size: 1.1em; font-weight: bold; color: #388E3C; } /* Acento Verde Más Oscuro */
+        .presentaciones li { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #E8F5E9; }
+        .peso { font-weight: 500; color: #2E7D32; } 
+        .precio { font-size: 1.2em; font-weight: 700; color: #388E3C; } /* Verde Más Oscuro para precio */
 
         /* ESTILOS PARA LA SECCIÓN DE HISTORIA */
-        .history-section { display: flex; flex-direction: column; gap: 30px; padding: 40px 0; text-align: left; }
+        .history-section { display: flex; flex-direction: column; gap: 40px; padding: 20px 0; text-align: left; }
+        .history-section h2 { margin-bottom: 40px; font-weight: 700; }
         .history-block {
-            border-left: 5px solid #66BB6A; /* Barra con Acento Verde Medio */
+            border-left: 5px solid #66BB6A; 
             padding-left: 20px;
-            background-color: #F1F8E9; /* Un verde pastel muy suave para bloques de historia */
-            padding: 20px;
-            border-radius: 8px;
+            background-color: #F1F8E9; 
+            padding: 25px;
+            border-radius: 10px;
             display: flex;
             align-items: flex-start;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
         }
         .history-block h3 {
-            color: #2E7D32; /* Verde Oscuro para títulos */
+            color: #2E7D32; 
             margin-top: 0;
-            font-size: 1.5em;
-            border-bottom: 2px dashed #66BB6A; /* Línea con Acento Verde Medio */
-            padding-bottom: 5px;
+            font-size: 1.6em; /* Subtítulos un poco más grandes */
+            border-bottom: 2px dashed #66BB6A; 
+            padding-bottom: 8px;
+            font-weight: 700;
         }
-        .history-block p { font-size: 1.1em; line-height: 1.6; margin-bottom: 0; }
-        .history-image-container { flex-shrink: 0; margin-right: 20px; max-width: 250px; text-align: center; }
-        .history-image-container img { width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); }
+        .history-block p { font-size: 1.1em; line-height: 1.7; margin-bottom: 0; font-weight: 500;}
+        .history-image-container { flex-shrink: 0; margin-right: 30px; max-width: 300px; text-align: center; }
+        .history-image-container img { width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); }
         .history-text-container { flex-grow: 1; }
         @media (max-width: 768px) {
             .history-block { flex-direction: column; align-items: center; text-align: center; }
-            .history-image-container { margin-right: 0; margin-bottom: 15px; }
+            .history-image-container { margin-right: 0; margin-bottom: 20px; }
         }
 
         /* ESTILOS DEL CARRITO */
-        #cart-icon { position: absolute; top: 25px; right: 50px; font-size: 1.5em; cursor: pointer; color: white; z-index: 500; }
-        #cart-count { background-color: #D32F2F; /* Rojo vibrante para el contador */ color: white; border-radius: 50%; padding: 3px 8px; font-size: 0.7em; position: absolute; top: -5px; right: -10px; }
-        .cart-modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4); }
-        .modal-content { background-color: #fefefe; margin: 10% auto; padding: 20px; border: 1px solid #888; width: 80%; max-width: 500px; border-radius: 8px; }
-        .close-btn { color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer; }
-        #cart-total { font-size: 1.2em; font-weight: bold; margin-top: 15px; text-align: right; color: #2E7D32; } /* Total con Verde Oscuro */
-        .btn-pago { background-color: #2E7D32 !important; /* Botón de pago con Verde Oscuro */ color: white !important; } 
-        .btn-pago:hover { background-color: #388E3C !important; } /* Hover de pago con Verde Más Oscuro */
+        #cart-icon { position: absolute; top: 25px; right: 50px; font-size: 1.8em; cursor: pointer; color: white; z-index: 500; }
+        #cart-count { background-color: #D32F2F; color: white; border-radius: 50%; padding: 4px 8px; font-size: 0.8em; position: absolute; top: -8px; right: -8px; }
+        .cart-modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.6); }
+        .modal-content { background-color: #fefefe; margin: 5% auto; padding: 25px; border: none; width: 90%; max-width: 450px; border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.3); }
+        .close-btn { color: #888; float: right; font-size: 32px; font-weight: 500; cursor: pointer; }
+        #cart-items li { list-style: none; padding: 12px 0; border-bottom: 1px solid #E0E0E0; display: flex; justify-content: space-between; align-items: center; font-size: 1.1em; font-weight: 500; }
+        .item-controls { display: flex; align-items: center; }
+        .qty-btn { background-color: #E8F5E9; border: 1px solid #CFD8DC; padding: 5px 10px; cursor: pointer; font-size: 1em; margin: 0 5px; border-radius: 5px; }
+        .qty-display { width: 20px; text-align: center; font-weight: 700; }
+        #cart-total { font-size: 1.4em; font-weight: 700; margin-top: 20px; text-align: right; color: #2E7D32; } 
+        .btn-pago { background-color: #2E7D32 !important; color: white !important; font-weight: 700 !important; border-radius: 10px !important; } 
+        .btn-pago:hover { background-color: #388E3C !important; } 
         
         footer { 
-            background-color: #2E7D32; /* Verde Oscuro */
-            color: white; /* Texto Blanco */
-            padding: 15px 0; 
+            background-color: #2E7D32; 
+            color: white; 
+            padding: 20px 0; 
             text-align: center; 
-            font-size: 0.9em;
+            font-size: 1em;
+            margin-top: 0;
         }
         
     </style>
@@ -158,9 +191,10 @@
     
     <section id="hero-banner" class="hero">
         <div class="hero-content">
-            <h2>El Mejor Café, Directo a tu Taza.</h2>
-            <p>Descubre el origen y la pasión detrás de cada grano.</p>
-            <a href="#historia" class="btn" onclick="showHistorySection();">📜 Conoce la Historia</a>
+            <h2 style="font-weight: 700;">Café Piñonal: Sabor de la Tierra.</h2>
+            <p>Descubre el origen y la pasión detrás de cada grano, de nuestra finca a tu taza.</p>
+            <a href="#productos" class="btn" onclick="showProductSection();">🛍️ Ver Productos</a>
+            <a href="#historia" class="btn btn-history" onclick="showHistorySection();">📜 Conoce la Historia</a>
         </div>
     </section>
 
@@ -195,9 +229,9 @@
                     <p>
                         Donde es recolectado: Antioquia suroeste
                         <br>
-                        Nombre de la Finca: Filo Bonito
+                        Nombre de la Finca: **Filo Bonito**
                         <br>
-                        Vereda: La historia de nuestro café nace entre montañas, bajo el esfuerzo y el corazón de una familia campesina de la vereda El Piñonal. Nuestros abuelos sembraron más que café: sembraron valores, amor por la tierra y el ejemplo de que la unión familiar puede resistir cualquier adversidad.
+                        Vereda: La historia de nuestro café nace entre montañas, bajo el esfuerzo y el corazón de una familia campesina de la vereda **El Piñonal**. Nuestros abuelos sembraron más que café: sembraron valores, amor por la tierra y el ejemplo de que la unión familiar puede resistir cualquier adversidad.
                         <br><br>
                         Entre montañas verdes a 1800 msnm, aire puro y caminos de tierra nace la Finca Filo Bonito, en la vereda El Piñonal. Un lugar donde el sol abraza los cafetales y el canto de los pájaros acompaña las jornadas de trabajo. Aquí, la tierra fértil y el clima generoso se unen para dar vida a granos únicos, cultivados con dedicación y respeto por la naturaleza.
                     </p>
@@ -224,8 +258,8 @@
 
     <div class="container" id="product-section-container" style="display: none;">
         <section id="productos" class="productos">
-            <h2 style="color: #2E7D32;">Nuestro Café Especial</h2>
-            <p>Granos de la más alta calidad, tostados a la perfección para un sabor inigualable.</p>
+            <h2 style="text-align: center; color: #2E7D32; font-weight: 700;">Nuestro Café Especial</h2>
+            <p style="text-align: center;">Granos de la más alta calidad, tostados a la perfección para un sabor inigualable.</p>
 
             <div class="producto-card">
                 <img src="empaquepresentacion.png" alt="Café Premium Café piñonal"> 
@@ -274,8 +308,6 @@
         
         let cart = []; 
         let currentTotal = 0; 
-
-        // --- Funciones del Carrito (sin cambios en la lógica) ---
 
         function changeQuantity(name, change) {
             const itemIndex = cart.findIndex(item => item.name === name);
@@ -352,8 +384,6 @@
             showHistorySection(); 
         }
 
-        // --- GESTIÓN de Interfaz (Mostrar/Ocultar) ---
-
         function hideAllSections() {
             document.getElementById('product-section-container').style.display = 'none';
             document.getElementById('history-section-container').style.display = 'none';
@@ -362,15 +392,16 @@
 
         function showHistorySection() {
             hideAllSections();
-            document.getElementById('hero-banner').style.display = 'flex'; // Muestra el banner
-            document.getElementById('history-section-container').style.display = 'block'; // Muestra la historia
+            document.getElementById('hero-banner').style.display = 'flex'; 
+            document.getElementById('history-section-container').style.display = 'block'; 
             document.getElementById('hero-banner').scrollIntoView({ behavior: 'smooth' });
         }
         
         function showProductSection() {
             hideAllSections();
-            document.getElementById('product-section-container').style.display = 'block'; // Muestra los productos
-            document.getElementById('product-section-container').scrollIntoView({ behavior: 'smooth' });
+            document.getElementById('hero-banner').style.display = 'flex'; /* Mantenemos el banner visible arriba */
+            document.getElementById('product-section-container').style.display = 'block'; 
+            document.getElementById('hero-banner').scrollIntoView({ behavior: 'smooth' });
         }
         
         function toggleCartModal() {
