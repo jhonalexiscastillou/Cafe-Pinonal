@@ -7,7 +7,7 @@
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     
-    <title> Café piñonal - Tienda con Historia</title>
+    <title>☕ Café piñonal - Tienda con Historia</title>
     <style>
         /* PALETA DE COLORES */
         :root {
@@ -27,11 +27,12 @@
             color: var(--color-texto-oscuro);
             
             /* --- FONDO DEL BODY (Marca de Agua) --- */
-            /* Es importante mantener esta imagen sutil y de baja visibilidad */
-            background: var(--color-pastel) url('foto de empaque en montañas.png') no-repeat center center fixed; 
+            /* 🛑 CAMBIOS AQUÍ: QUITAMOS el color pastel, el blend-mode y la baja opacidad. */
+            background: url('foto de empaque en montañas.png') no-repeat center center fixed; 
             background-size: cover; 
-            background-blend-mode: multiply; 
-            opacity: 0.95; 
+            /* background-blend-mode: multiply; <--- ELIMINADO */ 
+            /* opacity: 0.95; <--- ELIMINADO del body */
+            opacity: 1.0; 
         }
         
         header { 
@@ -72,14 +73,14 @@
             color: var(--color-texto-claro); 
             position: relative; 
             
-            /* ⚠️ REEMPLAZA 'cafe-portada.png' POR TU IMAGEN DE ALTA RESOLUCIÓN */
+            /* ⚠️ RECUERDA: DEBE LLAMARSE 'cafe-portada.png' EN TU CARPETA */
             background-image: url('cafe-portada.png'); 
             background-size: cover; 
             background-position: center 30%; 
             background-repeat: no-repeat;
         }
 
-        /* Contenedor Semitransparente para el texto del Hero */
+        /* Contenedor Semitransparente para el texto del Hero (Mantiene un fondo oscuro semi-transparente) */
         .hero-content {
             background-color: rgba(46, 125, 50, 0.8); 
             padding: 40px 50px;
@@ -119,6 +120,7 @@
             max-width: 1100px;
             margin: 40px auto; 
             padding: 30px; 
+            /* 🟢 DEJAMOS UN COLOR CLARO Y TRANSPARENTE EN EL CONTAINER para que la imagen de fondo se vea a través */
             background-color: rgba(255, 255, 255, 0.85); 
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.08); 
             border-radius: 12px; 
@@ -155,6 +157,7 @@
         .history-section h2 { color: var(--color-oscuro); font-weight: 700; margin-bottom: 40px; }
         .history-block {
             border-left: 5px solid var(--color-medio); 
+            /* 🟢 Mantenemos el fondo del bloque claro para que el texto se lea bien */
             background-color: rgba(241, 248, 233, 0.8); 
             padding-left: 20px;
             padding: 25px;
@@ -250,7 +253,7 @@
 <body>
 
     <header>
-        <h1>Café piñonal </h1>
+        <h1>Café piñonal ☕</h1>
         <p>Tu dosis diaria de felicidad</p>
         <nav>
             <ul>
@@ -276,7 +279,7 @@
 
     <div class="container" id="history-section-container" style="display: none;">
         <section id="historia" class="history-section">
-            <h2 style="text-align: center; width: 100%;">Identidad, Origen e Inspiración</h2>
+            <h2 style="text-align: center; width: 100%;">☕ Identidad, Origen e Inspiración</h2>
             
             <div class="history-block">
                 <div class="history-image-container">
