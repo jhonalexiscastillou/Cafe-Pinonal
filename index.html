@@ -3,100 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>☕ Café piñonal - Tienda con Historia</title>
+    <title>☕ Aroma & Sabor - Tienda con Historia</title>
     <style>
+        /* PALETA DE COLORES RUANA Y FLORES:
+           Principal (Fuerte): #3E3E3E (Gris Carbón - como un paño oscuro de ruana)
+           Acento (Botones/Links): #D2691E (Chocolate/Tierra - cálido de la flor/tierra)
+           Secundario (Texto Principal): #F0F0F0 (Blanco Roto)
+           Fondo General: #EFEFEF (Gris Claro)
+        */
+
         /* ESTILOS BASE */
-        body { font-family: 'Arial', sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; color: #333; }
-        header { background-color: #6f4e37; color: white; padding: 20px 0; text-align: center; position: relative; }
+        body { 
+            font-family: 'Arial', sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            background-color: #EFEFEF; /* Fondo Gris Claro, sutil */
+            color: #3E3E3E; /* Texto principal oscuro */
+        }
+        
+        header { 
+            background-color: #3E3E3E; /* Azul/Gris Carbón (Ruana Oscura) */
+            color: #F0F0F0; /* Texto Blanco Roto */
+            padding: 20px 0; 
+            text-align: center; 
+            position: relative; 
+        }
         header h1 { margin: 0; font-size: 2.5em; }
         nav ul { list-style: none; padding: 0; margin-top: 10px; display: flex; justify-content: center; }
         nav ul li { margin: 0 15px; }
-        nav ul li a { color: white; text-decoration: none; font-weight: bold; transition: color 0.3s; }
-        nav ul li a:hover { color: #ffcc00; }
+        nav ul li a { color: #F0F0F0; text-decoration: none; font-weight: bold; transition: color 0.3s; }
+        nav ul li a:hover { color: #D2691E; } /* Hover Color Acento */
         
-        /* El hero ahora es solo el banner que se puede ocultar */
+        /* ESTILO DEL HERO/PORTADA */
         .hero { 
-            background: url('cafe_fondo.jpg') no-repeat center center/cover; 
+            /* X: REEMPLAZA ESTO por la URL/ruta de tu foto de fondo */
+            background: url('[URL_DE_TU_FOTO_AQUÍ_X]') no-repeat center center/cover; 
             height: 400px; 
             display: flex; 
             justify-content: center; 
             align-items: center; 
             text-align: center; 
-            color: white; 
+            color: #F0F0F0; /* Texto claro sobre la imagen oscura */
             position: relative; 
         }
         
-        .btn { background-color: #d3a14e; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold; transition: background-color 0.3s; display: inline-block; margin-top: 10px; cursor: pointer; border: none; }
-        .btn:hover { background-color: #b58032; }
+        .btn { 
+            background-color: #D2691E; /* Chocolate/Tierra Cálida (Acento de flores) */
+            color: white; 
+            padding: 10px 20px; 
+            text-decoration: none; 
+            border-radius: 5px; 
+            font-weight: bold; 
+            transition: background-color 0.3s; 
+            display: inline-block; 
+            margin-top: 10px; 
+            cursor: pointer; 
+            border: none; 
+        }
+        .btn:hover { background-color: #B55812; }
         
-        .container { width: 80%; margin: 40px auto; padding: 20px; background-color: white; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); border-radius: 8px; }
+        .container { 
+            width: 80%; 
+            margin: 40px auto; 
+            padding: 20px; 
+            background-color: #FFFFFF; /* Contenedores interiores blancos para mayor contraste */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+            border-radius: 8px; 
+        }
         
-        /* ESTILOS DE PRODUCTO */
+        /* ESTILOS DE PRODUCTO Y CARRITO */
         .producto-card { margin: 10px auto; width: 90%; min-width: 280px; max-width: 350px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 20px; border: 1px solid #ccc; text-align: center; }
         .producto-card img { max-width: 150px; height: auto; border-radius: 4px; margin: 0 auto 15px auto; display: block; border: 1px solid #e0e0e0; }
         .presentaciones { list-style: none; padding: 0; margin: 15px 0; text-align: left; }
         .presentaciones li { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid #eee; }
-        .peso { font-weight: bold; color: #6f4e37; }
-        .precio { font-size: 1.1em; font-weight: bold; color: #d3a14e; }
+        .peso { font-weight: bold; color: #3E3E3E; } /* Peso con color principal */
+        .precio { font-size: 1.1em; font-weight: bold; color: #D2691E; } /* Precio con color acento */
 
         /* ESTILOS PARA LA NUEVA SECCIÓN DE HISTORIA */
-        .history-section {
-            display: flex;
-            flex-direction: column;
-            gap: 30px; 
-            padding: 40px 0;
-            text-align: left;
+        .history-section { display: flex; flex-direction: column; gap: 30px; padding: 40px 0; text-align: left; }
+        .history-block { 
+            border-left: 5px solid #D2691E; /* Barra lateral con color acento */
+            padding-left: 20px; 
+            background-color: #F8F8F8; /* Fondo muy claro para bloques de historia */
+            padding: 20px; 
+            border-radius: 8px; 
+            display: flex; 
+            align-items: flex-start; 
         }
-        .history-block {
-            border-left: 5px solid #d3a14e; 
-            padding-left: 20px;
-            background-color: #fffaf4;
-            padding: 20px;
-            border-radius: 8px;
-            display: flex;
-            align-items: flex-start;
+        .history-block h3 { 
+            color: #3E3E3E; /* Títulos oscuros */
+            margin-top: 0; 
+            font-size: 1.5em; 
+            border-bottom: 2px dashed #D2691E; /* Separador con color acento */
+            padding-bottom: 5px; 
         }
-        .history-block h3 {
-            color: #6f4e37;
-            margin-top: 0;
-            font-size: 1.5em;
-            border-bottom: 2px dashed #eee;
-            padding-bottom: 5px;
-        }
-        .history-block p {
-            font-size: 1.1em;
-            line-height: 1.6;
-            margin-bottom: 0;
-        }
-        .history-image-container {
-            flex-shrink: 0; 
-            margin-right: 20px;
-            max-width: 250px; 
-            text-align: center;
-        }
-        .history-image-container img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        .history-text-container {
-            flex-grow: 1;
-        }
+        .history-block p { font-size: 1.1em; line-height: 1.6; margin-bottom: 0; }
+        .history-image-container { flex-shrink: 0; margin-right: 20px; max-width: 250px; text-align: center; }
+        .history-image-container img { width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); }
+        .history-text-container { flex-grow: 1; }
         @media (max-width: 768px) {
-            .history-block {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-            .history-image-container {
-                margin-right: 0;
-                margin-bottom: 15px;
-            }
+            .history-block { flex-direction: column; align-items: center; text-align: center; }
+            .history-image-container { margin-right: 0; margin-bottom: 15px; }
         }
 
         /* ESTILOS DEL CARRITO (Se mantienen) */
-        #cart-icon { position: absolute; top: 25px; right: 50px; font-size: 1.5em; cursor: pointer; color: white; z-index: 500; }
+        #cart-icon { position: absolute; top: 25px; right: 50px; font-size: 1.5em; cursor: pointer; color: #F0F0F0; z-index: 500; }
         #cart-count { background-color: #ff6f61; color: white; border-radius: 50%; padding: 3px 8px; font-size: 0.7em; position: absolute; top: -5px; right: -10px; }
         .cart-modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4); }
         .modal-content { background-color: #fefefe; margin: 10% auto; padding: 20px; border: 1px solid #888; width: 80%; max-width: 500px; border-radius: 8px; }
@@ -106,14 +117,15 @@
         .qty-btn { background-color: #eee; border: 1px solid #ccc; padding: 3px 8px; cursor: pointer; font-size: 1.1em; margin: 0 5px; border-radius: 3px; }
         .qty-display { width: 20px; text-align: center; font-weight: bold; }
         #cart-total { font-size: 1.2em; font-weight: bold; margin-top: 15px; text-align: right; }
-        #pago { display: none !important; }
+        .btn-pago { background-color: #3E3E3E !important; } /* Botón de pago con color oscuro */
+        .btn-pago:hover { background-color: #D2691E !important; }
         
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Café piñonal ☕</h1>
+        <h1>Aroma & Sabor ☕</h1>
         <p>Tu dosis diaria de felicidad</p>
         <nav>
             <ul>
@@ -138,64 +150,47 @@
 
     <div class="container" id="history-section-container" style="display: none;">
         <section id="historia" class="history-section">
-            <h2 style="text-align: center; color: #6f4e37; width: 100%;">☕ Identidad, Origen e Inspiración</h2>
+            <h2 style="text-align: center; color: #3E3E3E; width: 100%;">☕ Identidad, Origen e Inspiración</h2>
             
             <div class="history-block">
                 <div class="history-image-container">
-                    <img src="https://via.placeholder.com/250x180/795548/ffffff?text=Historia" alt="Historia de la empresa">
+                    <img src="[URL_DE_TU_FOTO_AQUÍ_X]" alt="Familia Campesina">
                 </div>
                 <div class="history-text-container">
                     <h3>Nuestra Historia e Inspiración</h3>
                     <p>
-                        Nuestra historia nace en la vereda El Piñonal, entre montañas, cafetales y el esfuerzo de una familia campesina que aprendió a amar la tierra. Desde nuestros abuelos heredamos los valores que hoy nos representan: la unión familiar, la honestidad, el trabajo constante y el respeto por el campo.
-
-Durante años, sembramos y cosechamos café con las manos, cuidando cada planta como parte de nuestra vida. Hoy, ese legado se transforma en una nueva etapa: compartir con el mundo el fruto de nuestra finca, Filo Bonito, en una presentación elegante que conserva el sabor auténtico del campo colombiano.
-
-Cada taza cuenta una historia de perseverancia, de amor por lo que se hace y del orgullo de ser campesinos que, a pesar de las dificultades, siguen firmes con sus raíces y el corazón puesto en la tierra.
-                        <br>
-                        Café piñonal nació del sueño de una familia campesina que quiso dar un paso más allá del cultivo: compartir con el mundo el alma de su tierra. Después de toda una vida sembrando y cosechando café, decidimos transformar ese fruto en una marca que representara nuestra historia, nuestro esfuerzo y la pasión que sentimos por el campo.
-
-Cada grano de café lleva consigo el recuerdo de los abuelos, el amor por la finca Filo Bonito y el orgullo de nuestras raíces en la vereda El Piñonal. Así nació este proyecto, como un homenaje a la unión familiar, al trabajo honesto y a la magia que se esconde en el aroma del café recién tostado.
-
-Café piñonal es más que una marca: es la esencia de nuestra tierra, el reflejo de una vida dedicada al campo y el deseo de que, en cada taza, sientas el mismo amor con el que lo cultivamos.".
+                        Esta marca es el fruto del amor y la unión de una **familia campesina, trabajadora y echada para delante**. Nuestros abuelos nos dejaron la mejor herencia: la firmeza de las raíces campesinas, la **honestidad** y el profundo **amor por las cosas que se hacen en el campo**. A pesar de las adversidades, su ejemplo de unidad nos inspira a ofrecer el mejor café, manteniendo vivo su legado.
                     </p>
                 </div>
             </div>
 
             <div class="history-block">
                 <div class="history-image-container">
-                    <img src="https://via.placeholder.com/250x180/4CAF50/ffffff?text=Finca" alt="Foto de la finca">
+                    <img src="[URL_DE_TU_FOTO_AQUÍ_X]" alt="Foto de la finca">
                 </div>
                 <div class="history-text-container">
                     <h3>Origen: Finca y Vereda</h3>
                     <p>
-                        Donde es recolectado: Antioquia suroeste
+                        **Donde es recolectado:** Cosechado en tierras bendecidas con un clima ideal.
                         <br>
-                        Nombre de la Finca: filo bonito
-                        <br>
-                        Vereda: La historia de nuestro café nace entre montañas, bajo el esfuerzo y el corazón de una familia campesina de la vereda El Piñonal. Nuestros abuelos sembraron más que café: sembraron valores, amor por la tierra y el ejemplo de que la unión familiar puede resistir cualquier adversidad.
-De sus manos curtidas por el trabajo nacieron las raíces de lo que hoy somos: una familia que sigue creyendo en la honestidad, el esfuerzo y la magia de lo hecho con amor. Cada taza cuenta la historia de quienes nunca se rindieron y decidieron transformar su legado en un sabor inolvidable.
+                        **Nombre de la Finca:** **[NOMBRE DE LA FINCA]** <br>
+                        **Vereda:** **El Piñonal**
                         <br><br>
-                        Entre montañas verdes a 1800 msnm, aire puro y caminos de tierra nace la Finca Filo Bonito, en la vereda El Piñonal. Un lugar donde el sol abraza los cafetales y el canto de los pájaros acompaña las jornadas de trabajo.
-Aquí, la tierra fértil y el clima generoso se unen para dar vida a granos únicos, cultivados con dedicación y respeto por la naturaleza. Cada planta refleja el amor por el campo y la tradición cafetera que ha pasado de generación en generación..
+                        Nuestro café nace en la vereda El Piñonal, donde la tradición y el cuidado de la tierra han sido la base de nuestro hogar por generaciones.
                     </p>
                 </div>
             </div>
 
             <div class="history-block">
                 <div class="history-image-container">
-                    <img src="https://via.placeholder.com/250x180/FF9800/ffffff?text=Recoleccion" alt="Foto de la recolección">
+                    <img src="[URL_DE_TU_FOTO_AQUÍ_X]" alt="Presentación del Café">
                 </div>
                 <div class="history-text-container">
-                    <h3>Recolección y Cuidado</h3>
+                    <h3>Recolección y Presentación</h3>
                     <p>
-                        La recolección del café es un ritual de paciencia y cariño. Cada grano maduro se elige a mano, uno a uno, por quienes conocen el lenguaje de la tierra.
-Después, con esmero y cuidado, el fruto se despulpa, se seca y se transforma en una experiencia que despierta los sentidos. Todo este proceso es un homenaje a la labor campesina, a los abuelos que enseñaron el valor del trabajo bien hecho y al orgullo de ver el fruto de nuestra tierra convertido en una presentación elegante y en un sabor inigualable.
-                        <br>
-                        Nuestro café se recolecta de forma manual, eligiendo solo las cerezas maduras, aquellas que alcanzan su punto perfecto de color y dulzura.
-Después, los granos pasan por un proceso de despulpado y lavado tradicional, donde se retira la pulpa con agua limpia y se dejan fermentar el tiempo justo para resaltar sus notas naturales.
-Posteriormente, el café se seca al sol, conservando así su esencia y aroma. Cada lote es seleccionado cuidadosamente antes del tueste artesanal, donde se controla la temperatura y el tiempo para obtener un grano uniforme, fragante y de calidad superior.
-De esta manera, garantizamos que cada taza refleje el trabajo, el amor y la dedicación que nacen en nuestra finca..
+                        Después de toda una vida sembrando y cosechando café con dedicación, hemos decidido vender el fruto de nuestra tierra. Cada grano es el resultado de un trabajo honesto.
+                        <br><br>
+                        Hoy, este café llega a sus manos en una **elegante presentación**, ofreciendo el inigualable sabor que solo el amor por el campo puede crear.
                     </p>
                 </div>
             </div>
@@ -205,12 +200,12 @@ De esta manera, garantizamos que cada taza refleje el trabajo, el amor y la dedi
 
     <div class="container" id="product-section-container" style="display: none;">
         <section id="productos" class="productos">
-            <h2>Nuestro Café Especial</h2>
+            <h2 style="color: #3E3E3E;">Nuestro Café Especial</h2>
             <p>Granos de la más alta calidad, tostados a la perfección para un sabor inigualable.</p>
 
             <div class="producto-card">
-                <img src="empaquepresentacion.png" alt="Café Premium Café piñonal"> 
-                <h3>Café Premium "Café piñonal"</h3>
+                <img src="[URL_DE_TU_FOTO_AQUÍ_X]" alt="Café Premium Aroma & Sabor"> 
+                <h3>Café Premium "Aroma & Sabor"</h3>
                 <p>Descubre las notas intensas de chocolate y caramelo, con un toque cítrico y un final persistente.</p>
 
                 <ul class="presentaciones">
@@ -231,8 +226,8 @@ De esta manera, garantizamos que cada taza refleje el trabajo, el amor y la dedi
         </section>
     </div>
     
-    <footer id="contacto">
-        <p>&copy; 2025 Café piñonal. Todos los derechos reservados.</p>
+    <footer id="contacto" style="background-color: #3E3E3E; color: #F0F0F0; padding: 15px 0; text-align: center;">
+        <p>&copy; 2025 Aroma & Sabor. Todos los derechos reservados.</p>
     </footer>
 
     <div id="cart-modal" class="cart-modal">
@@ -243,7 +238,7 @@ De esta manera, garantizamos que cada taza refleje el trabajo, el amor y la dedi
                 </ul>
             <p id="cart-total">Total: $0</p>
             
-            <button class="btn" onclick="goToDirectLink()" style="width: 100%; background-color: #007bff; font-size: 1.1em;">
+            <button class="btn btn-pago" onclick="goToDirectLink()" style="width: 100%; font-size: 1.1em;">
                 Pagar con Link Directo
             </button>
         </div>
@@ -256,7 +251,7 @@ De esta manera, garantizamos que cada taza refleje el trabajo, el amor y la dedi
         let cart = []; 
         let currentTotal = 0; 
 
-        // --- Funciones del Carrito ---
+        // --- Funciones del Carrito (sin cambios en la lógica) ---
 
         function changeQuantity(name, change) {
             const itemIndex = cart.findIndex(item => item.name === name);
@@ -267,7 +262,7 @@ De esta manera, garantizamos que cada taza refleje el trabajo, el amor y la dedi
                 }
             }
             if (cart.length === 0) {
-                showHistorySection(); // Vuelve a la historia si el carrito está vacío
+                showHistorySection(); 
             }
             updateCartDisplay();
         }
@@ -292,7 +287,6 @@ De esta manera, garantizamos que cada taza refleje el trabajo, el amor y la dedi
             cartItemsContainer.innerHTML = ''; 
 
             cart.forEach(item => {
-                // ... (Lógica de visualización del carrito)
                 const itemTotal = item.price * item.quantity;
                 currentTotal += itemTotal;
                 totalItems += item.quantity;
@@ -331,7 +325,7 @@ De esta manera, garantizamos que cada taza refleje el trabajo, el amor y la dedi
             
             cart = []; 
             updateCartDisplay();
-            showHistorySection(); // Vuelve a la historia después de pagar
+            showHistorySection(); 
         }
 
         // --- GESTIÓN de Interfaz (Mostrar/Ocultar) ---
