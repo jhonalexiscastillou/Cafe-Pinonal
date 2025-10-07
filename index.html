@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>☕ Aroma & Sabor - Pago con Link Directo</title>
     <style>
-        /* ESTILOS BASE (Se mantienen) */
+        /* ESTILOS BASE */
         body { font-family: 'Arial', sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; color: #333; }
         header { background-color: #6f4e37; color: white; padding: 20px 0; text-align: center; position: relative; }
         header h1 { margin: 0; font-size: 2.5em; }
@@ -38,7 +38,6 @@
         .qty-display { width: 20px; text-align: center; font-weight: bold; }
         #cart-total { font-size: 1.2em; font-weight: bold; margin-top: 15px; text-align: right; }
         
-        /* Ocultamos la sección de pago innecesaria */
         #pago { display: none !important; }
         
     </style>
@@ -61,7 +60,7 @@
             🛒 <span id="cart-count">0</span>
         </div>
     </header>
-
+    
     <section id="inicio" class="hero">
         <div class="hero-content">
             <h2>El Mejor Café, Directo a tu Taza.</h2>
@@ -130,11 +129,8 @@
     </div>
 
     <script>
-        // 🚨 PASO CLAVE: PEGA TU LINK DIRECTO AQUÍ
-        // EJEMPLOS: 
-        // const DIRECT_PAYMENT_LINK = "https://checkout.wompi.co/p/PSE_Bancolombia_xyz123";
-        // const DIRECT_PAYMENT_LINK = "https://api.whatsapp.com/send?phone=573001234567&text=Quiero%20pagar%20mi%20pedido.";
-        const DIRECT_PAYMENT_LINK = "PEGAR_TU_LINK_AQUI"; 
+        // TU LINK DE PAGO INSERTADO AQUÍ
+        const DIRECT_PAYMENT_LINK = "https://checkout.nequi.wompi.co/l/uH6JaT"; 
         
         let cart = []; 
         let currentTotal = 0; 
@@ -217,15 +213,16 @@
                 return;
             }
             
-            if (DIRECT_PAYMENT_LINK === "https://checkout.nequi.wompi.co/l/uH6JaT") {
-                 alert("⚠️ ERROR: Por favor, actualiza el código JavaScript con tu link directo antes de usar esta función.");
+            // Verificación de URL (aunque ya la insertamos, es buena práctica)
+            if (!DIRECT_PAYMENT_LINK.startsWith('http')) {
+                 alert("⚠️ ERROR DE CONFIGURACIÓN: El link de pago no es una URL válida.");
                  return;
             }
             
             // 1. Cierra el modal del carrito
             toggleCartModal(); 
             
-            // 2. Abre el link de pago en una nueva pestaña (recomendado)
+            // 2. Abre el link de pago en una nueva pestaña (tu link de Wompi/Nequi)
             window.open(DIRECT_PAYMENT_LINK, '_blank');
             
             // 3. Limpia el carrito después de la redirección
