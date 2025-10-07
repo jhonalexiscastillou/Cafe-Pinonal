@@ -27,8 +27,7 @@
             color: var(--color-texto-oscuro);
             
             /* --- FONDO DEL BODY (Marca de Agua) --- */
-            /* Es importante mantener esta imagen sutil y de baja visibilidad */
-            background: var(--color-pastel) url('foto de empaque en montañas.png') no-repeat center center fixed; 
+            background: var(--color-pastel) url('foto de empaque en montañas.jpg') no-repeat center center fixed; 
             background-size: cover; 
             background-blend-mode: multiply; 
             opacity: 0.95; 
@@ -61,6 +60,28 @@
             border-bottom: 2px solid var(--color-medio); 
         } 
         
+        /* --- ESTILO: BANNER SUPERIOR DE LA FOTO PERSONAL (NUEVO) --- */
+        #top-banner {
+            width: 100%;
+            text-align: center;
+            padding: 20px 0;
+            background-color: var(--color-pastel); 
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        #top-banner img {
+            max-width: 150px; /* Tamaño moderado para que no sea muy invasiva */
+            height: auto;
+            border-radius: 50%; /* La hace redonda */
+            border: 4px solid var(--color-acento); /* Borde sutil */
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        #top-banner img:hover {
+            transform: scale(1.05);
+        }
+
         /* --- ESTILO: IMAGEN DE FONDO PARA EL HERO (PORTADA) --- */
         .hero { 
             background-color: #388E3C; 
@@ -72,8 +93,7 @@
             color: var(--color-texto-claro); 
             position: relative; 
             
-            /* ⚠️ REEMPLAZA 'cafe-portada.png' POR TU IMAGEN DE ALTA RESOLUCIÓN */
-            background-image: url('cafe-portada.png'); 
+            background-image: url('foto de empaque en montañas.jpg'); 
             background-size: cover; 
             background-position: center 30%; 
             background-repeat: no-repeat;
@@ -119,7 +139,7 @@
             max-width: 1100px;
             margin: 40px auto; 
             padding: 30px; 
-            background-color: rgba(255, 255, 255, 0.85); 
+            background-color: rgba(255, 255, 255, 0.95); /* Fondo más sólido para legibilidad del contenido */
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.08); 
             border-radius: 12px; 
         }
@@ -147,7 +167,8 @@
         }
         .producto-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); }
         .producto-card img { max-width: 180px; height: auto; border-radius: 6px; margin: 0 auto 20px auto; display: block; border: 3px solid var(--color-pastel); }
-        .presentaciones li { border-bottom: 1px solid var(--color-pastel); }
+        .presentaciones li { list-style: none; padding: 10px 0; border-bottom: 1px solid var(--color-pastel); display: flex; justify-content: space-between; align-items: center; }
+        .presentaciones li:last-child { border-bottom: none; }
         .peso { font-weight: 500; color: var(--color-oscuro); } 
         .precio { font-size: 1.2em; font-weight: 700; color: var(--color-acento); } 
 
@@ -162,6 +183,7 @@
             display: flex;
             align-items: flex-start;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
         }
         .history-block h3 {
             color: var(--color-oscuro); 
@@ -265,6 +287,10 @@
         </div>
     </header>
     
+    <section id="top-banner">
+        <img src="tu-foto-personal.jpg" alt="Foto personal del productor o propietario">
+    </section>
+
     <section id="hero-banner" class="hero">
         <div class="hero-content">
             <h2 style="font-weight: 700;">Café Piñonal: Sabor de la Tierra.</h2>
@@ -280,7 +306,7 @@
             
             <div class="history-block">
                 <div class="history-image-container">
-                    <img src="foto de empaque en montañas.png" alt="Foto del empaque en las montañas"> 
+                    <img src="foto de empaque en montañas.jpg" alt="Foto del empaque en las montañas"> 
                 </div>
                 <div class="history-text-container">
                     <h3>Nuestra Historia e Inspiración</h3>
