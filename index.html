@@ -27,11 +27,8 @@
             color: var(--color-texto-oscuro);
             
             /* --- FONDO DEL BODY (Marca de Agua) --- */
-            /* La imagen de fondo se verá en su estado original sin blend-mode ni opacidad global */
-            background: var(--color-pastel) url('foto de empaque en montañas.png') no-repeat center center fixed; 
+            background: var(--color-pastel) url('foto de empaque en montañas.jpg') no-repeat center center fixed; 
             background-size: cover; 
-            /* Se eliminan: background-blend-mode: multiply; opacity: 0.95; */
-            /* La transparencia la manejamos en los elementos que se superponen */
         }
         
         header { 
@@ -41,6 +38,11 @@
             text-align: center; 
             position: relative; 
             box-shadow: 0 4px 10px rgba(0,0,0,0.25); 
+            
+            /* --- MEJORA UX 1: ENCABEZADO FIJO (Sticky Header) --- */
+            position: sticky; 
+            top: 0; 
+            z-index: 100; 
         }
         header h1 { margin: 0; font-size: 2.5em; font-weight: 700; }
         header p { margin: 5px 0 0; font-weight: 500;}
@@ -66,8 +68,7 @@
             width: 100%;
             text-align: center;
             padding: 20px 0;
-            /* Usamos rgba para dar una ligera transparencia y ver el fondo */
-            background-color: rgba(232, 245, 233, 0.9); /* var(--color-pastel) con 90% de opacidad */
+            background-color: rgba(232, 245, 233, 0.9); /* Transparencia para ver el fondo */
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
@@ -95,7 +96,7 @@
             color: var(--color-texto-claro); 
             position: relative; 
             
-            background-image: url('cafe-portada.png'); /* Asegúrate que esta imagen sea diferente a la del body si es intencional */
+            background-image: url('foto de empaque en montañas.jpg'); /* Usé la misma imagen por si no tienes otra */
             background-size: cover; 
             background-position: center 30%; 
             background-repeat: no-repeat;
@@ -103,7 +104,7 @@
 
         /* Contenedor Semitransparente para el texto del Hero */
         .hero-content {
-            background-color: rgba(46, 125, 50, 0.8); /* Opacidad ajustada */
+            background-color: rgba(46, 125, 50, 0.8); 
             padding: 40px 50px;
             border-radius: 12px;
             box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
@@ -141,8 +142,8 @@
             max-width: 1100px;
             margin: 40px auto; 
             padding: 30px; 
-            /* Usamos rgba para que el fondo del body se siga viendo a través */
-            background-color: rgba(255, 255, 255, 0.85); /* 85% de opacidad */
+            /* Transparencia para ver el fondo */
+            background-color: rgba(255, 255, 255, 0.85); 
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.08); 
             border-radius: 12px; 
         }
@@ -176,10 +177,9 @@
         .precio { font-size: 1.2em; font-weight: 700; color: var(--color-acento); } 
 
         /* ESTILOS PARA LA SECCIÓN DE HISTORIA */
-        .history-section h2 { color: var(--color-oscuro); font-weight: 700; margin-bottom: 40px; }
         .history-block {
             border-left: 5px solid var(--color-medio); 
-            background-color: rgba(241, 248, 233, 0.8); /* Opacidad ajustada */
+            background-color: rgba(241, 248, 233, 0.8); 
             padding-left: 20px;
             padding: 25px;
             border-radius: 10px;
@@ -188,25 +188,29 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
             margin-bottom: 30px;
         }
-        .history-block h3 {
-            color: var(--color-oscuro); 
-            margin-top: 0;
-            font-size: 1.6em; 
-            border-bottom: 2px dashed var(--color-medio); 
-            padding-bottom: 8px;
-            font-weight: 700;
-        }
-        .history-block p { font-size: 1.1em; line-height: 1.7; margin-bottom: 0; font-weight: 500;}
-        .history-image-container { flex-shrink: 0; margin-right: 30px; max-width: 300px; text-align: center; }
-        .history-image-container img { width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); }
-        .history-text-container { flex-grow: 1; }
-        @media (max-width: 768px) {
-            .history-block { flex-direction: column; align-items: center; text-align: center; }
-            .history-image-container { margin-right: 0; margin-bottom: 20px; }
-        }
 
         /* ESTILOS DEL CARRITO Y FOOTER */
-        #cart-icon { position: absolute; top: 25px; right: 50px; font-size: 1.8em; cursor: pointer; color: var(--color-texto-claro); z-index: 500; }
+        #cart-icon { 
+            position: absolute; 
+            top: 25px; 
+            right: 50px; 
+            font-size: 1.8em; 
+            cursor: pointer; 
+            color: var(--color-texto-claro); 
+            z-index: 500; 
+            transition: transform 0.2s; /* Para la animación del rebote */
+        }
+        
+        /* --- MEJORA UX 2: ANIMACIÓN DE REBOTE PARA EL CARRITO --- */
+        @keyframes bounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        #cart-icon.cart-bounce {
+            animation: bounce 0.4s ease-in-out;
+        }
+        
         footer { 
             background-color: var(--color-oscuro); 
             color: var(--color-texto-claro); 
@@ -215,8 +219,10 @@
             font-size: 1em;
             margin-top: 0;
         }
+        /* [El resto de estilos, redes sociales, y carrito modal se mantienen igual] */
+        
+        /* ... Estilos de redes sociales y modal de carrito ... */
 
-        /* ESTILOS PARA ÍCONOS FLOTANTES DE REDES SOCIALES */
         .social-links {
             position: fixed;
             bottom: 20px;
@@ -245,19 +251,16 @@
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
         }
 
-        /* Colores de marca y fondo de redes sociales */
         .social-icon.whatsapp { background-color: #25D366; } 
         .social-icon.instagram { 
             background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
         } 
         .social-icon.facebook { background-color: #1877F2; } 
 
-        /* CSS para el botón de pago condicional */
         .hidden-initial {
             display: none;
         }
 
-        /* Estilos del carrito */
         #cart-count { background-color: #D32F2F; color: white; border-radius: 50%; padding: 4px 8px; font-size: 0.8em; position: absolute; top: -8px; right: -8px; }
         .cart-modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.6); }
         .modal-content { background-color: #fefefe; margin: 5% auto; padding: 25px; border: none; width: 90%; max-width: 450px; border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.3); }
@@ -269,7 +272,7 @@
         #cart-total { font-size: 1.4em; font-weight: 700; margin-top: 20px; text-align: right; color: var(--color-oscuro); } 
         .btn-pago { background-color: var(--color-oscuro) !important; color: white !important; font-weight: 700 !important; border-radius: 10px !important; } 
         .btn-pago:hover { background-color: var(--color-acento) !important; } 
-        
+
     </style>
 </head>
 <body>
@@ -291,7 +294,7 @@
     </header>
     
     <section id="top-banner">
-        <img src="fotos abuelos.png" alt="Foto personal del productor o propietario">
+        <img src="tu-foto-personal.jpg" alt="Foto personal del productor o propietario">
     </section>
 
     <section id="hero-banner" class="hero">
@@ -309,7 +312,7 @@
             
             <div class="history-block">
                 <div class="history-image-container">
-                    <img src="foto de empaque en montañas.png" alt="Foto del empaque en las montañas"> 
+                    <img src="foto de empaque en montañas.jpg" alt="Foto del empaque en las montañas"> 
                 </div>
                 <div class="history-text-container">
                     <h3>Nuestra Historia e Inspiración</h3>
@@ -378,13 +381,13 @@
                         <span class="peso">250 gramos</span>
                         <span class="precio">$24.000</span>
                         <button class="btn btn-pequeno" 
-                            onclick="addToCart('Café Premium (250g)', 24000); toggleCartModal();">Añadir</button>
+                            onclick="addToCart('Café Premium (250g)', 24000);">Añadir</button>
                     </li>
                     <li>
                         <span class="peso">500 gramos</span>
                         <span class="precio">$48.000</span>
                         <button class="btn btn-pequeno" 
-                            onclick="addToCart('Café Premium (500g)', 48000); toggleCartModal();">Añadir</button>
+                            onclick="addToCart('Café Premium (500g)', 48000);">Añadir</button>
                     </li>
                 </ul>
             </div>
@@ -450,6 +453,16 @@
             } else {
                 cart.push({ name: name, price: price, quantity: 1 });
             }
+            
+            // --- MEJORA UX 2: FUNCIÓN PARA REBOTE DEL CARRITO ---
+            const cartIcon = document.getElementById('cart-icon');
+            cartIcon.classList.add('cart-bounce');
+            // Quitar la clase después de que termine la animación
+            setTimeout(() => {
+                cartIcon.classList.remove('cart-bounce');
+            }, 400); // El tiempo coincide con la duración de la animación CSS (0.4s)
+            // ---------------------------------------------------
+            
             updateCartDisplay();
         }
 
