@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet"> 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     
@@ -21,15 +22,19 @@
 
         /* ESTILOS BASE */
         body { 
-            font-family: 'Quicksand', sans-serif; 
+            font-family: 'Quicksand', sans-serif; /* Fuente base para el cuerpo */
             margin: 0; 
             padding: 0; 
             color: var(--color-texto-oscuro);
             
             /* --- FONDO DEL BODY (Marca de Agua) --- */
-            background: var(--color-pastel) url('foto de empaque en montañas.jpg') no-repeat center center fixed; 
+            background: var(--color-pastel) url('foto de empaque en montañas.png') no-repeat center center fixed; 
             background-size: cover; 
-            /* Importante: Mantener la consistencia con la imagen cargada */
+        }
+        
+        /* --- ESTILOS DE TIPOGRAFÍA PARA TÍTULOS (Playfair Display) --- */
+        h1, h2, h3, .hero-content h2 {
+            font-family: 'Playfair Display', serif; /* Aplicamos la fuente elegante a todos los títulos */
         }
         
         header { 
@@ -37,12 +42,12 @@
             color: var(--color-texto-claro); 
             padding: 20px 0; 
             text-align: center; 
-            position: sticky; /* Cambiado de 'relative' a 'sticky' para fijar */
+            position: sticky; 
             top: 0; 
-            z-index: 100; /* Asegura que esté sobre el contenido */
+            z-index: 100; 
             box-shadow: 0 4px 10px rgba(0,0,0,0.25); 
         }
-        header h1 { margin: 0; font-size: 2.5em; font-weight: 700; }
+        header h1 { margin: 0; font-size: 2.5em; font-weight: 900; } /* Peso ajustado a 900 */
         header p { margin: 5px 0 0; font-weight: 500;}
         
         nav ul { list-style: none; padding: 0; margin-top: 15px; display: flex; justify-content: center; }
@@ -108,8 +113,8 @@
             box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
             max-width: 80%;
         }
-        
-        .hero-content h2 { font-size: 2.8em; margin-bottom: 10px; font-weight: 700; }
+        /* Se usa Playfair Display gracias a la regla global h1, h2... */
+        .hero-content h2 { font-size: 2.8em; margin-bottom: 10px; font-weight: 900; } 
         .hero-content p { font-size: 1.2em; margin-top: 0; font-weight: 500;}
         
         .btn { 
@@ -175,7 +180,7 @@
         .precio { font-size: 1.2em; font-weight: 700; color: var(--color-acento); } 
 
         /* ESTILOS PARA LA SECCIÓN DE HISTORIA */
-        .history-section h2 { color: var(--color-oscuro); font-weight: 700; margin-bottom: 40px; }
+        .history-section h2 { color: var(--color-oscuro); font-weight: 900; margin-bottom: 40px; } /* Peso ajustado a 900 */
         .history-block {
             border-left: 5px solid var(--color-medio); 
             background-color: rgba(241, 248, 233, 0.8); 
@@ -207,7 +212,7 @@
         /* --- ESTILOS DE NOTAS DE CATA (NUEVOS) --- */
         .tasting-notes-section h2 { 
             color: var(--color-oscuro); 
-            font-weight: 700; 
+            font-weight: 900; /* Peso ajustado a 900 */
             margin-bottom: 40px; 
             text-align: center;
         }
@@ -241,6 +246,7 @@
         }
 
         .note-card h4 {
+            font-family: 'Playfair Display', serif; /* Mantener Playfair en títulos de tarjeta */
             font-size: 1.3em;
             color: var(--color-oscuro);
             margin-top: 5px;
@@ -348,12 +354,12 @@
 
     <header>
         <h1>Café piñonal </h1>
-        <p>Tu dosis diaria de felicidad</p>
+        <p>TU DOSIS DIARIA DE FELICIDAD</p>
         <nav>
             <ul>
-                <li><a href="#" onclick="showHistorySection(); return false;">Inicio / Historia</a></li>
-                <li><a href="#" onclick="showTastingNotesSection(); return false;">Notas de Cata</a></li>
-                <li><a href="#" onclick="showProductSection(); return false;">Productos</a></li>
+                <li><a href="#" onclick="showHistorySection(); return false;">HISTORIA</a></li>
+                <li><a href="#" onclick="showTastingNotesSection(); return false;">NOTAS DE CATA</a></li>
+                <li><a href="#" onclick="showProductSection(); return false;">PRODUCTOS</a></li>
                 <li><a href="#" onclick="toggleCartModal(); return false;">Comprar</a></li> 
             </ul>
         </nav>
@@ -369,7 +375,7 @@
 
     <section id="hero-banner" class="hero">
         <div class="hero-content">
-            <h2 style="font-weight: 700;">Café Piñonal: Sabor de la Tierra.</h2>
+            <h2 style="font-weight: 900;">Café Piñonal: Sabor de la Tierra.</h2>
             <p>Descubre el origen y la pasión detrás de cada grano, de nuestra finca a tu taza.</p>
             <a href="#notas-cata" class="btn" onclick="showTastingNotesSection();">🔬 Notas de Cata</a>
             <a href="#productos" class="btn btn-history" onclick="showProductSection();">🛍️ Ver Productos</a>
@@ -378,7 +384,7 @@
 
     <div class="container" id="history-section-container" style="display: none;">
         <section id="historia" class="history-section">
-            <h2 style="text-align: center; width: 100%;">☕ Identidad, Origen e Inspiración</h2>
+            <h2 style="text-align: center; width: 100%;"> Identidad, Origen e Inspiración</h2>
             
             <div class="history-block">
                 <div class="history-image-container">
@@ -477,7 +483,7 @@
     </div>
     <div class="container" id="product-section-container" style="display: none;">
         <section id="productos" class="productos">
-            <h2 style="text-align: center; color: var(--color-oscuro); font-weight: 700;">Nuestro Café Especial</h2>
+            <h2 style="text-align: center; color: var(--color-oscuro); font-weight: 900;">Nuestro Café Especial</h2>
             <p style="text-align: center;">Granos de la más alta calidad, tostados a la perfección para un sabor inigualable.</p>
             
             <div class="section-divider"></div>
@@ -638,7 +644,7 @@
         function hideAllSections() {
             document.getElementById('product-section-container').style.display = 'none';
             document.getElementById('history-section-container').style.display = 'none';
-            document.getElementById('tasting-notes-section-container').style.display = 'none'; // NUEVO: Ocultar Notas de Cata
+            document.getElementById('tasting-notes-section-container').style.display = 'none'; 
             document.getElementById('hero-banner').style.display = 'none'; 
         }
         
@@ -649,7 +655,6 @@
             document.getElementById('hero-banner').scrollIntoView({ behavior: 'smooth' });
         }
 
-        // --- NUEVA FUNCIÓN: Mostrar Notas de Cata ---
         function showTastingNotesSection() {
             hideAllSections();
             document.getElementById('hero-banner').style.display = 'flex'; 
