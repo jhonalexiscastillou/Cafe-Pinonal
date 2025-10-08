@@ -1,61 +1,585 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pagar con Wompi</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #fafafa;
-      text-align: center;
-      padding: 60px;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <title> Café piñonal - Tienda con Historia</title>
+    <style>
+        /* PALETA DE COLORES */
+        :root {
+            --color-pastel: #E8F5E9; 
+            --color-oscuro: #2E7D32; 
+            --color-acento: #388E3C; 
+            --color-medio: #66BB6A; 
+            --color-texto-claro: #FFFFFF; 
+            --color-texto-oscuro: #424242; 
+        }
 
-    h1 {
-      color: #333;
-      margin-bottom: 30px;
-    }
+        /* ESTILOS BASE */
+        body { 
+            font-family: 'Quicksand', sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            color: var(--color-texto-oscuro);
+            
+            /* --- MEJORA UX 1: FONDO PARALLAX --- */
+            /* La clave del Parallax: la imagen no se mueve con el scroll */
+            background: var(--color-pastel) url('foto de empaque en montañas.jpg') no-repeat center center fixed; 
+            background-size: cover; 
+        }
+        
+        header { 
+            background-color: var(--color-oscuro); 
+            color: var(--color-texto-claro); 
+            padding: 20px 0; 
+            text-align: center; 
+            position: relative; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.25); 
+            
+            /* --- MEJORA UX 2: ENCABEZADO FIJO (Sticky Header) --- */
+            position: sticky; 
+            top: 0; 
+            z-index: 100; 
+        }
+        header h1 { margin: 0; font-size: 2.5em; font-weight: 700; }
+        header p { margin: 5px 0 0; font-weight: 500;}
+        
+        nav ul { list-style: none; padding: 0; margin-top: 15px; display: flex; justify-content: center; }
+        nav ul li { margin: 0 20px; }
+        nav ul li a { 
+            color: var(--color-texto-claro); 
+            text-decoration: none; 
+            font-weight: 500; 
+            transition: color 0.3s, background-color 0.3s, border-bottom 0.3s; 
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        nav ul li a:hover { 
+            color: var(--color-texto-claro); 
+            background-color: rgba(255, 255, 255, 0.15); 
+            border-bottom: 2px solid var(--color-medio); 
+        } 
+        
+        /* --- ESTILO: BANNER SUPERIOR DE LA FOTO PERSONAL --- */
+        #top-banner {
+            width: 100%;
+            text-align: center;
+            padding: 20px 0;
+            background-color: rgba(232, 245, 233, 0.9); 
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
 
-    .btn-pago {
-      background-color: #00A6FF;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      padding: 15px 40px;
-      font-size: 18px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-      text-decoration: none;
-      display: inline-block;
-    }
+        #top-banner img {
+            max-width: 150px; 
+            height: auto;
+            border-radius: 50%; 
+            border: 4px solid var(--color-acento); 
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
 
-    .btn-pago:hover {
-      background-color: #0088cc;
-    }
+        #top-banner img:hover {
+            transform: scale(1.05);
+        }
 
-    .info {
-      margin-top: 30px;
-      color: #555;
-      font-size: 14px;
-    }
-  </style>
+        /* --- ESTILO: IMAGEN DE FONDO PARA EL HERO (PORTADA) --- */
+        .hero { 
+            background-color: #388E3C; 
+            height: 500px; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            text-align: center; 
+            color: var(--color-texto-claro); 
+            position: relative; 
+            
+            background-image: url('foto de empaque en montañas.jpg'); 
+            background-size: cover; 
+            background-position: center 30%; 
+            background-repeat: no-repeat;
+        }
+
+        /* Contenedor Semitransparente para el texto del Hero */
+        .hero-content {
+            background-color: rgba(46, 125, 50, 0.8); 
+            padding: 40px 50px;
+            border-radius: 12px;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
+            max-width: 80%;
+        }
+        .hero-content h2 { font-size: 2.8em; margin-bottom: 10px; font-weight: 700; }
+        .hero-content p { font-size: 1.2em; margin-top: 0; font-weight: 500;}
+        
+        .btn { 
+            background-color: var(--color-acento); 
+            color: var(--color-texto-claro); 
+            padding: 12px 25px; 
+            text-decoration: none; 
+            border-radius: 25px; 
+            font-weight: 700; 
+            transition: background-color 0.3s, border-color 0.3s; 
+            display: inline-block; 
+            margin: 10px; 
+            cursor: pointer; 
+            border: none; 
+        }
+        .btn:hover { background-color: var(--color-medio); } 
+        
+        .btn-history {
+            background-color: transparent !important;
+            border: 2px solid white !important;
+        }
+        .btn-history:hover {
+            background-color: rgba(255, 255, 255, 0.1) !important;
+            border-color: var(--color-medio) !important;
+        }
+        
+        .container { 
+            width: 85%; 
+            max-width: 1100px;
+            margin: 40px auto; 
+            padding: 30px; 
+            background-color: rgba(255, 255, 255, 0.85); 
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.08); 
+            border-radius: 12px; 
+        }
+        
+        /* Separador Visual */
+        .section-divider {
+            width: 100px;
+            height: 4px;
+            background-color: var(--color-medio);
+            margin: 15px auto 40px auto; 
+            border-radius: 2px;
+        }
+
+        /* ESTILOS DE PRODUCTO */
+        .producto-card { 
+            background-color: var(--color-texto-claro); 
+            margin: 20px auto; 
+            max-width: 350px; 
+            border-radius: 10px; 
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); 
+            padding: 25px; 
+            border: 1px solid #E0E0E0; 
+            text-align: center; 
+            transition: transform 0.3s;
+        }
+        .producto-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); }
+        .producto-card img { max-width: 180px; height: auto; border-radius: 6px; margin: 0 auto 20px auto; display: block; border: 3px solid var(--color-pastel); }
+        .presentaciones li { list-style: none; padding: 10px 0; border-bottom: 1px solid var(--color-pastel); display: flex; justify-content: space-between; align-items: center; }
+        .presentaciones li:last-child { border-bottom: none; }
+        .peso { font-weight: 500; color: var(--color-oscuro); } 
+        .precio { font-size: 1.2em; font-weight: 700; color: var(--color-acento); } 
+
+        /* ESTILOS PARA LA SECCIÓN DE HISTORIA */
+        .history-section h2 { color: var(--color-oscuro); font-weight: 700; margin-bottom: 40px; }
+        .history-block {
+            border-left: 5px solid var(--color-medio); 
+            background-color: rgba(241, 248, 233, 0.8); 
+            padding-left: 20px;
+            padding: 25px;
+            border-radius: 10px;
+            display: flex;
+            align-items: flex-start;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+        .history-block h3 {
+            color: var(--color-oscuro); 
+            margin-top: 0;
+            font-size: 1.6em; 
+            border-bottom: 2px dashed var(--color-medio); 
+            padding-bottom: 8px;
+            font-weight: 700;
+        }
+        .history-block p { font-size: 1.1em; line-height: 1.7; margin-bottom: 0; font-weight: 500;}
+        .history-image-container { flex-shrink: 0; margin-right: 30px; max-width: 300px; text-align: center; }
+        .history-image-container img { width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); }
+        .history-text-container { flex-grow: 1; }
+        @media (max-width: 768px) {
+            .history-block { flex-direction: column; align-items: center; text-align: center; }
+            .history-image-container { margin-right: 0; margin-bottom: 20px; }
+        }
+
+        /* ESTILOS DEL CARRITO Y FOOTER */
+        #cart-icon { 
+            position: absolute; 
+            top: 25px; 
+            right: 50px; 
+            font-size: 1.8em; 
+            cursor: pointer; 
+            color: var(--color-texto-claro); 
+            z-index: 500; 
+            transition: transform 0.2s; 
+        }
+        
+        /* --- MEJORA UX 3: ANIMACIÓN DE REBOTE PARA EL CARRITO --- */
+        @keyframes bounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        #cart-icon.cart-bounce {
+            animation: bounce 0.4s ease-in-out;
+        }
+        
+        footer { 
+            background-color: var(--color-oscuro); 
+            color: var(--color-texto-claro); 
+            padding: 20px 0; 
+            text-align: center; 
+            font-size: 1em;
+            margin-top: 0;
+        }
+        
+        .social-links {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 900; 
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .social-icon {
+            display: block;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            border-radius: 50%;
+            font-size: 1.8em; 
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+            color: white; 
+        }
+
+        .social-icon:hover {
+            transform: scale(1.1); 
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        .social-icon.whatsapp { background-color: #25D366; } 
+        .social-icon.instagram { 
+            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+        } 
+        .social-icon.facebook { background-color: #1877F2; } 
+
+        .hidden-initial {
+            display: none;
+        }
+
+        #cart-count { background-color: #D32F2F; color: white; border-radius: 50%; padding: 4px 8px; font-size: 0.8em; position: absolute; top: -8px; right: -8px; }
+        .cart-modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.6); }
+        .modal-content { background-color: #fefefe; margin: 5% auto; padding: 25px; border: none; width: 90%; max-width: 450px; border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.3); }
+        .close-btn { color: #888; float: right; font-size: 32px; font-weight: 500; cursor: pointer; }
+        #cart-items li { list-style: none; padding: 12px 0; border-bottom: 1px solid #E0E0E0; display: flex; justify-content: space-between; align-items: center; font-size: 1.1em; font-weight: 500; }
+        .item-controls { display: flex; align-items: center; }
+        .qty-btn { background-color: var(--color-pastel); border: 1px solid #CFD8DC; padding: 5px 10px; cursor: pointer; font-size: 1em; margin: 0 5px; border-radius: 5px; }
+        .qty-display { width: 20px; text-align: center; font-weight: 700; }
+        #cart-total { font-size: 1.4em; font-weight: 700; margin-top: 20px; text-align: right; color: var(--color-oscuro); } 
+        .btn-pago { background-color: var(--color-oscuro) !important; color: white !important; font-weight: 700 !important; border-radius: 10px !important; } 
+        .btn-pago:hover { background-color: var(--color-acento) !important; } 
+
+    </style>
 </head>
 <body>
 
-  <h1>Finaliza tu compra</h1>
-  <p>Haz clic en el botón para realizar tu pago de forma segura a través de <strong>Wompi</strong>.</p>
+    <header>
+        <h1>Café piñonal </h1>
+        <p>Tu dosis diaria de felicidad</p>
+        <nav>
+            <ul>
+                <li><a href="#" onclick="showHistorySection(); return false;">Inicio / Historia</a></li>
+                <li><a href="#" onclick="showProductSection(); return false;">Productos</a></li>
+                <li><a href="#" onclick="toggleCartModal(); return false;">Comprar</a></li> 
+            </ul>
+        </nav>
+        
+        <div id="cart-icon" onclick="toggleCartModal()">
+            🛒 <span id="cart-count">0</span>
+        </div>
+    </header>
+    
+    <section id="top-banner">
+        <img src="fotos abuelos.png" alt="Foto personal del productor o propietario">
+    </section>
 
-  <!-- 🔗 Sustituye el enlace a continuación por el enlace de pago real de tu cuenta Wompi -->
-  <a href="https://checkout.wompi.co/l/tu-link-de-pago" 
-     target="_blank" 
-     class="btn-pago">
-     Pagar ahora
-  </a>
+    <section id="hero-banner" class="hero">
+        <div class="hero-content">
+            <h2 style="font-weight: 700;">Café Piñonal: Sabor de la Tierra.</h2>
+            <p>Descubre el origen y la pasión detrás de cada grano, de nuestra finca a tu taza.</p>
+            <a href="#productos" class="btn" onclick="showProductSection();">🛍️ Ver Productos</a>
+            <a href="#historia" class="btn btn-history" onclick="showHistorySection();">📜 Conoce la Historia</a>
+        </div>
+    </section>
 
-  <div class="info">
-    <p>Tu pago será procesado de manera segura por Wompi Colombia.</p>
-  </div>
+    <div class="container" id="history-section-container" style="display: none;">
+        <section id="historia" class="history-section">
+            <h2 style="text-align: center; width: 100%;">☕ Identidad, Origen e Inspiración</h2>
+            
+            <div class="history-block">
+                <div class="history-image-container">
+                    <img src="foto de empaque en montañas.jpg" alt="Foto del empaque en las montañas"> 
+                </div>
+                <div class="history-text-container">
+                    <h3>Nuestra Historia e Inspiración</h3>
+                    <p>
+                        Nuestra historia nace en la vereda El Piñonal, entre montañas, cafetales y el esfuerzo de una familia campesina que aprendió a amar la tierra. Desde nuestros abuelos heredamos los valores que hoy nos representan: la unión familiar, la honestidad, el trabajo constante y el respeto por el campo.
 
+                        Durante años, sembramos y cosechamos café con las manos, cuidando cada planta como parte de nuestra vida. Hoy, ese legado se transforma en una nueva etapa: compartir con el mundo el fruto de nuestra finca, Filo Bonito, en una presentación elegante que conserva el sabor auténtico del campo colombiano.
+
+                        Cada taza cuenta una historia de perseverancia, de amor por lo que se hace y del orgullo de ser campesinos que, a pesar de las dificultades, siguen firmes con sus raíces y el corazón puesto en la tierra.
+                        <br><br>
+                        Aroma & Sabor es más que una marca: es la esencia de nuestra tierra, el reflejo de una vida dedicada al campo y el deseo de que, en cada taza, sientas el mismo amor con el que lo cultivamos.
+                    </p>
+                </div>
+            </div>
+
+            <div class="history-block">
+                <div class="history-image-container">
+                    <img src="foto del perro.png" alt="Vista de la finca Filo Bonito">
+                </div>
+                <div class="history-text-container">
+                    <h3>Origen: Finca y Vereda</h3>
+                    <p>
+                        Donde es recolectado: Antioquia suroeste
+                        <br>
+                        Nombre de la Finca: **Filo Bonito**
+                        <br>
+                        Vereda: La historia de nuestro café nace entre montañas, bajo el esfuerzo y el corazón de una familia campesina de la vereda **El Piñonal**. Nuestros abuelos sembraron más que café: sembraron valores, amor por la tierra y el ejemplo de que la unión familiar puede resistir cualquier adversidad.
+                        <br><br>
+                        Entre montañas verdes a 1800 msnm, aire puro y caminos de tierra nace la Finca Filo Bonito, en la vereda El Piñonal. Un lugar donde el sol abraza los cafetales y el canto de los pájaros acompaña las jornadas de trabajo. Aquí, la tierra fértil y el clima generoso se unen para dar vida a granos únicos, cultivados con dedicación y respeto por la naturaleza.
+                    </p>
+                </div>
+            </div>
+
+            <div class="history-block">
+                <div class="history-image-container">
+                    <img src="fotodel granos.png" alt="Foto de la recolección manual del café">
+                </div>
+                <div class="history-text-container">
+                    <h3>Recolección y Cuidado</h3>
+                    <p>
+                        La recolección del café es un ritual de paciencia y cariño. Cada grano maduro se elige a mano, uno a uno, por quienes conocen el lenguaje de la tierra.
+                        Después, con esmero y cuidado, el fruto se despulpa, se seca y se transforma en una experiencia que despierta los sentidos. Todo este proceso es un homenaje a la labor campesina, a los abuelos que enseñaron el valor del trabajo bien hecho y al orgullo de ver el fruto de nuestra tierra convertido en una presentación elegante y en un sabor inigualable.
+                        <br>
+                        Nuestro café se recolecta de forma manual, eligiendo solo las cerezas maduras. Pasan por un proceso de despulpado y lavado tradicional, y se secan al sol para conservar su esencia. Cada lote es seleccionado cuidadosamente antes del tueste artesanal, garantizando que cada taza refleje el trabajo, el amor y la dedicación que nacen en nuestra finca.
+                    </p>
+                </div>
+            </div>
+
+        </section>
+    </div>
+
+    <div class="container" id="product-section-container" style="display: none;">
+        <section id="productos" class="productos">
+            <h2 style="text-align: center; color: var(--color-oscuro); font-weight: 700;">Nuestro Café Especial</h2>
+            <p style="text-align: center;">Granos de la más alta calidad, tostados a la perfección para un sabor inigualable.</p>
+            
+            <div class="section-divider"></div>
+
+            <div class="producto-card">
+                <img src="empaquepresentacion.png" alt="Café Premium Café piñonal"> 
+                <h3>Café Premium "Café piñonal"</h3>
+                <p>Descubre las notas intensas de chocolate y caramelo, con un toque cítrico y un final persistente.</p>
+
+                <ul class="presentaciones">
+                    <li>
+                        <span class="peso">250 gramos</span>
+                        <span class="precio">$24.000</span>
+                        <button class="btn btn-pequeno" 
+                            onclick="addToCart('Café Premium (250g)', 24000);">Añadir</button>
+                    </li>
+                    <li>
+                        <span class="peso">500 gramos</span>
+                        <span class="precio">$48.000</span>
+                        <button class="btn btn-pequeno" 
+                            onclick="addToCart('Café Premium (500g)', 48000);">Añadir</button>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    
+    <footer id="contacto">
+        <p>&copy; 2025 Café piñonal. Todos los derechos reservados.</p>
+    </footer>
+
+    <div id="cart-modal" class="cart-modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="toggleCartModal()">&times;</span>
+            <h3>🛍️ Tu Carrito de Compras</h3>
+            <ul id="cart-items">
+                </ul>
+            <p id="cart-total">Total: $0</p>
+            
+            <div id="payment-button-container" class="hidden-initial">
+                <button class="btn btn-pago" onclick="goToDirectLink()" style="width: 100%; font-size: 1.1em;">
+                    Pagar con Link Directo
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="social-links">
+        <a href="https://wa.me/573001234567" target="_blank" class="social-icon whatsapp" title="Escríbenos por WhatsApp">
+            <i class="fab fa-whatsapp"></i> 
+        </a>
+        <a href="https://www.alexis" target="_blank" class="social-icon instagram" title="Síguenos en Instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.facebook.com/TuPaginaDeFacebook" target="_blank" class="social-icon facebook" title="Visítanos en Facebook">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+    </div>
+
+    <script>
+        const DIRECT_PAYMENT_LINK = "https://checkout.nequi.wompi.co/l/uH6JaT"; 
+        
+        let cart = []; 
+        let currentTotal = 0; 
+
+        function changeQuantity(name, change) {
+            const itemIndex = cart.findIndex(item => item.name === name);
+            if (itemIndex !== -1) {
+                cart[itemIndex].quantity += change;
+                if (cart[itemIndex].quantity <= 0) {
+                    cart.splice(itemIndex, 1);
+                }
+            }
+            if (cart.length === 0) {
+                showHistorySection(); 
+            }
+            updateCartDisplay();
+        }
+        
+        function addToCart(name, price) {
+            const existingItem = cart.find(item => item.name === name);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ name: name, price: price, quantity: 1 });
+            }
+            
+            // Función para el efecto de rebote del carrito
+            const cartIcon = document.getElementById('cart-icon');
+            cartIcon.classList.add('cart-bounce');
+            setTimeout(() => {
+                cartIcon.classList.remove('cart-bounce');
+            }, 400); 
+            
+            updateCartDisplay();
+        }
+
+        function updateCartDisplay() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartCount = document.getElementById('cart-count');
+            const cartTotalElement = document.getElementById('cart-total');
+            const paymentButtonContainer = document.getElementById('payment-button-container'); 
+            
+            currentTotal = 0; 
+            let totalItems = 0;
+            cartItemsContainer.innerHTML = ''; 
+
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                currentTotal += itemTotal;
+                totalItems += item.quantity;
+                const formattedItemPrice = item.price.toLocaleString('es-CO');
+                const formattedTotal = itemTotal.toLocaleString('es-CO'); 
+
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `
+                    <div>${item.name} <br><small>$${formattedItemPrice} c/u</small></div>
+                    <div class="item-controls">
+                        <button class="qty-btn" onclick="changeQuantity('${item.name}', -1)">-</button>
+                        <span class="qty-display">${item.quantity}</span>
+                        <button class="qty-btn" onclick="changeQuantity('${item.name}', 1)">+</button>
+                        <span style="margin-left: 15px; font-weight: bold;">$${formattedTotal}</span>
+                    </div>
+                `;
+                cartItemsContainer.appendChild(listItem);
+            });
+
+            const finalFormattedTotal = currentTotal.toLocaleString('es-CO');
+            cartCount.textContent = totalItems;
+            
+            if (currentTotal > 0) {
+                paymentButtonContainer.style.display = 'block';
+                cartTotalElement.textContent = `Total: $${finalFormattedTotal}`;
+            } else {
+                paymentButtonContainer.style.display = 'none';
+                cartTotalElement.textContent = `Carrito vacío`; 
+            }
+        }
+        
+        function goToDirectLink() {
+            if (currentTotal === 0) {
+                alert("Tu carrito está vacío. ¡Añade café para ordenar!");
+                return;
+            }
+            if (!DIRECT_PAYMENT_LINK.startsWith('http')) {
+                 alert("⚠️ ERROR DE CONFIGURACIÓN: El link de pago no es una URL válida.");
+                 return;
+            }
+            toggleCartModal(); 
+            window.open(DIRECT_PAYMENT_LINK, '_blank');
+            
+            cart = []; 
+            updateCartDisplay();
+            showHistorySection(); 
+        }
+
+        function hideAllSections() {
+            document.getElementById('product-section-container').style.display = 'none';
+            document.getElementById('history-section-container').style.display = 'none';
+            document.getElementById('hero-banner').style.display = 'none'; 
+        }
+        
+        // CORRECCIÓN: Se eliminó el scrollIntoView para evitar saltos o fallos.
+        function showHistorySection() {
+            hideAllSections();
+            document.getElementById('hero-banner').style.display = 'flex'; 
+            document.getElementById('history-section-container').style.display = 'block'; 
+        }
+        
+        // CORRECCIÓN: Se eliminó el scrollIntoView para evitar saltos o fallos.
+        function showProductSection() {
+            hideAllSections();
+            document.getElementById('hero-banner').style.display = 'flex'; 
+            document.getElementById('product-section-container').style.display = 'block'; 
+        }
+        
+        function toggleCartModal() {
+            const modal = document.getElementById('cart-modal');
+            if (modal.style.display === "block") {
+                modal.style.display = "none";
+            } else {
+                modal.style.display = "block";
+                updateCartDisplay(); 
+            }
+        }
+        
+        window.onclick = function(event) {
+            const modal = document.getElementById('cart-modal');
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        }
+        
+        // Inicializar la página mostrando la historia
+        document.addEventListener('DOMContentLoaded', () => {
+            showHistorySection();
+            document.getElementById('payment-button-container').style.display = 'none';
+            document.getElementById('cart-total').textContent = `Carrito vacío`;
+        });
+    </script>
 </body>
 </html>
