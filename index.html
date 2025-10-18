@@ -630,7 +630,7 @@
             <div class=hidden-initial id=payment-button-container><button class="btn btn-pago" onclick=goToDirectLink() style=width:100%;font-size:1.1em>Hacer Pedido por WhatsApp</button></div>
     </div>
 </div>
-<div class=social-links><a href=https://wa.me/573175813074 class="social-icon whatsapp" target=_blank title="Escríbenos por WhatsApp"><i class="fab fa-whatsapp"></i> </a><a href=https://www.alexis class="social-icon instagram" target=_blank title="Síguenos en Instagram"><i class="fab fa-instagram"></i> </a><a href=https://www.facebook.com/TuPaginaDeFacebook class="social-icon facebook" target=_blank title="Visítanos en Facebook"><i class="fab fa-facebook-f"></i></a></div>
+<div class=social-links><a href=https://wa.me/573175813074 class="social-icon whatsapp" target=_blank title="Escríbenos por WhatsApp"><i class="fab fa-whatsapp"></i> </a><a href=https://www.alexis class="social-icon instagram" target=_blank title="Síguenos en Instagram"><i class="fab fa-instagram"></i> </a><a href=https://https://www.facebook.com/profile.php?id=61582268292231/TuPaginaDeFacebook class="social-icon facebook" target=_blank title="Visítanos en Facebook"><i class="fab fa-facebook-f"></i></a></div>
 <script>
     const DIRECT_PAYMENT_LINK = "https://checkout.nequi.wompi.co/l/uH6JaT";
     const WHATSAPP_NUMBER = "573175813074"; // Tu número de WhatsApp para pedidos
@@ -717,11 +717,8 @@
         if (currentTotal === 0) {
             alert("Tu carrito está vacío. ¡Añade café para ordenar!");
             return;
-        }
-        if (!WHATSAPP_NUMBER) {
-            alert("⚠️ ERROR DE CONFIGURACIÓN: No se ha configurado el número de WhatsApp.");
-            return;
-        }
+        
+     
 
         // 1. Generar el mensaje de WhatsApp con los detalles del pedido
         let orderDetails = "¡Hola! Quiero hacer un pedido de Café Piñonal:\n\n";
