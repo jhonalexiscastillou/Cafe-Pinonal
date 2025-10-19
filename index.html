@@ -28,10 +28,10 @@
         margin: 0;
         padding: 0;
         color: var(--color-texto-oscuro);
-        /* **CAMBIO AQUÍ**: Fondo general del body, visible una vez que la pantalla de bienvenida se oculte */
-        background: var(--color-pastel) url('foto de empaque en montañas.png') no-repeat center center fixed;
+        /* Fondo global del body con imagen y fijo */
+        background: var(--color-pastel) url('fotojovenes tomando.png') no-repeat center center fixed;
         background-size: cover;
-        background-attachment: fixed; /* Asegura que la imagen no se mueva con el scroll */
+        background-attachment: fixed;
         overflow-x: hidden; 
     }
 
@@ -42,14 +42,14 @@
         font-family: 'Playfair Display', serif
     }
 
-    /* Pantalla de Bienvenida (sin cambios importantes, se mantiene como estaba) */
+    /* Pantalla de Bienvenida */
     #welcome-screen {
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background-image: url('fotojovenes tomando.png'); /* O la imagen que prefieras para la intro */
+        background-image: url('foto inicial cafe.png'); 
         background-size: cover;
         background-position: center;
         display: flex;
@@ -75,7 +75,7 @@
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
         border: 2px solid var(--color-acento);
     }
-
+    
     .welcome-content h2 {
         font-size: 3.5em;
         margin-bottom: 20px;
@@ -110,34 +110,27 @@
         color: var(--color-texto-claro);
     }
 
+    /* ******************************************************************* */
+    /* ESTILOS DEL HEADER (MODIFICADOS) */
+    /* ******************************************************************* */
+
     header {
-        /* Se mantiene el fondo oscuro para legibilidad del menú y logo */
-        background-color: var(--color-oscuro); 
+        /* CAMBIO CLAVE: Fondo negro semitransparente (0.4 de opacidad) */
+        background-color: rgba(26, 26, 26, 0.4); 
         color: var(--color-texto-claro);
-        padding: 20px 0;
+        padding: 10px 0; /* REDUCCIÓN: Menos padding vertical */
         text-align: center;
         position: sticky;
         top: 0;
         z-index: 100;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, .5); 
+        box-shadow: 0 2px 8px rgba(0, 0, 0, .4); /* Sombra más sutil */
     }
     
     .logo-container {
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-bottom: 10px;
-    }
-    
-    .logo-img {
-        content: url('portada.jpg'); 
-        max-width: 120px; 
-        height: auto;
-        margin: 0 auto 10px auto;
-        border-radius: 50%;
-        border: 4px solid var(--color-acento);
-        object-fit: cover;
-        transition: transform .3s;
+        margin-bottom: 5px; /* Menos margen */
     }
     
     .logo-img:hover {
@@ -146,27 +139,28 @@
 
     header h1 {
         margin: 0;
-        font-size: 3em; 
+        font-size: 2em; /* REDUCCIÓN: Título más pequeño */
         font-weight: 900;
         color: var(--color-acento); 
     }
 
     header p {
-        margin: 5px 0 0;
-        font-weight: 500;
+        margin: 2px 0 0; /* Menos margen */
+        font-weight: 400; /* Fuente un poco más ligera */
+        font-size: 0.9em; /* Texto más pequeño */
         color: var(--color-texto-claro);
     }
 
     nav ul {
         list-style: none;
         padding: 0;
-        margin-top: 15px;
+        margin-top: 10px; /* Menos margen */
         display: flex;
         justify-content: center
     }
 
     nav ul li {
-        margin: 0 20px
+        margin: 0 15px /* Menos margen entre elementos */
     }
 
     nav ul li a {
@@ -174,15 +168,29 @@
         text-decoration: none;
         font-weight: 500;
         transition: color .3s, background-color .3s, border-bottom .3s;
-        padding: 5px 10px;
+        padding: 3px 8px; /* Menos padding */
         border-radius: 5px
     }
 
     nav ul li a:hover {
         color: var(--color-acento); 
-        background-color: rgba(255, 255, 255, .15);
+        background-color: rgba(255, 255, 255, .1); /* Fondo más transparente en hover */
         border-bottom: 2px solid var(--color-acento);
     }
+
+    #cart-icon {
+        position: absolute;
+        top: 15px; /* Ajustado para el header más pequeño */
+        right: 50px;
+        font-size: 1.5em; /* Un poco más pequeño */
+        cursor: pointer;
+        color: var(--color-acento); 
+        z-index: 500;
+        transition: transform .2s
+    }
+
+    /* FIN DE ESTILOS DEL HEADER */
+    /* ******************************************************************* */
 
     #top-banner {
         display:none;
@@ -260,8 +268,8 @@
         max-width: 1100px;
         margin: 40px auto;
         padding: 30px;
-        /* **CAMBIO AQUÍ**: Hacemos el fondo del contenedor un poco más transparente */
-        background-color: rgba(255, 255, 255, 0.85); /* 0.85 de opacidad para ver el fondo */
+        /* Fondo de contenido semitransparente (0.85) para ver el fondo del body */
+        background-color: rgba(255, 255, 255, 0.85); 
         box-shadow: 0 0 15px rgba(0, 0, 0, .2); 
         border-radius: 12px
     }
@@ -333,8 +341,8 @@
 
     .history-block {
         border-left: 5px solid var(--color-acento); 
-        /* **CAMBIO AQUÍ**: Hacemos el fondo del history-block un poco más transparente */
-        background-color: rgba(255, 255, 255, 0.85); 
+        /* Fondo de bloque de historia semitransparente (0.75) para ver el fondo del body */
+        background-color: rgba(255, 255, 255, 0.75); 
         padding-left: 20px;
         padding: 25px;
         border-radius: 10px;
@@ -452,17 +460,6 @@
         color: var(--color-texto-oscuro);
         margin: 0;
         font-weight: 400;
-    }
-
-    #cart-icon {
-        position: absolute;
-        top: 25px;
-        right: 50px;
-        font-size: 1.8em;
-        cursor: pointer;
-        color: var(--color-acento); 
-        z-index: 500;
-        transition: transform .2s
     }
 
     @keyframes bounce {
@@ -627,6 +624,31 @@
         background-color: var(--color-medio) !important;
         color: var(--color-texto-claro) !important; 
     }
+    
+    /* Media Query para el header en móviles */
+    @media (max-width: 600px) {
+        header {
+            padding: 5px 0;
+        }
+        .logo-img {
+            max-width: 60px;
+            border-width: 2px;
+        }
+        header h1 {
+            font-size: 1.5em;
+        }
+        nav ul li {
+            margin: 0 8px;
+        }
+        nav ul li a {
+            font-size: 0.85em;
+        }
+        #cart-icon {
+            top: 10px;
+            right: 15px;
+            font-size: 1.2em;
+        }
+    }
 </style>
 <div id="welcome-screen">
     <div class="welcome-content">
@@ -636,7 +658,8 @@
     </div>
 </div>
 
-<header style="display:none;"> <div class="logo-container">
+<header style="display:none;"> 
+<div class="logo-container">
         <div class="logo-img"></div> 
         <h1>Café piñonal</h1>
         <p>Tu dosis diaria de felicidad</p>
@@ -661,7 +684,7 @@
 </section>
 <div class=container id=history-section-container style=display:none>
     <section id=historia class=history-section>
-        <h2 style=text-align:center;width:100%>☕ Identidad, Origen e Inspiración</h2>
+        <h2 style=text-align:center;width:100%> Identidad, Origen e Inspiración</h2>
         <div class=history-block>
             <div class=history-image-container><img alt="Foto del empaque en las montañas" src="foto de empaque en montañas.png"></div>
             <div class=history-text-container>
@@ -733,7 +756,8 @@
             </div>
     </section>
 </div>
-<footer id=contacto style="display:none;"> <p>© 2025 Café piñonal. Todos los derechos reservados.
+<footer id=contacto style="display:none;"> 
+<p>© 2025 Café piñonal. Todos los derechos reservados.
 </footer>
 <div class=cart-modal id=cart-modal>
     <div class=modal-content><span class=close-btn onclick=toggleCartModal()>×</span>
@@ -743,7 +767,8 @@
             <div class=hidden-initial id=payment-button-container><button class="btn btn-pago" onclick=goToDirectLink() style=width:100%;font-size:1.1em>Hacer Pedido por WhatsApp</button></div>
     </div>
 </div>
-<div class=social-links style="display:none;"> <a href="https://wa.me/573175813074" class="social-icon whatsapp" target=_blank title="Escríbenos por WhatsApp"><i class="fab fa-whatsapp"></i> </a>
+<div class=social-links style="display:none;"> 
+<a href="https://wa.me/573175813074" class="social-icon whatsapp" target=_blank title="Escríbenos por WhatsApp"><i class="fab fa-whatsapp"></i> </a>
     
     <a href="https://www.instagram.com/pinonal87/" class="social-icon instagram" target=_blank title="Síguenos en Instagram"><i class="fab fa-instagram"></i> </a>
     
