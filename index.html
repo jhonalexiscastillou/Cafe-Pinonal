@@ -5,27 +5,34 @@
 <meta content="Café Piñonal: Café especial colombiano de la finca El mirador en Antioquia. Descubre notas de chocolate, caramelo y un puntaje SCA de 84.5. ¡Sabor de la Tierra a tu taza!" name=description>
 <meta content="café piñonal, café especial, café colombiano, finca El mirador, antioquia, notas de cata café, comprar café" name=keywords>
 <link href=https://jhonalexiscastillou.github.io/Cafe-Pinonal/ rel=canonical>
-<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap" rel=stylesheet>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&display=swap" rel=stylesheet>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
 <link href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css rel=stylesheet>
 <title>Café piñonal - Tienda con Historia</title>
 <style>
+    /*
+        PALETA DE COLORES ELEGANTES (NEGRO Y DORADO)
+    */
     :root {
-        --color-pastel: #E8F5E9;
-        --color-oscuro: #2E7D32;
-        --color-acento: #388E3C;
-        --color-medio: #66BB6A;
-        --color-texto-claro: #FFFFFF;
-        --color-texto-oscuro: #424242
+        --color-pastel: #F5F5F5; /* Blanco Roto/Gris muy claro para fondos generales */
+        --color-oscuro: #1A1A1A; /* Negro Oscuro (fondo de header/footer) */
+        --color-acento: #D4AF37; /* Dorado Primario (botones, precios) */
+        --color-medio: #B8860B; /* Dorado Secundario/Bronce (divisores, hover) */
+        --color-texto-claro: #FFFFFF; /* Texto en fondos oscuros */
+        --color-texto-oscuro: #333333; /* Texto principal en fondos claros */
     }
 
     body {
-        font-family: Quicksand, sans-serif;
+        font-family: 'Poppins', sans-serif;
+        font-size: 17px;
         margin: 0;
         padding: 0;
         color: var(--color-texto-oscuro);
+        /* **CAMBIO AQUÍ**: Fondo general del body, visible una vez que la pantalla de bienvenida se oculte */
         background: var(--color-pastel) url('foto de empaque en montañas.png') no-repeat center center fixed;
-        background-size: cover
+        background-size: cover;
+        background-attachment: fixed; /* Asegura que la imagen no se mueva con el scroll */
+        overflow-x: hidden; 
     }
 
     .hero-content h2,
@@ -35,26 +42,119 @@
         font-family: 'Playfair Display', serif
     }
 
+    /* Pantalla de Bienvenida (sin cambios importantes, se mantiene como estaba) */
+    #welcome-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('fotojovenes tomando.png'); /* O la imagen que prefieras para la intro */
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1001;
+        text-align: center;
+        transition: opacity 1s ease-in-out;
+    }
+
+    #welcome-screen.hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
+
+    .welcome-content {
+        background-color: rgba(0, 0, 0, 0.65);
+        padding: 40px 60px;
+        border-radius: 15px;
+        color: var(--color-texto-claro);
+        max-width: 90%;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+        border: 2px solid var(--color-acento);
+    }
+
+    .welcome-content h2 {
+        font-size: 3.5em;
+        margin-bottom: 20px;
+        color: var(--color-acento);
+        font-weight: 900;
+    }
+
+    .welcome-content p {
+        font-size: 1.5em;
+        margin-bottom: 30px;
+        font-weight: 400;
+    }
+
+    .welcome-btn {
+        background-color: var(--color-acento);
+        color: var(--color-oscuro);
+        padding: 15px 40px;
+        text-decoration: none;
+        border-radius: 30px;
+        font-weight: 700;
+        font-size: 1.3em;
+        transition: background-color .3s, transform .3s, box-shadow .3s;
+        display: inline-block;
+        border: none;
+        cursor: pointer;
+    }
+
+    .welcome-btn:hover {
+        background-color: var(--color-medio);
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        color: var(--color-texto-claro);
+    }
+
     header {
-        background-color: var(--color-oscuro);
+        /* Se mantiene el fondo oscuro para legibilidad del menú y logo */
+        background-color: var(--color-oscuro); 
         color: var(--color-texto-claro);
         padding: 20px 0;
         text-align: center;
         position: sticky;
         top: 0;
         z-index: 100;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, .25)
+        box-shadow: 0 4px 10px rgba(0, 0, 0, .5); 
+    }
+    
+    .logo-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+    
+    .logo-img {
+        content: url('portada.jpg'); 
+        max-width: 120px; 
+        height: auto;
+        margin: 0 auto 10px auto;
+        border-radius: 50%;
+        border: 4px solid var(--color-acento);
+        object-fit: cover;
+        transition: transform .3s;
+    }
+    
+    .logo-img:hover {
+        transform: scale(1.1);
     }
 
     header h1 {
         margin: 0;
-        font-size: 2.5em;
-        font-weight: 900
+        font-size: 3em; 
+        font-weight: 900;
+        color: var(--color-acento); 
     }
 
     header p {
         margin: 5px 0 0;
-        font-weight: 500
+        font-weight: 500;
+        color: var(--color-texto-claro);
     }
 
     nav ul {
@@ -79,34 +179,17 @@
     }
 
     nav ul li a:hover {
-        color: var(--color-texto-claro);
+        color: var(--color-acento); 
         background-color: rgba(255, 255, 255, .15);
-        border-bottom: 2px solid var(--color-medio)
+        border-bottom: 2px solid var(--color-acento);
     }
 
     #top-banner {
-        width: 100%;
-        text-align: center;
-        padding: 20px 0;
-        background-color: rgba(232, 245, 233, .9);
-        box-shadow: 0 2px 5px rgba(0, 0, 0, .1)
+        display:none;
     }
 
-    #top-banner img {
-        max-width: 150px;
-        height: auto;
-        border-radius: 50%;
-        border: 4px solid var(--color-acento);
-        object-fit: cover;
-        transition: transform .3s
-    }
-
-    #top-banner img:hover {
-        transform: scale(1.05)
-    }
 
     .hero {
-        background-color: #388e3c;
         height: 500px;
         display: flex;
         justify-content: center;
@@ -117,25 +200,28 @@
         background-image: url(cafe-portada.png);
         background-size: cover;
         background-position: center 30%;
-        background-repeat: no-repeat
+        background-repeat: no-repeat;
+        display: none; 
     }
 
     .hero-content {
-        background-color: rgba(46, 125, 50, .8);
+        background-color: rgba(26, 26, 26, .8); 
         padding: 40px 50px;
         border-radius: 12px;
-        box-shadow: 0 0 25px rgba(0, 0, 0, .6);
-        max-width: 80%
+        box-shadow: 0 0 25px rgba(0, 0, 0, .8); 
+        max-width: 80%;
+        border: 1px solid var(--color-acento); 
     }
 
     .hero-content h2 {
-        font-size: 2.8em;
+        font-size: 3.2em; 
         margin-bottom: 10px;
-        font-weight: 900
+        font-weight: 900;
+        color: var(--color-acento); 
     }
 
     .hero-content p {
-        font-size: 1.2em;
+        font-size: 1.4em; 
         margin-top: 0;
         font-weight: 500
     }
@@ -146,7 +232,7 @@
         padding: 12px 25px;
         text-decoration: none;
         border-radius: 25px;
-        font-weight: 700;
+        font-weight: 600; 
         transition: background-color .3s, border-color .3s;
         display: inline-block;
         margin: 10px;
@@ -155,16 +241,17 @@
     }
 
     .btn:hover {
-        background-color: var(--color-medio)
+        background-color: var(--color-medio); 
     }
 
     .btn-history {
         background-color: transparent !important;
-        border: 2px solid #fff !important
+        border: 2px solid var(--color-acento) !important; 
+        color: var(--color-texto-claro) !important; 
     }
 
     .btn-history:hover {
-        background-color: rgba(255, 255, 255, .1) !important;
+        background-color: rgba(212, 175, 55, .1) !important; 
         border-color: var(--color-medio) !important
     }
 
@@ -173,15 +260,16 @@
         max-width: 1100px;
         margin: 40px auto;
         padding: 30px;
-        background-color: rgba(255, 255, 255, .85);
-        box-shadow: 0 0 15px rgba(0, 0, 0, .08);
+        /* **CAMBIO AQUÍ**: Hacemos el fondo del contenedor un poco más transparente */
+        background-color: rgba(255, 255, 255, 0.85); /* 0.85 de opacidad para ver el fondo */
+        box-shadow: 0 0 15px rgba(0, 0, 0, .2); 
         border-radius: 12px
     }
 
     .section-divider {
         width: 100px;
         height: 4px;
-        background-color: var(--color-medio);
+        background-color: var(--color-acento); 
         margin: 15px auto 40px auto;
         border-radius: 2px
     }
@@ -191,7 +279,7 @@
         margin: 20px auto;
         max-width: 350px;
         border-radius: 10px;
-        box-shadow: 0 6px 12px rgba(0, 0, 0, .1);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, .15);
         padding: 25px;
         border: 1px solid #e0e0e0;
         text-align: center;
@@ -200,7 +288,7 @@
 
     .producto-card:hover {
         transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, .15)
+        box-shadow: 0 10px 20px rgba(0, 0, 0, .2)
     }
 
     .producto-card img {
@@ -209,16 +297,17 @@
         border-radius: 6px;
         margin: 0 auto 20px auto;
         display: block;
-        border: 3px solid var(--color-pastel)
+        border: 3px solid var(--color-acento); 
     }
 
     .presentaciones li {
         list-style: none;
-        padding: 10px 0;
+        padding: 12px 0; 
         border-bottom: 1px solid var(--color-pastel);
         display: flex;
         justify-content: space-between;
-        align-items: center
+        align-items: center;
+        font-size: 1.05em; 
     }
 
     .presentaciones li:last-child {
@@ -227,13 +316,13 @@
 
     .peso {
         font-weight: 500;
-        color: var(--color-oscuro)
+        color: var(--color-texto-oscuro)
     }
 
     .precio {
-        font-size: 1.2em;
+        font-size: 1.3em; 
         font-weight: 700;
-        color: var(--color-acento)
+        color: var(--color-acento); 
     }
 
     .history-section h2 {
@@ -243,22 +332,23 @@
     }
 
     .history-block {
-        border-left: 5px solid var(--color-medio);
-        background-color: rgba(241, 248, 233, .8);
+        border-left: 5px solid var(--color-acento); 
+        /* **CAMBIO AQUÍ**: Hacemos el fondo del history-block un poco más transparente */
+        background-color: rgba(255, 255, 255, 0.85); 
         padding-left: 20px;
         padding: 25px;
         border-radius: 10px;
         display: flex;
         align-items: flex-start;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, .05);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, .1);
         margin-bottom: 30px
     }
 
     .history-block h3 {
         color: var(--color-oscuro);
         margin-top: 0;
-        font-size: 1.6em;
-        border-bottom: 2px dashed var(--color-medio);
+        font-size: 1.8em; 
+        border-bottom: 2px dashed var(--color-acento); 
         padding-bottom: 8px;
         font-weight: 700
     }
@@ -267,7 +357,7 @@
         font-size: 1.1em;
         line-height: 1.7;
         margin-bottom: 0;
-        font-weight: 500
+        font-weight: 400; 
     }
 
     .history-image-container {
@@ -299,6 +389,17 @@
             margin-right: 0;
             margin-bottom: 20px
         }
+
+        .welcome-content h2 {
+            font-size: 2.5em; 
+        }
+        .welcome-content p {
+            font-size: 1.2em; 
+        }
+        .welcome-btn {
+            font-size: 1.1em; 
+            padding: 12px 30px;
+        }
     }
 
     .tasting-notes-section h2 {
@@ -327,18 +428,19 @@
 
     .note-card:hover {
         transform: translateY(-3px);
-        box-shadow: 0 6px 15px rgba(0, 0, 0, .15)
+        box-shadow: 0 6px 15px rgba(0, 0, 0, .15);
+        border-color: var(--color-acento); 
     }
 
     .note-card i {
-        font-size: 2.5em;
-        color: var(--color-acento);
+        font-size: 2.8em; 
+        color: var(--color-acento); 
         margin-bottom: 10px
     }
 
     .note-card h4 {
         font-family: 'Playfair Display', serif;
-        font-size: 1.3em;
+        font-size: 1.4em; 
         color: var(--color-oscuro);
         margin-top: 5px;
         margin-bottom: 10px;
@@ -346,10 +448,10 @@
     }
 
     .note-card p {
-        font-size: 1em;
+        font-size: 1.05em; 
         color: var(--color-texto-oscuro);
         margin: 0;
-        font-weight: 500
+        font-weight: 400;
     }
 
     #cart-icon {
@@ -358,7 +460,7 @@
         right: 50px;
         font-size: 1.8em;
         cursor: pointer;
-        color: var(--color-texto-claro);
+        color: var(--color-acento); 
         z-index: 500;
         transition: transform .2s
     }
@@ -432,14 +534,15 @@
     }
 
     #cart-count {
-        background-color: #d32f2f;
-        color: #fff;
+        background-color: var(--color-acento); 
+        color: var(--color-oscuro); 
         border-radius: 50%;
         padding: 4px 8px;
         font-size: .8em;
         position: absolute;
         top: -8px;
-        right: -8px
+        right: -8px;
+        font-weight: 700;
     }
 
     .cart-modal {
@@ -451,7 +554,7 @@
         width: 100%;
         height: 100%;
         overflow: auto;
-        background-color: rgba(0, 0, 0, .6)
+        background-color: rgba(0, 0, 0, .8)
     }
 
     .modal-content {
@@ -462,7 +565,7 @@
         width: 90%;
         max-width: 450px;
         border-radius: 10px;
-        box-shadow: 0 5px 20px rgba(0, 0, 0, .3)
+        box-shadow: 0 5px 20px rgba(0, 0, 0, .5)
     }
 
     .close-btn {
@@ -480,7 +583,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        font-size: 1.1em;
+        font-size: 1.1em; 
         font-weight: 500
     }
 
@@ -510,35 +613,46 @@
         font-weight: 700;
         margin-top: 20px;
         text-align: right;
-        color: var(--color-oscuro)
+        color: var(--color-acento); 
     }
 
     .btn-pago {
-        background-color: var(--color-oscuro) !important;
-        color: #fff !important;
+        background-color: var(--color-acento) !important;
+        color: var(--color-oscuro) !important; 
         font-weight: 700 !important;
         border-radius: 10px !important
     }
 
     .btn-pago:hover {
-        background-color: var(--color-acento) !important
+        background-color: var(--color-medio) !important;
+        color: var(--color-texto-claro) !important; 
     }
 </style>
-<header>
-    <h1>Café piñonal</h1>
-    <p>Tu dosis diaria de felicidad
-        <nav>
-            <ul>
-                <li><a href=# onclick="return showHistorySection(),!1">Inicio / Historia</a>
-                <li><a href=# onclick="return showTastingNotesSection(),!1">Notas de Cata</a>
-                <li><a href=# onclick="return showProductSection(),!1">Productos</a>
-                <li><a href=# onclick="return toggleCartModal(),!1">Comprar</a>
-            </ul>
-        </nav>
-        <div id=cart-icon onclick=toggleCartModal()>🛒 <span id=cart-count>0</span></div>
+<div id="welcome-screen">
+    <div class="welcome-content">
+        <h2>Bienvenido a Café Piñonal</h2>
+        <p>Experimenta el sabor único de nuestro café especial colombiano.</p>
+        <button class="welcome-btn" onclick="hideWelcomeScreen()">Explorar</button>
+    </div>
+</div>
+
+<header style="display:none;"> <div class="logo-container">
+        <div class="logo-img"></div> 
+        <h1>Café piñonal</h1>
+        <p>Tu dosis diaria de felicidad</p>
+    </div>
+    <nav>
+        <ul>
+            <li><a href=# onclick="return showHistorySection(),!1">Inicio / Historia</a>
+            <li><a href=# onclick="return showTastingNotesSection(),!1">Notas de Cata</a>
+            <li><a href=# onclick="return showProductSection(),!1">Productos</a>
+            <li><a href=# onclick="return toggleCartModal(),!1">Comprar</a>
+        </ul>
+    </nav>
+    <div id=cart-icon onclick=toggleCartModal()>🛒 <span id=cart-count>0</span></div>
 </header>
-<section id=top-banner><img alt="Foto personal del productor o propietario" src="foto de taza de cafe .png"></section>
-<section id=top-banner><img alt="Foto personal del productor o propietario" src="foto con miel.png"></section>
+<section id=top-banner style="display:none;"></section>
+
 <section id=hero-banner class=hero>
     <div class=hero-content>
         <h2 style=font-weight:900>Café Piñonal: Sabor de la Tierra.</h2>
@@ -587,7 +701,7 @@
                 </div>
                 <div class=note-card><i class="fas fa-lemon"></i>
                     <h4>Acidez</h4>
-                    <p>Media, brillante y cítrica, que aporta frescura y viveza a la taza.
+                    <p>Media, brillante y cítrica, que aporta frescura y vivencia a la taza.
                 </div>
                 <div class=note-card><i class="fas fa-chocolate"></i>
                     <h4>Sabor Principal</h4>
@@ -619,8 +733,7 @@
             </div>
     </section>
 </div>
-<footer id=contacto>
-    <p>© 2025 Café piñonal. Todos los derechos reservados.
+<footer id=contacto style="display:none;"> <p>© 2025 Café piñonal. Todos los derechos reservados.
 </footer>
 <div class=cart-modal id=cart-modal>
     <div class=modal-content><span class=close-btn onclick=toggleCartModal()>×</span>
@@ -630,13 +743,12 @@
             <div class=hidden-initial id=payment-button-container><button class="btn btn-pago" onclick=goToDirectLink() style=width:100%;font-size:1.1em>Hacer Pedido por WhatsApp</button></div>
     </div>
 </div>
-<div class=social-links>
-    <a href="https://wa.me/573175813074" class="social-icon whatsapp" target=_blank title="Escríbenos por WhatsApp"><i class="fab fa-whatsapp"></i> </a>
+<div class=social-links style="display:none;"> <a href="https://wa.me/573175813074" class="social-icon whatsapp" target=_blank title="Escríbenos por WhatsApp"><i class="fab fa-whatsapp"></i> </a>
     
     <a href="https://www.instagram.com/pinonal87/" class="social-icon instagram" target=_blank title="Síguenos en Instagram"><i class="fab fa-instagram"></i> </a>
     
     <a href="https://www.facebook.com/share/1CTzSonini/?mibextid=wwXIfr" class="social-icon facebook" target=_blank title="Visítanos en Facebook"><i class="fab fa-facebook-f"></i></a>
-</div> 
+</div>	
 <script>
     const DIRECT_PAYMENT_LINK = "https://checkout.nequi.wompi.co/l/uH6JaT";
     const WHATSAPP_NUMBER = "573175813074"; // Tu número de WhatsApp para pedidos
@@ -761,6 +873,18 @@
         document.getElementById('hero-banner').style.display = 'none';
     }
 
+    function hideWelcomeScreen() {
+        document.getElementById('welcome-screen').classList.add('hidden');
+        setTimeout(() => {
+            document.getElementById('welcome-screen').style.display = 'none';
+            document.querySelector('header').style.display = 'block';
+            document.querySelector('footer').style.display = 'block';
+            document.querySelector('.social-links').style.display = 'flex';
+            showHistorySection();
+        }, 1000); 
+    }
+
+
     function showHistorySection() {
         hideAllSections();
         document.getElementById('hero-banner').style.display = 'flex';
@@ -805,9 +929,7 @@
         }
     }
 
-    // Inicializar la página mostrando la historia
     document.addEventListener('DOMContentLoaded', () => {
-        showHistorySection();
         document.getElementById('payment-button-container').style.display = 'none';
         document.getElementById('cart-total').textContent = `Carrito vacío`;
     });
