@@ -150,11 +150,13 @@
         margin-top: 10px;
         display: flex;
         justify-content: center;
-        flex-wrap: wrap; /* Permitir que baje de línea en pantallas muy pequeñas */
+        flex-wrap: wrap;
+        /* Permitir que baje de línea en pantallas muy pequeñas */
     }
 
     nav ul li {
-        margin: 0 10px; /* Ajuste ligero */
+        margin: 0 10px;
+        /* Ajuste ligero */
     }
 
     nav ul li a {
@@ -441,7 +443,7 @@
         margin-bottom: 20px;
         text-align: center;
     }
-    
+
     .gallery-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -453,9 +455,10 @@
         position: relative;
         overflow: hidden;
         border-radius: 10px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
         cursor: pointer;
-        aspect-ratio: 4/3; /* Mantiene las fotos rectangulares */
+        aspect-ratio: 4/3;
+        /* Mantiene las fotos rectangulares */
         background-color: #000;
     }
 
@@ -477,7 +480,8 @@
         bottom: 0;
         left: 0;
         width: 100%;
-        background: rgba(26, 26, 26, 0.7); /* Fondo oscuro semitransparente */
+        background: rgba(26, 26, 26, 0.7);
+        /* Fondo oscuro semitransparente */
         color: var(--color-acento);
         padding: 10px;
         text-align: center;
@@ -485,14 +489,90 @@
         font-weight: 700;
         transform: translateY(100%);
         transition: transform 0.3s ease;
+        pointer-events: none;
     }
 
     .gallery-item:hover .gallery-caption {
         transform: translateY(0);
     }
+
+    /* ******************************************************************* */
+    /* ESTILOS DEL LIGHTBOX (VISOR DE IMAGEN) */
+    /* ******************************************************************* */
+    .lightbox-modal {
+        display: none;
+        position: fixed;
+        z-index: 2000;
+        padding-top: 20px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.9);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .lightbox-content {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 900px;
+        max-height: 80vh;
+        object-fit: contain;
+        border: 2px solid var(--color-acento);
+        border-radius: 5px;
+        animation-name: zoom;
+        animation-duration: 0.6s;
+    }
+
+    @keyframes zoom {
+        from {
+            transform: scale(0)
+        }
+        to {
+            transform: scale(1)
+        }
+    }
+
+    .close-lightbox {
+        position: absolute;
+        top: 15px;
+        right: 35px;
+        color: var(--color-acento);
+        font-size: 40px;
+        font-weight: bold;
+        transition: 0.3s;
+        cursor: pointer;
+        z-index: 2001;
+    }
+
+    .close-lightbox:hover,
+    .close-lightbox:focus {
+        color: #fff;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    #lightbox-caption {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 700px;
+        text-align: center;
+        color: #f1f1f1;
+        padding: 10px 0;
+        height: 50px;
+        font-family: 'Playfair Display', serif;
+        font-size: 1.3em;
+    }
+
     /* FIN ESTILOS GALERÍA */
 
     @keyframes bounce {
+
         0%,
         100% {
             transform: scale(1)
@@ -683,7 +763,7 @@
             right: 15px;
             font-size: 1.2em;
         }
-        
+
         .history-block {
             flex-direction: column;
             align-items: center;
@@ -706,6 +786,11 @@
         .welcome-btn {
             font-size: 1.1em;
             padding: 12px 30px;
+        }
+
+        /* Ajuste lightbox móvil */
+        .lightbox-content {
+            width: 95%;
         }
     }
 </style>
@@ -741,7 +826,6 @@
         <p>Descubre el origen y la pasión detrás de cada grano, de nuestra finca a tu taza.</p><a href=#notas-cata onclick=showTastingNotesSection() class=btn>🔬 Notas de Cata</a> <a href=#productos onclick=showProductSection() class="btn btn-history">🛍️ Ver Productos</a>
     </div>
 </section>
-
 <div class=container id=history-section-container style=display:none>
     <section id=historia class=history-section>
         <h2 style=text-align:center;width:100%> Identidad, Origen e Inspiración</h2>
@@ -760,7 +844,7 @@
             </div>
         </div>
         <div class=history-block>
-            <div class=history-image-container><img alt="Foto de la recolección manual del café" src="fotodel granos.png"></div>
+            <div class=history-image-container><img alt="Foto de la recolección manual del café" src="IMG_1992.jpg"></div>
             <div class=history-text-container>
                 <h3>Recolección y Cuidado</h3>
                 <p>La recolección del café es un ritual de paciencia y cariño. Cada grano maduro se elige a mano, uno a uno, por quienes conocen el lenguaje de la tierra. Después, con esmero y cuidado, el fruto se despulpa, se seca y se transforma en una experiencia que despierta los sentidos. Todo este proceso es un homenaje a la labor campesina, a los abuelos que enseñaron el valor del trabajo bien hecho y al orgullo de ver el fruto de nuestra tierra convertido en una presentación elegante y en un sabor inigualable.<br>Nuestro café se recolecta de forma manual, eligiendo solo las cerezas maduras. Pasan por un proceso de despulpado y lavado tradicional, y se secan al sol para conservar su esencia. Cada lote es seleccionado cuidadosamente antes del tueste artesanal, garantizando que cada taza refleje el trabajo, el amor y la dedicación que nacen en nuestra finca.
@@ -768,7 +852,6 @@
         </div>
     </section>
 </div>
-
 <div class=container id=tasting-notes-section-container style=display:none>
     <section id=notas-cata class=tasting-notes-section>
         <h2 style=width:100%>🔬 Descubre el Perfil de Sabor</h2>
@@ -806,33 +889,47 @@
 <div class="container" id="gallery-section-container" style="display:none">
     <section id="galeria" class="gallery-section">
         <h2 style="width:100%">📷 Experiencia en la Finca</h2>
-        <p style="text-align:center">Un recorrido visual por el proceso y la pasión que ponemos en cada grano.</p>
+        <p style="text-align:center">Un recorrido visual por el proceso y la pasión que ponemos en cada grano. <br><small>(Haz clic para ampliar)</small></p>
         <div class="section-divider"></div>
-        
         <div class="gallery-grid">
-            <div class="gallery-item">
-                <img src="fotodel granos.png" alt="Proceso de selección de granos">
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="IMG_2472.jpg" alt="Proceso de selección de granos">
                 <div class="gallery-caption">Selección Manual</div>
             </div>
-            <div class="gallery-item">
-                <img src="perro 2 .png" alt="Paisaje de la finca">
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="IMG_2448.JPG" alt="Paisaje de la finca">
                 <div class="gallery-caption">Paisajes de la Finca</div>
             </div>
-            <div class="gallery-item">
-                <img src="fto en ciudad.png" alt="Café listo para disfrutar">
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="IMG_2453.JPG" alt="Café listo para disfrutar">
                 <div class="gallery-caption">De la tierra a tu mano</div>
             </div>
-            <div class="gallery-item">
-                <img src="foto creando.png" alt="Compartiendo café">
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="IMG_1980.JPEG.jpg" alt="Compartiendo café">
                 <div class="gallery-caption">Momentos de Café</div>
             </div>
-             <div class="gallery-item">
-                <img src="bolsas .jpeg" alt="Cultivos">
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="IMG_2447.JPG" alt="Cultivos">
                 <div class="gallery-caption">Nuestros Cultivos</div>
             </div>
-             <div class="gallery-item">
-                <img src="foto de taza de cafe .png" alt="Producto final">
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="IMG_1996.JPG" alt="Producto final">
                 <div class="gallery-caption">Calidad Garantizada</div>
+             </div>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="IMG_2471.jpg" alt="Café listo para disfrutar">
+                <div class="gallery-caption">Experiencias</div>
+             </div>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="IMG_1989.jpg" alt="Café listo para disfrutar">
+                <div class="gallery-caption">Paisajes</div>
+             </div>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="IMG_1990.jpg""IMG_2446.JPG" alt="Café listo para disfrutar">
+                <div class="gallery-caption">Altura</div>
+
+
+
             </div>
         </div>
     </section>
@@ -843,7 +940,7 @@
         <h2 style=text-align:center;color:var(--color-oscuro);font-weight:900>Nuestro Café Especial</h2>
         <p style=text-align:center>Granos de la más alta calidad, tostados a la perfección para un sabor inigualable.
         <div class=section-divider></div>
-        <div class=producto-card><img alt="Café Premium Café piñonal" src=empaquepresentacion.png>
+        <div class=producto-card><img alt="Café Premium Café piñonal" src=empaque.jpg>
             <h3>Café Premium "Café piñonal"</h3>
             <p>Descubre las notas intensas de chocolate y caramelo, con un toque cítrico y un final persistente.
             <ul class=presentaciones>
@@ -864,6 +961,13 @@
         <div class=hidden-initial id=payment-button-container><button class="btn btn-pago" onclick=goToDirectLink() style=width:100%;font-size:1.1em>Hacer Pedido por WhatsApp</button></div>
     </div>
 </div>
+
+<div id="lightbox-modal" class="lightbox-modal" onclick="closeLightbox()">
+  <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
+  <img class="lightbox-content" id="lightbox-img">
+  <div id="lightbox-caption"></div>
+</div>
+
 <div class=social-links style="display:none;">
     <a href="https://wa.me/573175813074" class="social-icon whatsapp" target=_blank title="Escríbenos por WhatsApp"><i class="fab fa-whatsapp"></i> </a>
     <a href="https://www.instagram.com/pinonal87/" class="social-icon instagram" target=_blank title="Síguenos en Instagram"><i class="fab fa-instagram"></i> </a>
@@ -1029,12 +1133,36 @@
             updateCartDisplay();
         }
     }
+
+    /* MODAL LIGHTBOX (Previsualización) */
+    function openLightbox(element) {
+        const modal = document.getElementById('lightbox-modal');
+        const modalImg = document.getElementById('lightbox-img');
+        const captionText = document.getElementById('lightbox-caption');
+        const img = element.querySelector('img');
+        const caption = element.querySelector('.gallery-caption');
+
+        modal.style.display = "flex"; // Usar flex para centrar
+        modalImg.src = img.src;
+        captionText.innerHTML = caption.innerHTML;
+    }
+
+    function closeLightbox() {
+        document.getElementById('lightbox-modal').style.display = "none";
+    }
+
     window.onclick = function(event) {
-        const modal = document.getElementById('cart-modal');
-        if (event.target === modal) {
-            modal.style.display = "none";
+        const cartModal = document.getElementById('cart-modal');
+        const lightboxModal = document.getElementById('lightbox-modal'); // Nuevo
+        
+        if (event.target === cartModal) {
+            cartModal.style.display = "none";
+        }
+        if (event.target === lightboxModal) { // Nuevo
+            lightboxModal.style.display = "none";
         }
     }
+
     document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('payment-button-container').style.display = 'none';
         document.getElementById('cart-total').textContent = `Carrito vacío`;
@@ -1066,4 +1194,5 @@
         }
     }
 </script>
+
 </html>
