@@ -9,6 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
 <link href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css rel=stylesheet>
 <title>Café piñonal - Tienda con Historia</title>
+
 <style>
     /* PALETA DE COLORES ELEGANTES (NEGRO Y DORADO) */
     :root {
@@ -532,6 +533,7 @@
         from {
             transform: scale(0)
         }
+
         to {
             transform: scale(1)
         }
@@ -570,7 +572,6 @@
     }
 
     /* FIN ESTILOS GALERÍA */
-
     @keyframes bounce {
 
         0%,
@@ -693,6 +694,13 @@
         font-size: 1.1em;
         font-weight: 500
     }
+    
+    #cart-items li.shipping-cost {
+        border-top: 2px dashed var(--color-medio);
+        background-color: #f9f9f9;
+        font-weight: 700;
+        color: #FF4500; /* Color para destacar el costo de envío */
+    }
 
     .item-controls {
         display: flex;
@@ -802,6 +810,7 @@
         <button class="welcome-btn" onclick="hideWelcomeScreen()">Explorar</button>
     </div>
 </div>
+
 <header style="display:none;">
     <div class="logo-container">
         <div class="logo-img"></div>
@@ -819,13 +828,16 @@
     </nav>
     <div id=cart-icon onclick=toggleCartModal()>🛒 <span id=cart-count>0</span></div>
 </header>
+
 <section id=top-banner style="display:none;"></section>
+
 <section id=hero-banner class=hero>
     <div class=hero-content>
         <h2 style=font-weight:900>Café Piñonal: Sabor de la Tierra.</h2>
         <p>Descubre el origen y la pasión detrás de cada grano, de nuestra finca a tu taza.</p><a href=#notas-cata onclick=showTastingNotesSection() class=btn>🔬 Notas de Cata</a> <a href=#productos onclick=showProductSection() class="btn btn-history">🛍️ Ver Productos</a>
     </div>
 </section>
+
 <div class=container id=history-section-container style=display:none>
     <section id=historia class=history-section>
         <h2 style=text-align:center;width:100%> Identidad, Origen e Inspiración</h2>
@@ -852,6 +864,7 @@
         </div>
     </section>
 </div>
+
 <div class=container id=tasting-notes-section-container style=display:none>
     <section id=notas-cata class=tasting-notes-section>
         <h2 style=width:100%>🔬 Descubre el Perfil de Sabor</h2>
@@ -915,21 +928,18 @@
             <div class="gallery-item" onclick="openLightbox(this)">
                 <img src="IMG_1996.JPG" alt="Producto final">
                 <div class="gallery-caption">Calidad Garantizada</div>
-             </div>
+            </div>
             <div class="gallery-item" onclick="openLightbox(this)">
                 <img src="IMG_2471.jpg" alt="Café listo para disfrutar">
                 <div class="gallery-caption">Experiencias</div>
-             </div>
+            </div>
             <div class="gallery-item" onclick="openLightbox(this)">
                 <img src="IMG_1989.jpg" alt="Café listo para disfrutar">
                 <div class="gallery-caption">Paisajes</div>
-             </div>
+            </div>
             <div class="gallery-item" onclick="openLightbox(this)">
                 <img src="IMG_1990.jpg""IMG_2446.JPG" alt="Café listo para disfrutar">
                 <div class="gallery-caption">Altura</div>
-
-
-
             </div>
         </div>
     </section>
@@ -940,19 +950,35 @@
         <h2 style=text-align:center;color:var(--color-oscuro);font-weight:900>Nuestro Café Especial</h2>
         <p style=text-align:center>Granos de la más alta calidad, tostados a la perfección para un sabor inigualable.
         <div class=section-divider></div>
-        <div class=producto-card><img alt="Café Premium Café piñonal" src=empaque.jpg>
-            <h3>Café Premium "Café piñonal"</h3>
+        <div class=producto-card>
+            <img alt="Café Premium" src=empaque.jpg>
+            <h3>Café Premium "HONEY"</h3>
             <p>Descubre las notas intensas de chocolate y caramelo, con un toque cítrico y un final persistente.
             <ul class=presentaciones>
-                <li><span class=peso>250 gramos</span> <span class=precio>$28.000</span> <button class="btn btn-pequeno" onclick='addToCart("Café Premium (250g)",24e3),toggleCartModal()'>Añadir</button>
-                <li><span class=peso>500 gramos</span> <span class=precio>$48.000</span> <button class="btn btn-pequeno" onclick='addToCart("Café Premium (500g)",48e3),toggleCartModal()'>Añadir</button>
-            </ul>
+                <li>
+                    <span class=peso>250 gramos</span>
+                    <span class=precio>$28.000</span>
+                    <button class="btn btn-pequeno" onclick='addToCart("Café Premium (250g)",24e3),toggleCartModal()'>Añadir</button>
+                </li>
+                <li>
+                    <span class=peso>500 gramos</span>
+                    <span class=precio>$48.000</span>
+                    <button class="btn btn-pequeno" onclick='addToCart("Café Premium (500g)",48e3),toggleCartModal()'>Añadir</button>
+                </li>
+                <li style="background-color: #f0f0f0; border-top: 2px dashed var(--color-medio); margin-top: 15px; padding: 15px 0;">
+                    <span class=peso style="font-weight: 700; color: var(--color-oscuro);">Costo de Envío Nacional</span>
+                    <span class=precio style="color: #FF4500; font-size: 1.4em;">$15.000</span>
+                    <button class="btn btn-pequeno" style="background-color: #5cb85c; pointer-events: none; border-radius: 8px;">📦 Envío</button>
+                </li>
+                </ul>
         </div>
     </section>
 </div>
+
 <footer id=contacto style="display:none;">
     <p>© 2025 Café piñonal. Todos los derechos reservados.
 </footer>
+
 <div class=cart-modal id=cart-modal>
     <div class=modal-content><span class=close-btn onclick=toggleCartModal()>×</span>
         <h3>🛍️ Tu Carrito de Compras</h3>
@@ -963,9 +989,9 @@
 </div>
 
 <div id="lightbox-modal" class="lightbox-modal" onclick="closeLightbox()">
-  <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
-  <img class="lightbox-content" id="lightbox-img">
-  <div id="lightbox-caption"></div>
+    <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
+    <img class="lightbox-content" id="lightbox-img">
+    <div id="lightbox-caption"></div>
 </div>
 
 <div class=social-links style="display:none;">
@@ -973,9 +999,13 @@
     <a href="https://www.instagram.com/pinonal87/" class="social-icon instagram" target=_blank title="Síguenos en Instagram"><i class="fab fa-instagram"></i> </a>
     <a href="https://www.facebook.com/share/1CTzSonini/?mibextid=wwXIfr" class="social-icon facebook" target=_blank title="Visítanos en Facebook"><i class="fab fa-facebook-f"></i></a>
 </div>
+
 <script>
+    const SHIPPING_COST = 15000; // Constante para el costo de envío (15.000 COP)
+
     const DIRECT_PAYMENT_LINK = "https://checkout.nequi.wompi.co/l/uH6JaT";
     const WHATSAPP_NUMBER = "573175813074"; // Tu número de WhatsApp para pedidos
+
     let cart = [];
     let currentTotal = 0;
 
@@ -1015,28 +1045,48 @@
         const cartCount = document.getElementById('cart-count');
         const cartTotalElement = document.getElementById('cart-total');
         const paymentButtonContainer = document.getElementById('payment-button-container');
-        currentTotal = 0;
+
+        let subtotal = 0;
         let totalItems = 0;
         cartItemsContainer.innerHTML = '';
+
+        // 1. Mostrar ítems del carrito y calcular subtotal
         cart.forEach(item => {
             const itemTotal = item.price * item.quantity;
-            currentTotal += itemTotal;
+            subtotal += itemTotal;
             totalItems += item.quantity;
+
             const formattedItemPrice = item.price.toLocaleString('es-CO');
             const formattedTotal = itemTotal.toLocaleString('es-CO');
+
             const listItem = document.createElement('li');
             listItem.innerHTML = `<div>${item.name} <br><small>$${formattedItemPrice} c/u</small></div><div class="item-controls"><button class="qty-btn" onclick="changeQuantity('${item.name}', -1)">-</button><span class="qty-display">${item.quantity}</span><button class="qty-btn" onclick="changeQuantity('${item.name}', 1)">+</button><span style="margin-left: 15px; font-weight: bold;">$${formattedTotal}</span></div>`;
             cartItemsContainer.appendChild(listItem);
         });
-        const finalFormattedTotal = currentTotal.toLocaleString('es-CO');
-        cartCount.textContent = totalItems;
-        if (currentTotal > 0) {
+
+        // 2. Aplicar y mostrar costo de envío si hay productos
+        currentTotal = subtotal; // Inicializar el total con el subtotal
+        if (totalItems > 0) {
+            currentTotal += SHIPPING_COST; // Sumar el costo de envío
+            
+            // Añadir el ítem de costo de envío al modal
+            const shippingItem = document.createElement('li');
+            shippingItem.classList.add('shipping-cost');
+            const formattedShippingCost = SHIPPING_COST.toLocaleString('es-CO');
+            shippingItem.innerHTML = `<span>📦 Envío Nacional</span><span style="font-weight: bold;">$${formattedShippingCost}</span>`;
+            cartItemsContainer.appendChild(shippingItem);
+
             paymentButtonContainer.style.display = 'block';
+            
+            const finalFormattedTotal = currentTotal.toLocaleString('es-CO');
             cartTotalElement.textContent = `Total: $${finalFormattedTotal}`;
+
         } else {
             paymentButtonContainer.style.display = 'none';
             cartTotalElement.textContent = `Carrito vacío`;
         }
+
+        cartCount.textContent = totalItems;
     }
 
     function goToDirectLink() {
@@ -1048,19 +1098,32 @@
             alert("⚠️ ERROR DE CONFIGURACIÓN: No se ha configurado el número de WhatsApp.");
             return;
         }
+        
         // 1. Generar el mensaje de WhatsApp con los detalles del pedido
         let orderDetails = "¡Hola! Quiero hacer un pedido de Café Piñonal:\n\n";
+
+        // Detalle de productos
         cart.forEach(item => {
             orderDetails += `- ${item.quantity}x ${item.name} ($${(item.price * item.quantity).toLocaleString('es-CO')})\n`;
         });
+
+        // Detalle del envío
+        const shippingCostText = SHIPPING_COST.toLocaleString('es-CO');
+        orderDetails += `\n*Costo de Envío: $${shippingCostText}*`;
+
         const finalFormattedTotal = currentTotal.toLocaleString('es-CO');
-        orderDetails += `\n*TOTAL: $${finalFormattedTotal}*\n\n`;
-        orderDetails += "Por favor, confírmame el total y los detalles de envío.";
+        orderDetails += `\n*TOTAL A PAGAR: $${finalFormattedTotal}*\n\n`;
+
+        orderDetails += "Por favor, confírmame el total y los detalles de envío (Nombre, Dirección, Teléfono).";
+
         const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(orderDetails)}`;
+
         // 2. Abrir la ventana de WhatsApp para enviar el pedido
         window.open(whatsappUrl, '_blank');
+
         // 3. Informar al usuario
         alert("¡Pedido iniciado! Hemos pre-llenado tu orden en WhatsApp. Por favor, envíanos el mensaje para confirmar los detalles y el pago.");
+
         // 4. Vaciar carrito después de iniciar el proceso de pedido
         cart = [];
         updateCartDisplay();
@@ -1072,7 +1135,7 @@
         document.getElementById('product-section-container').style.display = 'none';
         document.getElementById('history-section-container').style.display = 'none';
         document.getElementById('tasting-notes-section-container').style.display = 'none';
-        document.getElementById('gallery-section-container').style.display = 'none'; // NUEVO: OCULTAR GALERIA
+        document.getElementById('gallery-section-container').style.display = 'none';
         document.getElementById('hero-banner').style.display = 'none';
     }
 
@@ -1105,7 +1168,6 @@
         });
     }
 
-    /* NUEVA FUNCIÓN PARA MOSTRAR GALERÍA */
     function showGallerySection() {
         hideAllSections();
         document.getElementById('hero-banner').style.display = 'flex';
@@ -1141,7 +1203,6 @@
         const captionText = document.getElementById('lightbox-caption');
         const img = element.querySelector('img');
         const caption = element.querySelector('.gallery-caption');
-
         modal.style.display = "flex"; // Usar flex para centrar
         modalImg.src = img.src;
         captionText.innerHTML = caption.innerHTML;
@@ -1153,8 +1214,8 @@
 
     window.onclick = function(event) {
         const cartModal = document.getElementById('cart-modal');
-        const lightboxModal = document.getElementById('lightbox-modal'); // Nuevo
-        
+        const lightboxModal = document.getElementById('lightbox-modal');
+        // Nuevo
         if (event.target === cartModal) {
             cartModal.style.display = "none";
         }
@@ -1168,6 +1229,7 @@
         document.getElementById('cart-total').textContent = `Carrito vacío`;
     });
 </script>
+
 <script type=application/ld+json>
     {
         "@context": "http://schema.org",
@@ -1183,16 +1245,4 @@
             "addressRegion": "Antioquia",
             "addressCountry": "CO"
         },
-        "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.9",
-            "reviewCount": "25"
-        },
-        "brand": {
-            "@type": "Brand",
-            "name": "Café Piñonal"
-        }
-    }
-</script>
-
-</html>
+        "aggregateR
